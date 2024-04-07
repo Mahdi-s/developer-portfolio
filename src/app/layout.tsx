@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
         <head>
-          <title>Mahdi Saeedi's Portfolio</title>  
+          <title>Mahdi Saeedi&apos;s Portfolio</title>  
           <link rel="icon" href="/bitmoji.png" />
         </head>
 
