@@ -34,7 +34,7 @@ export function BackgroundBoxesDemo() {
              transition={{ duration: 1 }}
              style={{ wordWrap: 'break-word' }}
            >
-             Mahdi Saeedi's Portfolio
+             Mahdi Saeedi&apos;s Portfolio
            </motion.h1>
 
           <motion.div
@@ -128,7 +128,7 @@ export function BackgroundBoxesDemo() {
                             className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
                           >
                               Distrust with the electoral system in the United States has grown over the years. 
-                              In this project, we’ll explore some of the mathematics behind redistricting in order to find a solution 
+                              In this project, we&apos;ll explore some of the mathematics behind redistricting in order to find a solution 
                               for gerrymandering. I have prepared a more extensive discussion on the matter; please access it using the link below. 
                               I have also designed an online partisan gerrymandering calculator that lets us simulate an instance of state redistricting 
                               at various levels of resolution for party preference spread among the population. Please find a demo and link to the app below.
@@ -242,7 +242,7 @@ export function BackgroundBoxesDemo() {
 
                                   To identify jammed signals, we would need to ask series of questions about the signal data. 
                                   It turns out decision tree algorithms are great tools for accomplishing this type of classification. 
-                                  In the project, I used python's scikit library's decision tree package to design a model that classifies healthy and jammed signals. 
+                                  In the project, I used python&apos;s scikit library&apos;s decision tree package to design a model that classifies healthy and jammed signals. 
                                   This was part of more extensive work to study machine learning capabilities in detecting jamming attacks which you can read about here. 
                                   I have included the code and additional notes on the decision tree algorithm which you can access below.
                           </CardItem>
@@ -363,10 +363,10 @@ export function BackgroundBoxesDemo() {
                             translateZ="60"
                             className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
                           >
-                                Given the rise of retail investors, I've been wondering if there are more effective ways of analyzing company data and making sense of the 
+                                Given the rise of retail investors, I&apos;ve been wondering if there are more effective ways of analyzing company data and making sense of the 
                                 prospect of investment. My goal with Angur is to create a one-stop shop where users can analyze company data from financial statements, 
                                 stock market data, and relative news. Angur is a python web application that allows users to access financial data and news data about a 
-                                company traded on NYSE. Predict the next day's closing price of a particular stock using an LSTM neural network trained on trading data 
+                                company traded on NYSE. Predict the next day&apos;s closing price of a particular stock using an LSTM neural network trained on trading data 
                                 available on 30 previous days. I am extending this work to include different comparisons 
                                 of the data points available, due to that, I have shut down the server. If you would like to test this application, please reach out to me.
                           </CardItem>
@@ -578,7 +578,7 @@ export function BackgroundBoxesDemo() {
                             className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
                           >
                          This study employs the ns-3 library to simulate drone networks and ground station communication, 
-                         extracting signal data like signal-to-noise ratio and drone specifics. The ns-3's object factory feature enables flexible
+                         extracting signal data like signal-to-noise ratio and drone specifics. The ns-3&apos;s object factory feature enables flexible
                           creation of various entities, including UAVs. The linked script is compatible with ns-3 version 3.21.
                           </CardItem>
                           <CardItem translateZ="100" className="w-full mt-4">
