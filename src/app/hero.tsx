@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Boxes } from "@/components/ui/background-boxes";
 import { cn } from "@/utils/cn";
 import { motion, useScroll } from 'framer-motion';
@@ -10,6 +10,7 @@ import stickerImage from '@/../public/images/sticker.png'; // replace with your 
 import { FaBlog, FaLinkedin, FaGithub } from "react-icons/fa";
 import { SiGooglescholar } from "react-icons/si";
 
+
 //items-center justify-center
 export function BackgroundBoxesDemo() {
     const { scrollYProgress } = useScroll();
@@ -18,12 +19,13 @@ export function BackgroundBoxesDemo() {
  
       <div className="h-screen relative w-full h-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center rounded-lg">
       <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
+      
      
       <Boxes />
      
       <div className="h-screen flex">
 
-         <div className="flex-1 flex flex-col justify-center items-center text-center pl-10">
+         <div className="flex-1 flex flex-col justify-center items-center text-center pl-40">
           
            <motion.h1
              className={cn("text-center text-5xl text-white relative z-20 pointer-events-none justify-center")}
@@ -97,7 +99,7 @@ export function BackgroundBoxesDemo() {
 
          </div>
                   
-         <div className="flex-1 overflow-y-scroll right-side-div flex flex-col items-start justify-start ">
+         <div className="flex-1 overflow-y-scroll right-side-div flex flex-col items-start justify-start pl-20">
         
             <motion.div
               initial={{ x: 100, opacity: 0 }}
@@ -110,7 +112,7 @@ export function BackgroundBoxesDemo() {
                 >
                   {/* Your boxes here */}
 
-                  {/* <div style={{ height: '7000px' }}></div> */}
+                  {/* <div style={{ height: '100px' }}></div> */}
 
                   <CardContainer className="inter-var z-0 md:z-50">
                         <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
@@ -628,3 +630,5 @@ export function BackgroundBoxesDemo() {
      
     );
   }
+
+
