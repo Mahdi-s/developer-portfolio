@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -30,4 +31,41 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+
+.right-side-div {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  overflow-y: scroll; /* Enable vertical scrolling */
+}
+
+.right-side-div::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+.center-lines {
+  text-align: center;
+  padding-top: 50px; /* Adjust the padding to position the lines vertically */
+  padding-bottom: 90px; /* Adjust the padding to position the lines vertically */
+  position: relative;
+  height: 80px; /* Adjust this value as needed */
+}
+
+.center-lines:before,
+.center-lines:after {
+  content: '';
+  position: absolute;
+  left: 25%; /* Center the line horizontally */
+  right: 25%; /* Center the line horizontally */
+  height: 3px; /* Height of the line */
+  background: #ffffff; /* Color of the lines */
+}
+
+.center-lines:before {
+  top: 30px; /* Position the first line */
+}
+
+.center-lines:after {
+  top: 20px; /* Position the second line, adjust the value to set the space between the lines */
 }
