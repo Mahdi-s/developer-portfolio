@@ -9,11 +9,27 @@ import Image from "next/image";
 import stickerImage from '@/../public/images/sticker.png'; // replace with your sticker image path
 import { FaBlog, FaLinkedin, FaGithub } from "react-icons/fa";
 import { SiGooglescholar } from "react-icons/si";
+import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 
 
 //items-center justify-center
 export function BackgroundBoxesDemo() {
     const { scrollYProgress } = useScroll();
+
+    const words = [
+      {
+        text: "Email",
+        className: "text-white-100 dark:text-white-100 text-4xl",
+      },
+      {
+        text: ":",
+        className: "text-white-100 dark:text-white-100 text-4xl",
+      },
+      {
+        text: "mahdisaeediv@gmail.com",
+        className: "text-blue-200 dark:text-blue-200 text-4xl",
+      },
+    ];
 
     return (
  
@@ -58,13 +74,25 @@ export function BackgroundBoxesDemo() {
            </div>
           </motion.div>
 
+          <br />
+
+          <motion.div
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.1}}
+            className="pointer-events-auto z-0 md:z-50 pt-10"
+            > 
+              <TypewriterEffectSmooth words={words} />
+          </motion.div>
+
+
           <motion.div
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 1.5 }}
             className="pointer-events-auto z-0 md:z-50"
             >
-            <div className="pt-20 space-x-2">
+            <div className="pt-7 space-x-2">
 
               <a href="https://scholar.google.com/citations?user=yM8ClooAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="pointer-events-auto z-100"> 
                 <button className="button inline-flex h-14 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6  font-medium text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 space-x-2 pointer-events-auto">
@@ -113,6 +141,66 @@ export function BackgroundBoxesDemo() {
                   {/* Your boxes here */}
 
                   {/* <div style={{ height: '100px' }}></div> */}
+
+                  <CardContainer className="inter-var z-0 md:z-50">
+                        <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
+                          <CardItem
+                            translateZ="50"
+                            className="text-xl font-bold text-neutral-600 dark:text-white"
+                          >
+                            Federated Machine Learning on segmenting sensitive Medical Data
+                          </CardItem>
+                          <CardItem
+                            as="p"
+                            translateZ="60"
+                            className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
+                          >
+                              This study explores using the U-Net model for Diabetic Foot Ulcers (DFUs) image segmentation within a 
+                              federated learning framework, contrasting it with traditional centralized training. Leveraging an open-source
+                               Medetec dataset for privacy-sensitive medical images, the research demonstrates that federated learning matches 
+                               centralized methods in performance, achieving a dice score of 0.9 without the need for centralized data aggregation. 
+                               This highlights federated learning&apos;s potential in medical image analysis while addressing privacy concerns. 
+                               The research further contributes by providing a federated learning codebase, facilitating further 
+                               exploration and development in the field.
+                          </CardItem>
+                          <CardItem translateZ="100" className="w-full mt-4">
+                            <Image
+                              src="/images/fed_learning.png"
+                              height="1000"
+                              width="1000"
+                              className="h-full w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                              alt="thumbnail"
+                            />
+                          </CardItem>
+                          <CardItem
+                            translateZ="50"
+                            className="text-xl font-bold text-neutral-600 dark:text-white"
+                          >
+                            Tech Stack: Python, Pytorch, Flower
+                          </CardItem>
+                          <div className="flex justify-between items-center mt-10">
+                            <CardItem
+                              translateZ={20}
+                              as={Link}
+                              href="https://commons.und.edu/cgi/viewcontent.cgi?article=6672&context=theses"
+                              target="__blank"
+                              className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+                            >
+                              Publication
+                            </CardItem>
+
+                            <CardItem
+                              translateZ={20}
+                              as={Link}
+                              href="https://github.com/Mahdi-s/federated-experiments"
+                              target="__blank"
+                              className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+                            >
+                              Source Code
+                            </CardItem>
+                          </div>
+                        </CardBody>
+                  </CardContainer>
 
                   <CardContainer className="inter-var z-0 md:z-50">
                         <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
