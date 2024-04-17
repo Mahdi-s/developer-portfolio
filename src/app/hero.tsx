@@ -47,7 +47,7 @@ export function BackgroundBoxesDemo() {
              className={cn("text-center text-5xl text-white relative z-20 pointer-events-none justify-center")}
              initial={{ x: 100, opacity: 0 }}
              animate={{ x: 0, opacity: 1 }}
-             transition={{ duration: 1 }}
+             transition={{ duration: 1, delay: 0.1 }}
              style={{ wordWrap: 'break-word' }}
            >
              Mahdi Saeedi&apos;s Portfolio
@@ -59,37 +59,40 @@ export function BackgroundBoxesDemo() {
             transition={{ duration: 1, delay: 0.5 }}
             >
 
-            <div className="center-lines pointer-events-none">
+                  <div className="center-lines pointer-events-none">
 
-           <motion.p
-             className="text-center text-2xl text-neutral-300 relative z-20 pointer-events-none justify-center"
-             initial={{ x: 100, opacity: 0 }}
-             animate={{ x: 0, opacity: 1 }}
-             transition={{ duration: 1, delay: 1 }}
-             style={{ wordWrap: 'break-word' }}
-           >
-             Hi! Welcome to my corner of the internet. I like to create useful software, and study human interactions. This page showcases a sample of my work and interests. Feel free to reach out if you have any questions or just want to chat.
-           </motion.p>
+                  <motion.p
+                    className="text-center text-2xl text-neutral-300 relative z-20 pointer-events-none justify-center"
+                    initial={{ x: 100, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    style={{ wordWrap: 'break-word' }}
+                  >
+                    Hi! Welcome to my corner of the internet. I like to create useful software, and study human interactions. This page showcases a sample of my work and interests. Feel free to reach out if you have any questions or just want to chat.
+                  </motion.p>
 
-           </div>
+                  </div>
+
           </motion.div>
 
-          <br />
-{/* 
+                <br />
+ 
           <motion.div
-            initial={{ x: 100, opacity: 0 }}
+            initial={{ x: 0, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.1, delay: 0.1}}
+            transition={{ duration: 0.2, delay: 0.7}}
             className="pointer-events-auto z-0 md:z-50 pt-10"
-            >  */}
-              <TypewriterEffectSmooth words={words} />
-          {/* </motion.div> */}
+            >  
+
+                  <TypewriterEffectSmooth words={words} />
+
+           </motion.div> 
 
 
           <motion.div
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 1.5 }}
+            transition={{ duration: 1, delay: 0.8 }}
             className="pointer-events-auto z-0 md:z-50"
             >
             <div className="pt-7 space-x-2">
@@ -132,7 +135,7 @@ export function BackgroundBoxesDemo() {
             <motion.div
               initial={{ x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 1 }}
+              transition={{ duration: 1, delay: 1.0 }}
             >
                 <motion.div
                   className="flex flex-col gap-0 p-4 space-y-5"
