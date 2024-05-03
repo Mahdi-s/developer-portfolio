@@ -1,4 +1,4 @@
-#### This is a simple portfolio I made using ui.aceternity.com components :)
+#### This is a simple portfolio I made using ui.aceternity.com components and nextjs  :)
 
 ## Getting Started
 
