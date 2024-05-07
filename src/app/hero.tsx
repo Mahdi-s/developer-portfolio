@@ -185,7 +185,7 @@ export function BackgroundBoxesDemo() {
                             <CardItem
                               translateZ={20}
                               as={Link}
-                              href="https://commons.und.edu/cgi/viewcontent.cgi?article=6672&context=theses"
+                              href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10507818"
                               target="__blank"
                               className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
                             >
