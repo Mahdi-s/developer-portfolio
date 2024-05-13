@@ -69,7 +69,7 @@ export function BackgroundBoxesDemo() {
                 style={{ wordWrap: "break-word" }}
               >
                 
-                Hey! Welcome to my corner of the internet. I like to research <strong>machine learning</strong>, create easy to use<strong>analytic dashboards</strong>, and
+                Hey! Welcome to my corner of the internet. I like to research <strong>machine learning</strong>, create easy to use <strong>analytic dashboards</strong>, and
                 conduct <strong>simulations</strong> on human interactions. This page showcases a sample of my
                 work and interests. Feel free to reach out if you have any
                 questions or just want to chat.
