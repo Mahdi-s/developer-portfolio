@@ -129,7 +129,7 @@ export default function ProjectCards() {
                 <CardItem
                   translateZ={20}
                   as={Link}
-                  href="https://pg-calculator.anvil.app/"
+                  href="https://gerrymandering-989f636aaf2b.herokuapp.com/"
                   target="__blank"
                   className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
                 >
