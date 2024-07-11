@@ -564,7 +564,7 @@ export default function ProjectCards() {
                 <CardItem
                   translateZ={20}
                   as={Link}
-                  href="https://github.com/Mahdi-s/Mock-Flight-Management-System"
+                  href="https://github.com/Mahdi-s/UAV-Network-Simulation"
                   target="__blank"
                   className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
                 >
