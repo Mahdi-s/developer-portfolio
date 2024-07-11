@@ -123,7 +123,7 @@ export default function ProjectCards() {
                 translateZ="50"
                 className="text-xl font-bold text-neutral-600 dark:text-white"
               >
-                Tech Stack: Python, Anvil
+                Tech Stack: Python, Flask, Heroku, Docker
               </CardItem>
               <div className="flex justify-between items-center mt-10">
                 <CardItem
@@ -147,11 +147,11 @@ export default function ProjectCards() {
                 <CardItem
                   translateZ={20}
                   as={Link}
-                  href="https://mahdisaeedi.medium.com/redistricting-courts-challenges-and-potential-solutions-1c38690e7ff"
+                  href="https://github.com/Mahdi-s/election_research"
                   target="__blank"
                   className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
                 >
-                  Blog Post
+                  Source Code
                 </CardItem>
               </div>
             </CardBody>
@@ -203,64 +203,10 @@ export default function ProjectCards() {
                 >
                   View Pre-print
                 </CardItem>
-              </div>
-            </CardBody>
-          </CardContainer>
-
-          <CardContainer className="inter-var z-0 md:z-50">
-            <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
-              <CardItem
-                translateZ="50"
-                className="text-xl font-bold text-neutral-600 dark:text-white"
-              >
-                Classifying wireless signals as healthy/jammed using Random
-                Forest Decision Tree Algorithm
-              </CardItem>
-              <CardItem
-                as="p"
-                translateZ="60"
-                className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
-              >
-                To identify jammed signals, we would need to ask series of
-                questions about the signal data. It turns out decision tree
-                algorithms are great tools for accomplishing this type of
-                classification. In the project, I used python&apos;s scikit
-                library&apos;s decision tree package to design a model that
-                classifies healthy and jammed signals. This was part of more
-                extensive work to study machine learning capabilities in
-                detecting jamming attacks which you can read about here. I
-                have included the code and additional notes on the decision
-                tree algorithm which you can access below.
-              </CardItem>
-              <CardItem translateZ="100" className="w-full mt-4">
-                <Image
-                  src="/images/decision_tree.png"
-                  height="1000"
-                  width="1000"
-                  className="h-full w-full object-cover rounded-xl group-hover/card:shadow-xl"
-                  alt="thumbnail"
-                />
-              </CardItem>
-              <CardItem
-                translateZ="50"
-                className="text-xl font-bold text-neutral-600 dark:text-white"
-              >
-                Tech Stack: Python, scikit-learn, Numpy
-              </CardItem>
-              <div className="flex justify-between items-center mt-10">
                 <CardItem
                   translateZ={20}
                   as={Link}
-                  href="https://mahdisaeedi.medium.com/classifying-jammed-signals-using-random-forest-decision-tree-algorithm-c4a45ea62760"
-                  target="__blank"
-                  className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
-                >
-                  Notes
-                </CardItem>
-                <CardItem
-                  translateZ={20}
-                  as={Link}
-                  href="https://github.com/Mahdi-s/High-powered-jamming-simulation"
+                  href="https://github.com/Mahdi-s/gene_analysis_prostate_cancer/tree/main"
                   target="__blank"
                   className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
                 >
@@ -276,23 +222,22 @@ export default function ProjectCards() {
                 translateZ="50"
                 className="text-xl font-bold text-neutral-600 dark:text-white"
               >
-                Simulating Wireless Communication to study effects of
-                elementary high-powered jamming attacks
+                simulation-based synthetic data generation of Wireless Communication for machine learning
+                to study effects of elementary high-powered jamming attacks targeting ADS-B devices
               </CardItem>
               <CardItem
                 as="p"
                 translateZ="60"
                 className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
               >
-                This work explores jamming, particularly the impact of
-                high-powered jammers on ADS-B signals, using MATLAB to
-                simulate these effects. The dataset features 10 columns with
-                signal information like energy and bad packet ratio. This
-                research contributes to understanding how machine learning
-                can detect jamming attacks. The simulation source code is
-                available for use and further development into more complex
-                jamming scenarios. For more details, my project notes are
-                attached.
+              To identify jammed signals, we need to ask a series of questions about the signal data. Decision tree algorithms are great tools for this type of classification. 
+              In my project, I used Python&apos;s scikit-learn library&apos;s decision tree package to design a model that classifies healthy and jammed signals. 
+              This was part of more extensive work studying machine learning capabilities in detecting jamming attacks, which you can read about here. 
+              I&apos;ve included the code and additional notes on the decision tree algorithm below.
+              This work also explores jamming, particularly the impact of high-powered jammers on ADS-B signals, using MATLAB to simulate these effects. 
+              The dataset features 10 columns with signal information, such as energy and bad packet ratio. This research contributes to understanding how machine learning can detect
+              jamming attacks. The simulation source code is available for use and further development into more complex jamming scenarios. For more details, my project notes 
+              are attached.
               </CardItem>
               <CardItem translateZ="100" className="w-full mt-4">
                 <Image
@@ -307,7 +252,7 @@ export default function ProjectCards() {
                 translateZ="50"
                 className="text-xl font-bold text-neutral-600 dark:text-white"
               >
-                Tech Stack: Matlab
+                Tech Stack: Python, Matlab
               </CardItem>
               <div className="flex justify-between items-center mt-10">
                 <CardItem
@@ -576,7 +521,7 @@ export default function ProjectCards() {
                 translateZ="50"
                 className="text-xl font-bold text-neutral-600 dark:text-white"
               >
-                Simulating network of UAVs to extract communication
+                Simulating network of UAVs to extract location-based communication
                 information
               </CardItem>
               <CardItem
