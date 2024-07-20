@@ -27,33 +27,31 @@ export function BackgroundBoxesDemo() {
   ];
 
   return (
-    <div className="h-screen relative w-full h-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center rounded-lg">
+    <div className="h-screen relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center rounded-lg">
       <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
 
       <Boxes />
 
-      <div className="h-screen flex">
-        <div className="flex-1 flex flex-col justify-center items-center text-center pl-40 space-y-3">
-        <motion.div
+      <div className="h-screen w-full flex flex-col md:flex-row overflow-y-auto md:overflow-hidden">
+        <div className="flex-1 flex flex-col justify-start md:justify-center items-center text-center md:pl-40 space-y-3 md:space-y-3 p-4 md:p-0">
+          <motion.div
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-        <Navbar className="pb-5" />
-          <motion.h1
-            className={cn(
-              "text-center text-5xl text-white relative z-20 pointer-events-none justify-center"
-            )}
-            initial={{ x: 100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 0 }}
-            style={{ wordWrap: "break-word" }}
-          >
-            
-            Mahdi Saeedi&apos;s Portfolio
-          </motion.h1>
+            <Navbar className="pb-5" />
+            <motion.h1
+              className={cn(
+                "text-center text-3xl md:text-5xl text-white relative z-20 pointer-events-none justify-center"
+              )}
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1, delay: 0 }}
+              style={{ wordWrap: "break-word" }}
+            >
+              Mahdi Saeedi&apos;s Portfolio
+            </motion.h1>
           </motion.div>
-
 
           <motion.div
             initial={{ x: 100, opacity: 0 }}
@@ -62,23 +60,19 @@ export function BackgroundBoxesDemo() {
           >
             <div className="center-lines pointer-events-none">
               <motion.p
-                className="text-center text-2xl text-neutral-300 relative z-20 pointer-events-none justify-center"
+                className="text-center text-sm md:text-2xl text-neutral-300 relative z-20 pointer-events-none justify-center"
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.5 }}
                 style={{ wordWrap: "break-word" }}
               >
-                
                 Hey! Welcome to my corner of the internet. I like to research <strong>machine learning</strong>, create easy to use <strong>analytic dashboards</strong>, and
                 conduct <strong>simulations</strong> on human interactions. This page showcases a sample of my
                 work and interests. Feel free to reach out if you have any
                 questions or just want to chat.
-                
               </motion.p>
             </div>
           </motion.div>
-
-          <br />
 
           <motion.div
             initial={{ x: 0, opacity: 0 }}
@@ -88,11 +82,10 @@ export function BackgroundBoxesDemo() {
           >
             <TypewriterEffectSmooth words={words} />
           </motion.div>
-
         </div>
 
-        <div className="flex-1 overflow-y-scroll right-side-div flex flex-col items-start justify-start pl-20">
-            <ProjectCards />
+        <div className="flex-1 overflow-y-auto md:overflow-y-scroll right-side-div flex flex-col items-start justify-start md:pl-20">
+          <ProjectCards />
         </div>
       </div>
     </div>
