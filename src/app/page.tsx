@@ -1,9 +1,9 @@
-import { BackgroundBoxesDemo } from "./hero";
+import { WelcomePage } from "./hero";
 
 export default function Home() {
   return (
     <main >
-      <BackgroundBoxesDemo />
+      <WelcomePage />
     </main>
   );
 }

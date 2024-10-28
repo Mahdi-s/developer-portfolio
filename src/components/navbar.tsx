@@ -1,52 +1,67 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
+import { FloatingDock } from "@/components/ui/floating-dock";
 import {
-  HoveredLink,
-  Menu,
-  MenuItem,
-  ProductItem,
-} from "@/components/ui/navbar-menu";
-import { cn } from "@/utils/cn";
-import { SiGooglescholar } from "react-icons/si";
-import { FaBlog, FaLinkedin, FaGithub } from "react-icons/fa";
+  IconBrandGithub,
+  IconBrandX,
+  IconExchange,
+  IconHome,
+  IconNewSection,
+  IconTerminal2,
+} from "@tabler/icons-react";
+import Image from "next/image";
 
-export default function Navbar({ className }: { className?: string }) {
-  const [active, setActive] = useState<string | null>(null);
+export function Navbar() {
+  const links = [
+    {
+      title: "Home",
+      icon: (
+        <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+
+    {
+      title: "Products",
+      icon: (
+        <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+    {
+      title: "Components",
+      icon: (
+        <IconNewSection className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+    {
+      title: "Changelog",
+      icon: (
+        <IconExchange className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+
+    {
+      title: "Twitter",
+      icon: (
+        <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+    {
+      title: "GitHub",
+      icon: (
+        <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+  ];
   return (
-    <div
-      className={cn(
-        "flex-1 flex flex-col justify-center items-center text-center",
-        className
-      )}
-    >
-      <Menu setActive={setActive}>
-        <HoveredLink
-          href="https://scholar.google.com/citations?user=yM8ClooAAAAJ&hl=en"
-          target="_blank"
-        >
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <SiGooglescholar /> Publications
-          </div>
-        </HoveredLink>
-
-        <HoveredLink href="https://mahdisaeedi.medium.com/" target="_blank">
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <FaBlog />
-            {"Blog "}
-          </div>
-        </HoveredLink>
-
-        <HoveredLink
-          href="https://www.linkedin.com/in/mahdisaeedi/"
-          target="_blank"
-        >
-          <FaLinkedin /> Linkedin
-        </HoveredLink>
-
-        <HoveredLink href="https://github.com/Mahdi-s" target="_blank">
-          <FaGithub /> Github
-        </HoveredLink>
-      </Menu>
+    <div className="flex items-center justify-center h-[4rem] w-full relative z-30">
+      <FloatingDock
+        items={links}
+      />
     </div>
   );
 }
