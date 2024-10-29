@@ -3,43 +3,40 @@ import { FloatingDock } from "@/components/ui/floating-dock";
 import {
   IconBrandGithub,
   IconBrandX,
-  IconExchange,
-  IconHome,
-  IconNewSection,
-  IconTerminal2,
 } from "@tabler/icons-react";
-import Image from "next/image";
+import { FaMediumM, FaLinkedin, FaRobot } from "react-icons/fa";
+import { FaGoogleScholar } from "react-icons/fa6";
 
 export function Navbar() {
   const links = [
     {
-      title: "Home",
+      title: "Google Scholar",
       icon: (
-        <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <FaGoogleScholar className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "https://scholar.google.com/citations?user=yM8ClooAAAAJ&hl=en",
     },
 
     {
-      title: "Products",
+      title: "Blog",
       icon: (
-        <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <FaMediumM className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "https://mahdisaeedi.medium.com/",
     },
     {
-      title: "Components",
+      title: "LinkedIn",
       icon: (
-        <IconNewSection className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <FaLinkedin className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "https://www.linkedin.com/in/mahdisaeedi/",
     },
     {
-      title: "Changelog",
+      title: "Podcast",
       icon: (
-        <IconExchange className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <FaRobot className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "https://www.youtube.com/@Podlucination/videos",
     },
 
     {
@@ -47,14 +44,14 @@ export function Navbar() {
       icon: (
         <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "https://x.com/Podlucination",
     },
     {
       title: "GitHub",
       icon: (
         <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "https://github.com/Mahdi-s/",
     },
   ];
   return (

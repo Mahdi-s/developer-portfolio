@@ -70,6 +70,8 @@ const FloatingDockMobile = ({
                 <Link
                   href={item.href}
                   key={item.title}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-900 flex items-center justify-center"
                 >
                   <div className="h-4 w-4">{item.icon}</div>
@@ -90,28 +92,32 @@ const FloatingDockMobile = ({
 };
 
 const FloatingDockDesktop = ({
-  items,
-  className,
-}: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
-  className?: string;
-}) => {
-  let mouseX = useMotionValue(Infinity);
-  return (
-    <motion.div
-      onMouseMove={(e) => mouseX.set(e.pageX)}
-      onMouseLeave={() => mouseX.set(Infinity)}
-      className={cn(
-        "mx-auto md:flex h-16 gap-4 items-end rounded-2xl bg-gray-50 dark:bg-neutral-900 px-4 pb-3",
-        className
-      )}
-    >
-      {items.map((item) => (
-        <IconContainer mouseX={mouseX} key={item.title} {...item} />
-      ))}
-    </motion.div>
-  );
-};
+    items,
+    className,
+  }: {
+    items: { title: string; icon: React.ReactNode; href: string }[];
+    className?: string;
+  }) => {
+    let mouseX = useMotionValue(Infinity);
+    return (
+      <motion.div
+        onMouseMove={(e) => mouseX.set(e.pageX)}
+        onMouseLeave={() => mouseX.set(Infinity)}
+        className={cn(
+          "mx-auto md:flex h-16 gap-4 items-end rounded-2xl bg-gray-50 dark:bg-neutral-900 px-4 pb-3",
+          className
+        )}
+      >
+        {items.map((item) => (
+          <IconContainer 
+            mouseX={mouseX} 
+            key={item.title} 
+            {...item} 
+          />
+        ))}
+      </motion.div>
+    );
+  };
 
 function IconContainer({
   mouseX,
@@ -167,7 +173,7 @@ function IconContainer({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link href={href}>
+    <Link href={href} target="_blank" rel="noopener noreferrer">
       <motion.div
         ref={ref}
         style={{ width, height }}

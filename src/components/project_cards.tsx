@@ -35,11 +35,11 @@ export default function ProjectCards() {
         transition={{ duration: 1, delay: 1.0 }}
         className="w-full h-full"
       >
-        <motion.div className="grid grid-cols-2 gap-6 p-1 w-full auto-rows-fr">
+        <motion.div className="grid grid-cols-1 gap-2 p-1 w-full">
           {/* Card 1 */}
           <motion.div style={{ y: translateYValues[0] }} className="h-full">
             <CardContainer className="inter-var h-full">
-              <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-full rounded-xl p-4 border flex flex-col justify-between">
+            <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
                 {/* Add flex-1 to the content wrapper to ensure equal spacing */}
                 <div className="flex-1">
                   <CardItem
@@ -58,12 +58,12 @@ export default function ProjectCards() {
                   </CardItem>
                   <CardItem
                     translateZ="100"
-                    className="w-full h-32 relative mb-2"
+                    className="w-full h-84 relative mb-2"
                   >
                     <Image
                       src="/images/podlucination.png"
-                      height="400"
-                      width="400"
+                      height="800"
+                      width="800"
                       className="h-full w-full object-cover rounded-xl group-hover/card:shadow-xl"
                       alt="Podlucination Thumbnail"
                     />
@@ -103,7 +103,7 @@ export default function ProjectCards() {
           {/* Card 2 */}
           <motion.div style={{ y: translateYValues[1] }} className="h-full">
             <CardContainer className="inter-var">
-            <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-full rounded-xl p-4 border flex flex-col justify-between">
+            <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
                 <div className="flex-1">
                   <CardItem
                     translateZ="50"
@@ -121,12 +121,12 @@ export default function ProjectCards() {
                   </CardItem>
                   <CardItem
                     translateZ="100"
-                    className="w-full h-32 relative mb-2"
+                    className="w-full h-84 relative mb-2"
                   >
                     <Image
                       src="/images/llm_guts_visualizer.png"
-                      height="400"
-                      width="400"
+                      height="800"
+                      width="800"
                       className="h-full w-full object-cover rounded-xl group-hover/card:shadow-xl"
                       alt="LLM Guts Visualizer Thumbnail"
                     />
@@ -167,7 +167,7 @@ export default function ProjectCards() {
           {/* Card 3 */}
           <motion.div style={{ y: translateYValues[2] }} className="h-full">
             <CardContainer className="inter-var">
-            <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-full rounded-xl p-4 border flex flex-col justify-between">
+            <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
             {/* Add flex-1 to the content wrapper to ensure equal spacing */}
                 <div className="flex-1">
                   <CardItem
@@ -186,12 +186,12 @@ export default function ProjectCards() {
                   </CardItem>
                   <CardItem
                     translateZ="100"
-                    className="w-full h-32 relative mb-2"
+                    className="w-full h-84 relative mb-2"
                   >
                     <Image
                       src="/images/fed_learning.png"
-                      height="400"
-                      width="400"
+                      height="800"
+                      width="800"
                       className="h-full w-full object-cover rounded-xl group-hover/card:shadow-xl"
                       alt="Federated Learning Thumbnail"
                     />
@@ -232,7 +232,7 @@ export default function ProjectCards() {
           {/* Card 4 */}
           <motion.div style={{ y: translateYValues[3] }} className="h-full">
             <CardContainer className="inter-var">
-            <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-full rounded-xl p-4 border flex flex-col justify-between">
+            <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
             {/* Add flex-1 to the content wrapper to ensure equal spacing */}
                 <div className="flex-1">
                   <CardItem
@@ -250,12 +250,12 @@ export default function ProjectCards() {
                   </CardItem>
                   <CardItem
                     translateZ="100"
-                    className="w-full h-32 relative mb-2"
+                    className="w-full h-84 relative mb-2"
                   >
                     <Image
                       src="/images/gerry.gif"
-                      height="400"
-                      width="400"
+                      height="800"
+                      width="800"
                       className="h-full w-full object-cover rounded-xl group-hover/card:shadow-xl"
                       alt="Gerrymandering Study Thumbnail"
                     />
@@ -304,7 +304,7 @@ export default function ProjectCards() {
           {/* Card 5 */}
           <motion.div style={{ y: translateYValues[4] }} className="h-full">
             <CardContainer className="inter-var">
-            <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-full rounded-xl p-4 border flex flex-col justify-between">
+            <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
             {/* Add flex-1 to the content wrapper to ensure equal spacing */}
                 <div className="flex-1">
                   <CardItem
@@ -324,12 +324,12 @@ export default function ProjectCards() {
                   </CardItem>
                   <CardItem
                     translateZ="100"
-                    className="w-full h-32 relative mb-2"
+                    className="w-full h-84 relative mb-2"
                   >
                     <Image
                       src="/images/gene_study.png"
-                      height="400"
-                      width="400"
+                      height="800"
+                      width="800"
                       className="h-full w-full object-cover rounded-xl group-hover/card:shadow-xl"
                       alt="Gene Expression Study Thumbnail"
                     />
@@ -369,7 +369,7 @@ export default function ProjectCards() {
           {/* Card 6 */}
           <motion.div style={{ y: translateYValues[5] }} className="h-full">
             <CardContainer className="inter-var">
-            <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-full rounded-xl p-4 border flex flex-col justify-between">
+            <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
             {/* Add flex-1 to the content wrapper to ensure equal spacing */}
                 <div className="flex-1">
                   <CardItem
@@ -388,12 +388,12 @@ export default function ProjectCards() {
                   </CardItem>
                   <CardItem
                     translateZ="100"
-                    className="w-full h-32 relative mb-2"
+                    className="w-full h-84 relative mb-2"
                   >
                     <Image
                       src="/images/jamming.gif"
-                      height="400"
-                      width="400"
+                      height="800"
+                      width="800"
                       className="h-full w-full object-cover rounded-xl group-hover/card:shadow-xl"
                       alt="Jamming Simulation Thumbnail"
                     />
@@ -442,7 +442,7 @@ export default function ProjectCards() {
           {/* Card 7 */}
           <motion.div style={{ y: translateYValues[6] }} className="h-full">
             <CardContainer className="inter-var">
-            <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-full rounded-xl p-4 border flex flex-col justify-between">
+            <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
             {/* Add flex-1 to the content wrapper to ensure equal spacing */}
                 <div className="flex-1">
                   <CardItem
@@ -461,12 +461,12 @@ export default function ProjectCards() {
                   </CardItem>
                   <CardItem
                     translateZ="100"
-                    className="w-full h-32 relative mb-2"
+                    className="w-full h-84 relative mb-2"
                   >
                     <Image
                       src="/images/angur.gif"
-                      height="400"
-                      width="400"
+                      height="800"
+                      width="800"
                       className="h-full w-full object-cover rounded-xl group-hover/card:shadow-xl"
                       alt="Angur Analytics Thumbnail"
                     />
@@ -515,7 +515,7 @@ export default function ProjectCards() {
           {/* Card 8 */}
           <motion.div style={{ y: translateYValues[7] }} className="h-full">
             <CardContainer className="inter-var">
-            <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-full rounded-xl p-4 border flex flex-col justify-between">
+            <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
             {/* Add flex-1 to the content wrapper to ensure equal spacing */}
                 <div className="flex-1">
                   <CardItem
@@ -534,12 +534,12 @@ export default function ProjectCards() {
                   </CardItem>
                   <CardItem
                     translateZ="100"
-                    className="w-full h-32 relative mb-2"
+                    className="w-full h-84 relative mb-2"
                   >
                     <Image
                       src="/images/pascal.png"
-                      height="400"
-                      width="400"
+                      height="800"
+                      width="800"
                       className="h-full w-full object-cover rounded-xl group-hover/card:shadow-xl"
                       alt="Pascal Translator Thumbnail"
                     />
@@ -577,64 +577,10 @@ export default function ProjectCards() {
           </motion.div>
 
           {/* Card 9 */}
-          <motion.div style={{ y: translateYValues[8] }} className="h-full">
-            <CardContainer className="inter-var">
-            <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-full rounded-xl p-4 border flex flex-col justify-between">
-            {/* Add flex-1 to the content wrapper to ensure equal spacing */}
-                <div className="flex-1">
-                  <CardItem
-                    translateZ="50"
-                    className="text-sm font-bold text-neutral-600 dark:text-white mb-2"
-                  >
-                    Tic Tac Toe Game - MIPS Assembly Implementation
-                  </CardItem>
-                  <CardItem
-                    as="p"
-                    translateZ="60"
-                    className="text-xs text-neutral-500 dark:text-neutral-300 line-clamp-3 mb-2"
-                  >
-                    Bot plays tic-tac-toe using decision trees, prioritizing
-                    blocking human player’s winning moves.
-                  </CardItem>
-                  <CardItem
-                    translateZ="100"
-                    className="w-full h-32 relative mb-2"
-                  >
-                    <Image
-                      src="/images/ttt_game.png"
-                      height="400"
-                      width="400"
-                      className="h-full w-full object-cover rounded-xl group-hover/card:shadow-xl"
-                      alt="Tic Tac Toe Game Thumbnail"
-                    />
-                  </CardItem>
-                  <CardItem
-                    translateZ="50"
-                    className="text-sm font-bold text-neutral-600 dark:text-white"
-                  >
-                    Tech Stack: Assembly
-                  </CardItem>
-                </div>
-                {/* Keep buttons at the bottom */}
-                <div className="flex justify-between items-center mt-4">
-                  <CardItem
-                    translateZ={20}
-                    as={Link}
-                    href="https://github.com/Mahdi-s/TTT-game-Mips-Assembly"
-                    target="__blank"
-                    className="px-3 py-1 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
-                  >
-                    Code
-                  </CardItem>
-                </div>
-              </CardBody>
-            </CardContainer>
-          </motion.div>
 
-          {/* Card 10 */}
           <motion.div style={{ y: translateYValues[9] }} className="h-full">
             <CardContainer className="inter-var">
-            <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-full rounded-xl p-4 border flex flex-col justify-between">
+            <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
             {/* Add flex-1 to the content wrapper to ensure equal spacing */}
                 <div className="flex-1">
                   <CardItem
@@ -653,12 +599,12 @@ export default function ProjectCards() {
                   </CardItem>
                   <CardItem
                     translateZ="100"
-                    className="w-full h-32 relative mb-2"
+                    className="w-full h-84 relative mb-2"
                   >
                     <Image
                       src="/images/uav.gif"
-                      height="400"
-                      width="400"
+                      height="800"
+                      width="800"
                       className="h-full w-full object-cover rounded-xl group-hover/card:shadow-xl"
                       alt="UAV Network Simulation Thumbnail"
                     />
@@ -694,6 +640,62 @@ export default function ProjectCards() {
               </CardBody>
             </CardContainer>
           </motion.div>
+          
+          {/* Card 10 */}
+          <motion.div style={{ y: translateYValues[8] }} className="h-full">
+            <CardContainer className="inter-var">
+            <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
+            {/* Add flex-1 to the content wrapper to ensure equal spacing */}
+                <div className="flex-1">
+                  <CardItem
+                    translateZ="50"
+                    className="text-sm font-bold text-neutral-600 dark:text-white mb-2"
+                  >
+                    Tic Tac Toe Game - MIPS Assembly Implementation
+                  </CardItem>
+                  <CardItem
+                    as="p"
+                    translateZ="60"
+                    className="text-xs text-neutral-500 dark:text-neutral-300 line-clamp-3 mb-2"
+                  >
+                    Bot plays tic-tac-toe using decision trees, prioritizing
+                    blocking human player’s winning moves.
+                  </CardItem>
+                  {/* <CardItem
+                    translateZ="100"
+                    className="w-full h-84 relative mb-2"
+                  >
+                    <Image
+                      src="/images/ttt_game.png"
+                      height="800"
+                      width="800"
+                      className="h-full w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                      alt="Tic Tac Toe Game Thumbnail"
+                    />
+                  </CardItem> */}
+                  <CardItem
+                    translateZ="50"
+                    className="text-sm font-bold text-neutral-600 dark:text-white"
+                  >
+                    Tech Stack: Assembly
+                  </CardItem>
+                </div>
+                {/* Keep buttons at the bottom */}
+                <div className="flex justify-between items-center mt-4">
+                  <CardItem
+                    translateZ={20}
+                    as={Link}
+                    href="https://github.com/Mahdi-s/TTT-game-Mips-Assembly"
+                    target="__blank"
+                    className="px-3 py-1 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+                  >
+                    Code
+                  </CardItem>
+                </div>
+              </CardBody>
+            </CardContainer>
+          </motion.div>
+
         </motion.div>
       </motion.div>
     </div>
