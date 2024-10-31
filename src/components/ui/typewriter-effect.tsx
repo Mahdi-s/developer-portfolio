@@ -139,6 +139,8 @@ export const TypewriterEffectSmooth = ({
     );
   };
 
+  
+
   return (
     <div className={cn("flex space-x-1 my-6", className)}>
       <motion.div
@@ -169,12 +171,13 @@ export const TypewriterEffectSmooth = ({
           opacity: 0,
         }}
         animate={{
-          opacity: 1,
+          opacity: [0, 0, 0],
+          display: ["block", "block", "none"]
+
         }}
         transition={{
           duration: 0.8,
-
-          repeat: Infinity,
+          repeat: 2,
           repeatType: "reverse",
         }}
         className={cn(

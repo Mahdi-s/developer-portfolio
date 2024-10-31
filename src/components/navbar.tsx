@@ -38,7 +38,6 @@ export function Navbar() {
       ),
       href: "https://www.youtube.com/@Podlucination/videos",
     },
-
     {
       title: "Twitter",
       icon: (

@@ -28,7 +28,11 @@ export const FloatingDock = ({
 }) => {
   return (
     <>
-      <FloatingDockDesktop items={items} className={desktopClassName} />
+      {/* Only show desktop dock on md and up */}
+      <div className="hidden md:block">
+        <FloatingDockDesktop items={items} className={desktopClassName} />
+      </div>
+      {/* Only show mobile dock on smaller screens */}
       <FloatingDockMobile items={items} className={mobileClassName} />
     </>
   );
@@ -43,21 +47,18 @@ const FloatingDockMobile = ({
 }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className={cn("relative block md:hidden", className)}>
+    <div className={cn("fixed bottom-4 right-4 z-50 md:hidden", className)}>
       <AnimatePresence>
         {open && (
           <motion.div
             layoutId="nav"
-            className="absolute bottom-full mb-2 inset-x-0 flex flex-col gap-2"
+            className="absolute bottom-full right-0 mb-2 flex flex-col-reverse gap-2"
           >
             {items.map((item, idx) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 10 }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
+                animate={{ opacity: 1, y: 0 }}
                 exit={{
                   opacity: 0,
                   y: 10,
@@ -69,12 +70,11 @@ const FloatingDockMobile = ({
               >
                 <Link
                   href={item.href}
-                  key={item.title}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-900 flex items-center justify-center"
+                  className="h-12 w-12 rounded-full bg-gray-50 dark:bg-neutral-900 flex items-center justify-center shadow-lg"
                 >
-                  <div className="h-4 w-4">{item.icon}</div>
+                  <div className="h-5 w-5">{item.icon}</div>
                 </Link>
               </motion.div>
             ))}
@@ -83,9 +83,9 @@ const FloatingDockMobile = ({
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-800 flex items-center justify-center"
+        className="h-12 w-12 rounded-full bg-gray-50 dark:bg-neutral-800 flex items-center justify-center shadow-lg"
       >
-        <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
+        <IconLayoutNavbarCollapse className="h-6 w-6 text-neutral-500 dark:text-neutral-400" />
       </button>
     </div>
   );
@@ -104,7 +104,7 @@ const FloatingDockDesktop = ({
         onMouseMove={(e) => mouseX.set(e.pageX)}
         onMouseLeave={() => mouseX.set(Infinity)}
         className={cn(
-          "mx-auto md:flex h-16 gap-4 items-end rounded-2xl bg-gray-50 dark:bg-neutral-900 px-4 pb-3",
+          "mx-auto md:flex h-16 gap-4 items-end rounded-3xl bg-gray-50 dark:bg-neutral-900 px-4 pb-3",
           className
         )}
       >

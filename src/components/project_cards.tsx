@@ -4,6 +4,9 @@ import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Image from "next/image";
 import Link from "next/link";
 
+const CATEGORIES = ["Machine Learning", "Web", "Simulations"];
+
+
 export default function ProjectCards() {
   const gridRef = useRef(null);
 
@@ -12,6 +15,7 @@ export default function ProjectCards() {
     container: gridRef,
     offset: ["start start", "end start"],
   });
+  
 
   // Define motion values for each card to create the parallax effect
   const translateYValues = [
@@ -38,7 +42,7 @@ export default function ProjectCards() {
         <motion.div className="grid grid-cols-1 gap-2 p-1 w-full">
           {/* Card 1 */}
           <motion.div style={{ y: translateYValues[0] }} className="h-full">
-            <CardContainer className="inter-var h-full">
+            <CardContainer className="inter-var h-full pointer-events-auto">
             <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
                 {/* Add flex-1 to the content wrapper to ensure equal spacing */}
                 <div className="flex-1">
@@ -80,7 +84,7 @@ export default function ProjectCards() {
                   <CardItem
                     translateZ={20}
                     as={Link}
-                    href="https://podlucination.com"
+                    href="https://www.youtube.com/@Podlucination"
                     target="__blank"
                     className="px-3 py-1 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
                   >
@@ -102,7 +106,7 @@ export default function ProjectCards() {
 
           {/* Card 2 */}
           <motion.div style={{ y: translateYValues[1] }} className="h-full">
-            <CardContainer className="inter-var">
+            <CardContainer className="inter-var pointer-events-auto">
             <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
                 <div className="flex-1">
                   <CardItem
@@ -124,7 +128,7 @@ export default function ProjectCards() {
                     className="w-full h-84 relative mb-2"
                   >
                     <Image
-                      src="/images/llm_guts_visualizer.png"
+                      src="/images/llmguts.gif"
                       height="800"
                       width="800"
                       className="h-full w-full object-cover rounded-xl group-hover/card:shadow-xl"
@@ -140,7 +144,7 @@ export default function ProjectCards() {
                 </div>
                 {/* Keep buttons at the bottom */}
                 <div className="flex justify-between items-center mt-4">
-                  <CardItem
+                  {/* <CardItem
                     translateZ={20}
                     as={Link}
                     href="https://llm-guts-visualizer.com"
@@ -148,12 +152,12 @@ export default function ProjectCards() {
                     className="px-3 py-1 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
                   >
                     App
-                  </CardItem>
+                  </CardItem> */}
 
                   <CardItem
                     translateZ={20}
                     as={Link}
-                    href="https://github.com/Mahdi-s/llm-guts-visualizer"
+                    href="https://github.com/Mahdi-s/llm.guts"
                     target="__blank"
                     className="px-3 py-1 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
                   >
@@ -166,7 +170,7 @@ export default function ProjectCards() {
 
           {/* Card 3 */}
           <motion.div style={{ y: translateYValues[2] }} className="h-full">
-            <CardContainer className="inter-var">
+            <CardContainer className="inter-var pointer-events-auto">
             <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
             {/* Add flex-1 to the content wrapper to ensure equal spacing */}
                 <div className="flex-1">
@@ -231,7 +235,7 @@ export default function ProjectCards() {
 
           {/* Card 4 */}
           <motion.div style={{ y: translateYValues[3] }} className="h-full">
-            <CardContainer className="inter-var">
+            <CardContainer className="inter-var pointer-events-auto">
             <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
             {/* Add flex-1 to the content wrapper to ensure equal spacing */}
                 <div className="flex-1">
@@ -303,7 +307,7 @@ export default function ProjectCards() {
 
           {/* Card 5 */}
           <motion.div style={{ y: translateYValues[4] }} className="h-full">
-            <CardContainer className="inter-var">
+            <CardContainer className="inter-var pointer-events-auto">
             <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
             {/* Add flex-1 to the content wrapper to ensure equal spacing */}
                 <div className="flex-1">
@@ -368,7 +372,7 @@ export default function ProjectCards() {
 
           {/* Card 6 */}
           <motion.div style={{ y: translateYValues[5] }} className="h-full">
-            <CardContainer className="inter-var">
+            <CardContainer className="inter-var pointer-events-auto">
             <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
             {/* Add flex-1 to the content wrapper to ensure equal spacing */}
                 <div className="flex-1">
@@ -441,7 +445,7 @@ export default function ProjectCards() {
 
           {/* Card 7 */}
           <motion.div style={{ y: translateYValues[6] }} className="h-full">
-            <CardContainer className="inter-var">
+            <CardContainer className="inter-var pointer-events-auto">
             <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
             {/* Add flex-1 to the content wrapper to ensure equal spacing */}
                 <div className="flex-1">
@@ -514,7 +518,7 @@ export default function ProjectCards() {
 
           {/* Card 8 */}
           <motion.div style={{ y: translateYValues[7] }} className="h-full">
-            <CardContainer className="inter-var">
+            <CardContainer className="inter-var pointer-events-auto">
             <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
             {/* Add flex-1 to the content wrapper to ensure equal spacing */}
                 <div className="flex-1">
@@ -579,7 +583,7 @@ export default function ProjectCards() {
           {/* Card 9 */}
 
           <motion.div style={{ y: translateYValues[9] }} className="h-full">
-            <CardContainer className="inter-var">
+            <CardContainer className="inter-var pointer-events-auto">
             <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
             {/* Add flex-1 to the content wrapper to ensure equal spacing */}
                 <div className="flex-1">
@@ -643,7 +647,7 @@ export default function ProjectCards() {
           
           {/* Card 10 */}
           <motion.div style={{ y: translateYValues[8] }} className="h-full">
-            <CardContainer className="inter-var">
+            <CardContainer className="inter-var pointer-events-auto">
             <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6  border">
             {/* Add flex-1 to the content wrapper to ensure equal spacing */}
                 <div className="flex-1">
@@ -661,18 +665,18 @@ export default function ProjectCards() {
                     Bot plays tic-tac-toe using decision trees, prioritizing
                     blocking human player’s winning moves.
                   </CardItem>
-                  {/* <CardItem
+                  <CardItem
                     translateZ="100"
                     className="w-full h-84 relative mb-2"
                   >
                     <Image
-                      src="/images/ttt_game.png"
+                      src="/images/tic-tac-toe.png"
                       height="800"
                       width="800"
                       className="h-full w-full object-cover rounded-xl group-hover/card:shadow-xl"
                       alt="Tic Tac Toe Game Thumbnail"
                     />
-                  </CardItem> */}
+                  </CardItem>
                   <CardItem
                     translateZ="50"
                     className="text-sm font-bold text-neutral-600 dark:text-white"
