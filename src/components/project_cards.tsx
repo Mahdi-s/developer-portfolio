@@ -9,56 +9,43 @@ export default function ProjectCards() {
   const [isMobile, setIsMobile] = useState(false);
   const gridRef = useRef(null);
 
-
-    // Detect if the user is on a mobile device
-  useEffect(() => {
-      const mediaQuery = window.matchMedia("(max-width: 768px)");
-  
-      const handleMediaQueryChange = () => {
-        setIsMobile(mediaQuery.matches);
-      };
-  
-      // Set the initial value
-      setIsMobile(mediaQuery.matches);
-  
-      // Add the listener
-      mediaQuery.addEventListener("change", handleMediaQueryChange);
-  
-      // Cleanup listener on unmount
-      return () =>
-        mediaQuery.removeEventListener("change", handleMediaQueryChange);
-  }, []);
-
-  // Use useScroll with the gridRef to track the scroll within the grid container
+  // Move useScroll outside of conditional
   const { scrollYProgress } = useScroll({
     container: gridRef,
     offset: ["start start", "end start"],
   });
-  
 
-  // Conditionally use useScroll and useTransform only on desktop
-  let translateYValues: MotionValue<number>[] = [];
-  if (!isMobile) {
-    // Use useScroll with the gridRef to track the scroll within the grid container
-    const { scrollYProgress } = useScroll({
-      container: gridRef,
-      offset: ["start start", "end start"],
-    });
+  // Create all transform values unconditionally
+  const translateYValues = [
+    useTransform(scrollYProgress, [0, 1], [0, -100]),
+    useTransform(scrollYProgress, [0, 1], [0, -80]),
+    useTransform(scrollYProgress, [0, 1], [0, -60]),
+    useTransform(scrollYProgress, [0, 1], [0, -40]),
+    useTransform(scrollYProgress, [0, 1], [0, -20]),
+    useTransform(scrollYProgress, [0, 1], [0, 0]),
+    useTransform(scrollYProgress, [0, 1], [0, 20]),
+    useTransform(scrollYProgress, [0, 1], [0, 40]),
+    useTransform(scrollYProgress, [0, 1], [0, 60]),
+    useTransform(scrollYProgress, [0, 1], [0, 80]),
+  ];
 
-    // Define motion values for each card to create the parallax effect
-    translateYValues = [
-      useTransform(scrollYProgress, [0, 1], [0, -100]),
-      useTransform(scrollYProgress, [0, 1], [0, -80]),
-      useTransform(scrollYProgress, [0, 1], [0, -60]),
-      useTransform(scrollYProgress, [0, 1], [0, -40]),
-      useTransform(scrollYProgress, [0, 1], [0, -20]),
-      useTransform(scrollYProgress, [0, 1], [0, 0]),
-      useTransform(scrollYProgress, [0, 1], [0, 20]),
-      useTransform(scrollYProgress, [0, 1], [0, 40]),
-      useTransform(scrollYProgress, [0, 1], [0, 60]),
-      useTransform(scrollYProgress, [0, 1], [0, 80]),
-    ];
-  }
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+    const handleMediaQueryChange = () => {
+      setIsMobile(mediaQuery.matches);
+    };
+
+    // Set the initial value
+    setIsMobile(mediaQuery.matches);
+
+    // Add the listener
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+
+    // Cleanup listener on unmount
+    return () =>
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+  }, []);
 
   return (
     <div ref={gridRef} className="w-full h-full overflow-y-auto scrollbar-hide">
