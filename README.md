@@ -1,8 +1,5 @@
 # My Developer Portfolio
 
-I made this using Aceternity Components. Check them out they are amazing!
-https://ui.aceternity.com/
-
 - 3D card interactions
 - Smooth animations using Framer Motion
 - Responsive design for mobile and desktop
