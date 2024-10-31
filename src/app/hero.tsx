@@ -78,7 +78,7 @@ export function WelcomePage() {
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="rgb(64, 64, 64)"
+              stroke="rgb(115, 115, 115)"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
