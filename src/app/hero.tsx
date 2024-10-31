@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 import { Navbar } from "@/components/navbar";
 import ProjectCards from "@/components/project_cards";
+import Image from "next/image";
 
 export function WelcomePage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -128,10 +129,12 @@ export function WelcomePage() {
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 1, delay: 0.3 }}
                 >
-                    <img 
+                    <Image 
                         src="/images/headshot.png"
                         alt="Mahdi Saeedi"
-                        className="rounded-2xl w-48 h-48 object-cover mx-auto"
+                        width={192}
+                        height={192}
+                        className="rounded-2xl object-cover mx-auto"
                     />
                 </motion.div>
 
@@ -195,11 +198,13 @@ export function WelcomePage() {
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ duration: 1, delay: 0.7 }}
                   >
-                      <img 
+                      <Image 
                           src="/images/headshot.png"
                           alt="Mahdi Saeedi"
+                          width={480}
+                          height={600}
                           className="rounded-2xl w-[40vmin] h-[50vmin] max-w-[30rem] max-h-[40rem] object-cover"
-                          />
+                      />
                   </motion.div>
 
                   <div className="flex flex-col">
@@ -235,7 +240,7 @@ export function WelcomePage() {
                     style={{ wordWrap: "break-word" }}
                   >
                       Welcome to my corner of the internet. 
-                      I'm an AI developer making lawyers more efficient using GenAI.
+                      I&apos;m an AI developer making lawyers more efficient using GenAI.
                       I read machine learning papers and build tools to help with my work. 
                       I like icecream, solo backpacking, and suanas.
                       If anything peaks your interest, feel free to reach out.
