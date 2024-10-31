@@ -63,6 +63,31 @@ export function WelcomePage() {
         <div id="box-mask" className="absolute inset-0 w-full h-full bg-gray-300 [mask-image:linear-gradient(to_left,transparent_80%,gray)] pointer-events-none" />
       </div>
 
+      <motion.a
+        href="https://github.com/Mahdi-s/developer-portfolio"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute bottom-4 left-4 z-50 h-12 w-12 p-3 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 pointer-events-auto text-black"
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1, delay: 1.7 }}
+      >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="rgb(64, 64, 64)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+      </motion.a>
+
+
       
             {/* Conditional rendering for mobile/desktop layouts */}
         {isMobile ? (
@@ -237,7 +262,7 @@ export function WelcomePage() {
               {/* Right column */}
               <div 
                 id="right-column"
-                className="md:h-full overflow-y-auto"
+                className="md:h-full overflow-y-auto scrollbar-hide"
               >
                 <div className="p-8">
                   <ProjectCards />
