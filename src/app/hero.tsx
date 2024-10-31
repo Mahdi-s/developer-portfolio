@@ -56,12 +56,15 @@ export function WelcomePage() {
 
 
   return (
-    <div className="h-screen relative w-full overflow-hidden md:overflow-hidden bg-gray-400">
-      {/* Move content below background elements */}
-      {/* Background elements in a separate container */}
+    
+  <div className="h-screen relative w-full overflow-hidden md:overflow-hidden bg-gray-400">
+
+  {/* Conditional rendering for mobile/desktop layouts */}
+  {isMobile ? (
+    <>
       <div className="absolute inset-0">
-        <Boxes className="pointer-events-auto" />
-        <div id="box-mask" className="absolute inset-0 w-full h-full bg-gray-300 [mask-image:linear-gradient(to_left,transparent_80%,gray)] pointer-events-none" />
+        <Boxes className="" />
+        <div id="box-mask" className="absolute inset-0 w-full h-full bg-gray-300" />
       </div>
 
       <motion.a
@@ -90,8 +93,7 @@ export function WelcomePage() {
 
 
       
-        {/* Conditional rendering for mobile/desktop layouts */}
-        {isMobile ? (
+
         <div className="absolute inset-0 z-30 overflow-auto">
           <div className="p-8 flex flex-col bg-transparent">
             {/* Navbar */}
@@ -151,7 +153,39 @@ export function WelcomePage() {
             </div>
           </div>
         </div>
+        </>
       ) : (
+  <>
+          {/* Background elements in a separate container */}
+        <div className="absolute inset-0">
+          <Boxes className="pointer-events-auto" />
+          <div id="box-mask" className="absolute inset-0 w-full h-full bg-gray-300 [mask-image:linear-gradient(to_left,transparent_80%,gray)] pointer-events-none" />
+        </div>
+  
+        <motion.a
+          href="https://github.com/Mahdi-s/developer-portfolio"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute bottom-4 left-4 z-50 h-12 w-12 p-3 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-black"
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1, delay: 1.7 }}
+        >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="rgb(115, 115, 115)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+        </motion.a>
+
       <div id="parent-container" className="absolute inset-0 z-30 pointer-events-none md:overflow-hidden overflow-auto">
         {/* Responsive grid container */}
         <div className="h-full w-full grid md:grid-cols-2 grid-cols-1 pointer-events-none gap-x-8 px-8">
@@ -259,6 +293,7 @@ export function WelcomePage() {
 
         </div>
       </div>
+      </>
       )}
     </div>
   );
