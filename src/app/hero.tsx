@@ -14,13 +14,22 @@ export function WelcomePage() {
 
   // Add useEffect for mobile detection
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
     
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    const handleMediaQueryChange = (e: MediaQueryListEvent) => {
+      setIsMobile(e.matches);
+    };
+  
+    // Set the initial value
+    setIsMobile(mediaQuery.matches);
+  
+    // Add the listener
+    mediaQuery.addEventListener('change', handleMediaQueryChange);
+  
+    // Cleanup listener on unmount
+    return () => {
+      mediaQuery.removeEventListener('change', handleMediaQueryChange);
+    };
   }, []);
 
   // Handle scroll for desktop view
@@ -90,7 +99,7 @@ export function WelcomePage() {
 
 
       
-            {/* Conditional rendering for mobile/desktop layouts */}
+        {/* Conditional rendering for mobile/desktop layouts */}
         {isMobile ? (
         <div className="absolute inset-0 z-30 overflow-auto">
           <div className="p-8 flex flex-col bg-transparent">
@@ -146,7 +155,7 @@ export function WelcomePage() {
                   style={{ wordWrap: "break-word" }}
                 >
                       Welcome to my corner of the internet. 
-                      I'm an AI developer making lawyers more efficient using GenAI.
+                      I&apos;m an AI developer making lawyers more efficient using GenAI.
                       I read machine learning papers and build tools to help with my work. 
                       I like icecream, solo backpacking, and suanas.
                       If anything peaks your interest, feel free to reach out.
@@ -171,7 +180,7 @@ export function WelcomePage() {
       ) : (
       <div id="parent-container" className="absolute inset-0 z-30 pointer-events-none md:overflow-hidden overflow-auto">
         {/* Responsive grid container */}
-        <div className="h-full w-full grid md:grid-cols-2 grid-cols-1 pointer-events-none gap-x-8 px-8">
+        <div className="h-full w-full grid md:grid-cols-2 grid-cols-1 pointer-events-none gap-x-4 px-8">
           {/* Left column */}
           <div className="p-8 flex flex-col bg-transparent md:h-screen overflow-auto relative overflow-auto pointer-events-none">
             
