@@ -9,7 +9,6 @@ import ProjectCards from "@/components/project_cards";
 import Image from "next/image";
 
 export function WelcomePage() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   // Add useEffect for mobile detection
@@ -42,19 +41,20 @@ export function WelcomePage() {
 
   // Handle scroll for desktop view
   useEffect(() => {
-    const handleScroll = (e: WheelEvent) => {
-      if (window.innerWidth >= 768) { // desktop breakpoint
+    if (!isMobile) {
+      const handleScroll = (e: WheelEvent) => {
         const rightColumn = document.getElementById('right-column');
         if (rightColumn) {
           e.preventDefault();
           rightColumn.scrollTop += e.deltaY;
         }
-      }
-    };
-
-    window.addEventListener('wheel', handleScroll, { passive: false });
-    return () => window.removeEventListener('wheel', handleScroll);
-  }, []);
+      };
+  
+      window.addEventListener('wheel', handleScroll, { passive: false });
+      return () => window.removeEventListener('wheel', handleScroll);
+    }
+  }, [isMobile]);
+  
 
   const words = [
     {
@@ -76,7 +76,7 @@ export function WelcomePage() {
     <div className="h-screen relative w-full overflow-hidden md:overflow-hidden bg-gray-400">
       {/* Move content below background elements */}
       {/* Background elements in a separate container */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0">
         <Boxes className="pointer-events-auto" />
         <div id="box-mask" className="absolute inset-0 w-full h-full bg-gray-300 [mask-image:linear-gradient(to_left,transparent_80%,gray)] pointer-events-none" />
       </div>
@@ -85,7 +85,7 @@ export function WelcomePage() {
         href="https://github.com/Mahdi-s/developer-portfolio"
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute bottom-4 left-4 z-50 h-12 w-12 p-3 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 pointer-events-auto text-black"
+        className="absolute bottom-4 left-4 z-50 h-12 w-12 p-3 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-black"
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1, delay: 1.7 }}
@@ -118,33 +118,24 @@ export function WelcomePage() {
             {/* Welcome text */}
             <div className="flex-1 flex flex-col justify-center items-center text-center mb-8">
 
-                <motion.h1
+                <h1
                     className={cn(
                       "text-4xl text-gray-900 mb-4 font-quicksand font-bold"
                     )}
-                    initial={{ x: -100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.1 }}
                     style={{ wordWrap: "break-word" }}
                   >
                     Mahdi Saeedi
-                </motion.h1>
+                </h1>
 
-                <motion.p
+                <p
                   className="text-gray-800 mb-4 px-4 max-w-2xl mx-auto font-quicksand"
-                  initial={{ x: -100, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.3 }}
                   style={{ wordWrap: "break-word" }}
                 >
                   Senior Software Engineer
-                </motion.p>
+                </p>
 
-                <motion.div
+                <div
                     className="mb-4 px-4 max-w-2xl mx-auto"
-                    initial={{ x: -100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.3 }}
                 >
                     <Image 
                         src="/images/headshot.png"
@@ -153,13 +144,10 @@ export function WelcomePage() {
                         height={192}
                         className="rounded-2xl object-cover mx-auto"
                     />
-                </motion.div>
+                </div>
 
-                <motion.p
+                <p
                   className="text-gray-800 mb-4 px-4 max-w-2xl mx-auto font-quicksand"
-                  initial={{ x: -100, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.3 }}
                   style={{ wordWrap: "break-word" }}
                 >
                       Welcome to my corner of the internet. 
@@ -167,17 +155,12 @@ export function WelcomePage() {
                       I read machine learning papers and build tools to help with my work. 
                       I like icecream, solo backpacking, and suanas.
                       If anything peaks your interest, feel free to reach out.
-                </motion.p>
+                </p>
 
-                <motion.div
-                  initial={{ x: 0, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.2, delay: 0.7 }}
-                  className="pointer-events-auto"
+                <div
                 >
                   <TypewriterEffectSmooth words={words} />
-                </motion.div>
-              {/* <p className="text-blue-400">email@example.com</p> */}
+                </div>
             </div>
             {/* Project cards */}
             <div className="w-full">
