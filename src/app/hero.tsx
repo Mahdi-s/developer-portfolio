@@ -146,7 +146,7 @@ export function WelcomePage() {
                   style={{ wordWrap: "break-word" }}
                 >
                       Welcome to my corner of the internet. 
-                      I'm an AI developer making lawyers more efficient using GenAI.
+                      I&apos;m an AI developer making lawyers more efficient using GenAI.
                       I read machine learning papers and build tools to help with my work. 
                       I like icecream, solo backpacking, and suanas.
                       If anything peaks your interest, feel free to reach out.
