@@ -15,20 +15,28 @@ export function WelcomePage() {
   // Add useEffect for mobile detection
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 768px)');
-    
-    const handleMediaQueryChange = (e: MediaQueryListEvent) => {
-      setIsMobile(e.matches);
+  
+    const handleMediaQueryChange = () => {
+      setIsMobile(mediaQuery.matches);
     };
   
     // Set the initial value
     setIsMobile(mediaQuery.matches);
   
-    // Add the listener
-    mediaQuery.addEventListener('change', handleMediaQueryChange);
+    // Add the listener with compatibility handling
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', handleMediaQueryChange);
+    } else if (mediaQuery.addListener) {
+      mediaQuery.addListener(handleMediaQueryChange);
+    }
   
     // Cleanup listener on unmount
     return () => {
-      mediaQuery.removeEventListener('change', handleMediaQueryChange);
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', handleMediaQueryChange);
+      } else if (mediaQuery.removeListener) {
+        mediaQuery.removeListener(handleMediaQueryChange);
+      }
     };
   }, []);
 
