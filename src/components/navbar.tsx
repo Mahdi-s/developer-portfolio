@@ -1,52 +1,63 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
+import { FloatingDock } from "@/components/ui/floating-dock";
 import {
-  HoveredLink,
-  Menu,
-  MenuItem,
-  ProductItem,
-} from "@/components/ui/navbar-menu";
-import { cn } from "@/utils/cn";
-import { SiGooglescholar } from "react-icons/si";
-import { FaBlog, FaLinkedin, FaGithub } from "react-icons/fa";
+  IconBrandGithub,
+  IconBrandX,
+} from "@tabler/icons-react";
+import { FaMediumM, FaLinkedin, FaRobot } from "react-icons/fa";
+import { FaGoogleScholar } from "react-icons/fa6";
 
-export default function Navbar({ className }: { className?: string }) {
-  const [active, setActive] = useState<string | null>(null);
+export function Navbar() {
+  const links = [
+    {
+      title: "Google Scholar",
+      icon: (
+        <FaGoogleScholar className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "https://scholar.google.com/citations?user=yM8ClooAAAAJ&hl=en",
+    },
+
+    {
+      title: "Blog",
+      icon: (
+        <FaMediumM className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "https://mahdisaeedi.medium.com/",
+    },
+    {
+      title: "LinkedIn",
+      icon: (
+        <FaLinkedin className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "https://www.linkedin.com/in/mahdisaeedi/",
+    },
+    {
+      title: "Podcast",
+      icon: (
+        <FaRobot className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "https://www.youtube.com/@Podlucination/videos",
+    },
+    {
+      title: "Twitter",
+      icon: (
+        <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "https://x.com/Podlucination",
+    },
+    {
+      title: "GitHub",
+      icon: (
+        <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "https://github.com/Mahdi-s/",
+    },
+  ];
   return (
-    <div
-      className={cn(
-        "flex-1 flex flex-col justify-center items-center text-center",
-        className
-      )}
-    >
-      <Menu setActive={setActive}>
-        <HoveredLink
-          href="https://scholar.google.com/citations?user=yM8ClooAAAAJ&hl=en"
-          target="_blank"
-        >
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <SiGooglescholar /> Publications
-          </div>
-        </HoveredLink>
-
-        <HoveredLink href="https://mahdisaeedi.medium.com/" target="_blank">
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <FaBlog />
-            {"Blog "}
-          </div>
-        </HoveredLink>
-
-        <HoveredLink
-          href="https://www.linkedin.com/in/mahdisaeedi/"
-          target="_blank"
-        >
-          <FaLinkedin /> Linkedin
-        </HoveredLink>
-
-        <HoveredLink href="https://github.com/Mahdi-s" target="_blank">
-          <FaGithub /> Github
-        </HoveredLink>
-      </Menu>
+    <div className="flex items-center justify-center h-[4rem] w-full relative z-30">
+      <FloatingDock
+        items={links}
+      />
     </div>
   );
 }
