@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Boxes } from "@/components/ui/background-boxes";
 import { cn } from "@/utils/cn";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 import { Navbar } from "@/components/navbar";
 import ProjectCards from "@/components/project_cards";
@@ -10,89 +10,105 @@ import Image from "next/image";
 
 export function WelcomePage() {
   const [isMobile, setIsMobile] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Add useEffect for mobile detection
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 768px)');
-  
-    const handleMediaQueryChange = () => {
-      setIsMobile(mediaQuery.matches);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
     };
-  
-    // Set the initial value
-    setIsMobile(mediaQuery.matches);
-  
-    // Add the listener with compatibility handling
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener('change', handleMediaQueryChange);
-    } else if (mediaQuery.addListener) {
-      mediaQuery.addListener(handleMediaQueryChange);
-    }
-  
-    // Cleanup listener on unmount
-    return () => {
-      if (mediaQuery.removeEventListener) {
-        mediaQuery.removeEventListener('change', handleMediaQueryChange);
-      } else if (mediaQuery.removeListener) {
-        mediaQuery.removeListener(handleMediaQueryChange);
-      }
-    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   // Handle scroll for desktop view
   useEffect(() => {
     if (!isMobile) {
       const handleScroll = (e: WheelEvent) => {
-        const rightColumn = document.getElementById('right-column');
+        const rightColumn = document.getElementById("right-column");
         if (rightColumn) {
           e.preventDefault();
           rightColumn.scrollTop += e.deltaY;
         }
       };
-  
-      window.addEventListener('wheel', handleScroll, { passive: false });
-      return () => window.removeEventListener('wheel', handleScroll);
+
+      window.addEventListener("wheel", handleScroll, { passive: false });
+      return () => window.removeEventListener("wheel", handleScroll);
     }
   }, [isMobile]);
-  
+
+  // Set loading state to false after 2 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const words = [
     {
-      text: "Email",
-      className: "text-black dark:text-gray-400 font-quicksand",
-    },
-    {
-      text: ":",
-      className: "text-black dark:text-gray-400 font-quicksand",
-    },
-    {
       text: "mahdisaeediv@gmail.com",
-      className: "text-gray-700 dark:text-gray-700 font-quicksand",
+      className: "text-gray-600 dark:text-gray-600 font-quicksand",
     },
-    ];
+  ];
 
+  // Variants for animations
+  const variants = {
+    hidden: { x: -100, opacity: 0 },
+    visible: { x: 0, opacity: 1 },
+  };
+
+  const smallVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
 
   return (
-    
-  <div className="h-screen relative w-full overflow-hidden md:overflow-hidden bg-gray-400">
+    <div className="h-screen relative w-full overflow-hidden md:overflow-hidden bg-gray-400">
+      {/* Loading Screen */}
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-white"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <motion.div
+              className="w-12 h-12 border-t-4 border-r-4 border-gray-500 rounded-full"
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+            ></motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-  {/* Conditional rendering for mobile/desktop layouts */}
-  {isMobile ? (
-    <>
-      <div className="absolute inset-0">
-        <Boxes className="" />
-        <div id="box-mask" className="absolute inset-0 w-full h-full bg-gray-300" />
-      </div>
+      {/* Main Content */}
+      {/* Conditional rendering for mobile/desktop layouts */}
+      {isMobile ? (
+        <>
+          <div className="absolute inset-0">
+            <Boxes className="" />
+            <div
+              id="box-mask"
+              className="absolute inset-0 w-full h-full bg-gray-300"
+            />
+          </div>
 
-      <motion.a
-        href="https://github.com/Mahdi-s/developer-portfolio"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="absolute bottom-4 left-4 z-50 h-12 w-12 p-3 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-black"
-        initial={{ x: -100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 1, delay: 1.7 }}
-      >
+          <motion.a
+            href="https://github.com/Mahdi-s/developer-portfolio"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute bottom-4 left-4 z-50 h-12 w-12 p-3 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-black"
+            initial="hidden"
+            animate={isLoading ? "hidden" : "visible"}
+            variants={variants}
+            transition={{ duration: 1, delay: 1.7 }}
+          >
             <svg
               width="24"
               height="24"
@@ -106,211 +122,248 @@ export function WelcomePage() {
               <polyline points="16 18 22 12 16 6"></polyline>
               <polyline points="8 6 2 12 8 18"></polyline>
             </svg>
-      </motion.a>
+          </motion.a>
 
+          <div className="absolute inset-0 z-30 overflow-auto">
+            <div className="p-8 flex flex-col bg-transparent">
+              {/* Navbar */}
+              <motion.div
+                initial="hidden"
+                animate={isLoading ? "hidden" : "visible"}
+                variants={variants}
+                transition={{ duration: 1, delay: 0.1 }}
+              >
+                <Navbar />
+              </motion.div>
+              {/* Welcome text */}
+              <div className="flex-1 flex flex-col justify-center items-center text-center mb-8">
+                <motion.h1
+                  className={cn(
+                    "text-4xl text-gray-900 mb-4 font-quicksand font-bold"
+                  )}
+                  style={{ wordWrap: "break-word" }}
+                  initial="hidden"
+                  animate={isLoading ? "hidden" : "visible"}
+                  variants={variants}
+                  transition={{ duration: 1, delay: 0.2 }}
+                >
+                  Mahdi Saeedi
+                </motion.h1>
 
-      
-
-        <div className="absolute inset-0 z-30 overflow-auto">
-          <div className="p-8 flex flex-col bg-transparent">
-            {/* Navbar */}
-            
-              <Navbar/>
-            
-            {/* Welcome text */}
-            <div className="flex-1 flex flex-col justify-center items-center text-center mb-8">
-
-                <h1
-                    className={cn(
-                      "text-4xl text-gray-900 mb-4 font-quicksand font-bold"
-                    )}
-                    style={{ wordWrap: "break-word" }}
-                  >
-                    Mahdi Saeedi
-                </h1>
-
-                <p
+                <motion.p
                   className="text-gray-800 mb-4 px-4 max-w-2xl mx-auto font-quicksand"
                   style={{ wordWrap: "break-word" }}
+                  initial="hidden"
+                  animate={isLoading ? "hidden" : "visible"}
+                  variants={variants}
+                  transition={{ duration: 1, delay: 0.3 }}
                 >
                   Senior Software Engineer
-                </p>
-
-                <div
-                    className="mb-4 px-4 max-w-2xl mx-auto"
-                >
-                    <Image 
-                        src="/images/headshot.png"
-                        alt="Mahdi Saeedi"
-                        width={192}
-                        height={192}
-                        className="rounded-2xl object-cover mx-auto"
-                    />
-                </div>
-
-                <p
-                  className="text-gray-800 mb-4 px-4 max-w-2xl mx-auto font-quicksand"
-                  style={{ wordWrap: "break-word" }}
-                >
-                      Welcome to my corner of the internet. 
-                      I&apos;m an AI developer making lawyers more efficient using GenAI.
-                      I read machine learning papers and build tools to help with my work. 
-                      I like icecream, solo backpacking, and suanas.
-                      If anything peaks your interest, feel free to reach out.
-                </p>
-
-                <div
-                >
-                  <TypewriterEffectSmooth words={words} />
-                </div>
-            </div>
-            {/* Project cards */}
-            <div className="w-full">
-              <ProjectCards />
-            </div>
-          </div>
-        </div>
-        </>
-      ) : (
-  <>
-          {/* Background elements in a separate container */}
-        <div className="absolute inset-0">
-          <Boxes className="pointer-events-auto" />
-          <div id="box-mask" className="absolute inset-0 w-full h-full bg-gray-300 [mask-image:linear-gradient(to_left,transparent_80%,gray)] pointer-events-none" />
-        </div>
-  
-        <motion.a
-          href="https://github.com/Mahdi-s/developer-portfolio"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute bottom-4 left-4 z-50 h-12 w-12 p-3 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-black"
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 1.7 }}
-        >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="rgb(115, 115, 115)"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <polyline points="16 18 22 12 16 6"></polyline>
-                <polyline points="8 6 2 12 8 18"></polyline>
-              </svg>
-        </motion.a>
-
-      <div id="parent-container" className="absolute inset-0 z-30 pointer-events-none md:overflow-hidden overflow-auto">
-        {/* Responsive grid container */}
-        <div className="h-full w-full grid md:grid-cols-2 grid-cols-1 pointer-events-none gap-x-4 px-8">
-          {/* Left column */}
-          <div className="p-8 flex flex-col bg-transparent md:h-screen overflow-auto relative overflow-auto pointer-events-none">
-            
-            {/* Welcome text and Navbar*/}
-                <div className="flex-1 flex flex-col justify-center items-center text-center">
-                  {/* Navbar */}
-                  <motion.div
-                      initial={{ x: -100, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ duration: 1, delay: 0.1 }}
-                  >
-                    <div className="w-full mb-6 overflow-visible relative z-50 pointer-events-auto">
-                      <Navbar/>
-                    </div>
-
-                  </motion.div>
-                  {/* Welcome text */}
-
-                  <div id="welcome" className="flex flex-row items-center gap-6">
-
-                  <motion.div
-                      className="flex-shrink-0"
-                      initial={{ x: -100, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ duration: 1, delay: 0.7 }}
-                  >
-                      <Image 
-                          src="/images/headshot.png"
-                          alt="Mahdi Saeedi"
-                          width={480}
-                          height={600}
-                          className="rounded-2xl w-[40vmin] h-[50vmin] max-w-[30rem] max-h-[40rem] object-cover"
-                      />
-                  </motion.div>
-
-                  <div className="flex flex-col">
-
-                  <motion.h1
-                    className={cn(
-                      "text-4xl text-gray-900 mb-4 text-left font-quicksand font-bold"
-                    )}
-                    initial={{ x: -100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.1 }}
-                    style={{ wordWrap: "break-word" }}
-                  >
-                    Mahdi Saeedi
-                  </motion.h1>
-
-                  <motion.p
-                    className= "text-gray-800 mb-4  max-w-2xl text-left  font-quicksand"
-                    initial={{ x: -100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.4 }}
-                    style={{ wordWrap: "break-word" }}
-                  >
-                    Senior Software Engineer
-                  </motion.p>
-
-
-                  <motion.p
-                    className="text-gray-800 mb-4  max-w-2xl text-left mx-auto font-quicksand"
-                    initial={{ x: -100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 1, delay: 1.2 }}
-                    style={{ wordWrap: "break-word" }}
-                  >
-                      Welcome to my corner of the internet. 
-                      I&apos;m an AI developer making lawyers more efficient using GenAI.
-                      I read machine learning papers and build tools to help with my work. 
-                      I like icecream, solo backpacking, and suanas.
-                      If anything peaks your interest, feel free to reach out.
-                  </motion.p>
-
-                  </div>
-
-                  </div>
-
+                </motion.p>
 
                 <motion.div
-                  initial={{ x: 0, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.2, delay: 1.3 }}
-                  className="pointer-events-auto"
+                  className="mb-4 px-4 max-w-2xl mx-auto"
+                  initial="hidden"
+                  animate={isLoading ? "hidden" : "visible"}
+                  variants={smallVariants}
+                  transition={{ duration: 1, delay: 0.4 }}
+                >
+                  <Image
+                    src="/images/headshot.png"
+                    alt="Mahdi Saeedi"
+                    width={192}
+                    height={192}
+                    className="rounded-2xl object-cover mx-auto"
+                  />
+                </motion.div>
+
+                <motion.p
+                  className="text-gray-800 mb-4 px-4 max-w-2xl mx-auto font-quicksand"
+                  style={{ wordWrap: "break-word" }}
+                  initial="hidden"
+                  animate={isLoading ? "hidden" : "visible"}
+                  variants={variants}
+                  transition={{ duration: 1, delay: 0.5 }}
+                >
+                  Welcome to my corner of the internet. I'm an AI developer
+                  making lawyers more efficient using GenAI. I read machine
+                  learning papers and build tools to help with my work. I like
+                  icecream, solo backpacking, and saunas. If anything piques your
+                  interest, feel free to reach out.
+                </motion.p>
+
+                <motion.div
+                  initial="hidden"
+                  animate={isLoading ? "hidden" : "visible"}
+                  variants={variants}
+                  transition={{ duration: 0.2, delay: 0.6 }}
                 >
                   <TypewriterEffectSmooth words={words} />
                 </motion.div>
-
-                </div>
-
+              </div>
+              {/* Project cards */}
+              <motion.div
+                className="w-full"
+                initial="hidden"
+                animate={isLoading ? "hidden" : "visible"}
+                variants={smallVariants}
+                transition={{ duration: 1, delay: 0.7 }}
+              >
+                <ProjectCards />
+              </motion.div>
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          {/* Background elements in a separate container */}
+          <div className="absolute inset-0">
+            <Boxes className="pointer-events-auto" />
+            <div
+              id="box-mask"
+              className="absolute inset-0 w-full h-full bg-gray-300 [mask-image:linear-gradient(to_left,transparent_80%,gray)] pointer-events-none"
+            />
           </div>
 
+          <motion.a
+            href="https://github.com/Mahdi-s/developer-portfolio"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute bottom-4 left-4 z-50 h-12 w-12 p-3 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-black"
+            initial="hidden"
+            animate={isLoading ? "hidden" : "visible"}
+            variants={variants}
+            transition={{ duration: 1, delay: 1.7 }}
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="rgb(115, 115, 115)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </motion.a>
+
+          <div
+            id="parent-container"
+            className="absolute inset-0 z-30 pointer-events-none md:overflow-hidden overflow-auto"
+          >
+            {/* Responsive grid container */}
+            <div className="h-full w-full grid md:grid-cols-2 grid-cols-1 pointer-events-none gap-x-8 px-8">
+              {/* Left column */}
+              <div className="p-8 flex flex-col bg-transparent md:h-screen overflow-auto relative overflow-auto pointer-events-none">
+                {/* Welcome text and Navbar*/}
+                <div className="flex-1 flex flex-col justify-center items-center text-center">
+                  {/* Navbar */}
+                  <motion.div
+                    initial="hidden"
+                    animate={isLoading ? "hidden" : "visible"}
+                    variants={variants}
+                    transition={{ duration: 1, delay: 0.1 }}
+                  >
+                    <div className="w-full mb-6 overflow-visible relative z-50 pointer-events-auto">
+                      <Navbar />
+                    </div>
+                  </motion.div>
+                  {/* Welcome text */}
+
+                  <div
+                    id="welcome"
+                    className="flex flex-row items-center gap-6 pl-12"
+                  >
+                    <motion.div
+                      className="flex-shrink-0"
+                      initial="hidden"
+                      animate={isLoading ? "hidden" : "visible"}
+                      variants={variants}
+                      transition={{ duration: 1, delay: 0.7 }}
+                    >
+                      <Image
+                        src="/images/headshot.png"
+                        alt="Mahdi Saeedi"
+                        width={480}
+                        height={600}
+                        className="rounded-2xl w-[260px] h-[400px] object-cover" // Fixed dimensions to match text height
+                        style={{ transform: 'rotate(0deg)' }} // Added explicit transform style
+                        />
+                    </motion.div>
+
+                    <div className="flex flex-col">
+                      <motion.h1
+                        className={cn(
+                          "text-4xl text-gray-900 mb-4 text-left font-quicksand font-bold"
+                        )}
+                        initial="hidden"
+                        animate={isLoading ? "hidden" : "visible"}
+                        variants={variants}
+                        transition={{ duration: 1, delay: 0.1 }}
+                        style={{ wordWrap: "break-word" }}
+                      >
+                        Mahdi Saeedi
+                      </motion.h1>
+
+                      <motion.p
+                        className="text-gray-800 mb-4  max-w-2xl text-left  font-quicksand"
+                        initial="hidden"
+                        animate={isLoading ? "hidden" : "visible"}
+                        variants={variants}
+                        transition={{ duration: 1, delay: 0.4 }}
+                        style={{ wordWrap: "break-word" }}
+                      >
+                        Senior Software Engineer
+                      </motion.p>
+
+                      <motion.p
+                        className="text-gray-800 mb-4  max-w-2xl text-left mx-auto font-quicksand"
+                        initial="hidden"
+                        animate={isLoading ? "hidden" : "visible"}
+                        variants={variants}
+                        transition={{ duration: 1, delay: 1.2 }}
+                        style={{ wordWrap: "break-word" }}
+                      >
+                        Welcome to my corner of the internet. I'm an AI developer
+                        making lawyers more efficient using GenAI. I read machine
+                        learning papers and build tools to help with my work. I
+                        like icecream, solo backpacking, and saunas. If anything
+                        piques your interest, feel free to reach out.
+                      </motion.p>
+
+                      <motion.div
+                        initial="hidden"
+                        animate={isLoading ? "hidden" : "visible"}
+                        variants={variants}
+                        transition={{ duration: 0.2, delay: 1.3 }}
+                        className="pointer-events-auto mb-4"
+                      >
+                        <TypewriterEffectSmooth words={words} />
+                      </motion.div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* Right column */}
-              <div 
+              <motion.div
                 id="right-column"
                 className="md:h-full overflow-y-auto scrollbar-hide"
+                initial="hidden"
+                animate={isLoading ? "hidden" : "visible"}
+                variants={smallVariants}
+                transition={{ duration: 1, delay: 1.5 }}
               >
                 <div className="p-8">
                   <ProjectCards />
                 </div>
-              </div>
-
-        </div>
-      </div>
-      </>
+              </motion.div>
+            </div>
+          </div>
+        </>
       )}
     </div>
   );
