@@ -56,59 +56,51 @@ export default function ProjectCards() {
     <div ref={gridRef} className="w-full h-full overflow-y-auto scrollbar-hide">
       {/* Conditionally render based on isMobile */}
       {isMobile ? (
-        <div className="w-full h-full">
-          <div className="grid grid-cols-1 gap-2 p-1 w-full">
-            {projectData.map((project, index) => (
-              <div key={index} className="h-full">
-                <CardContainer className="inter-var h-full w-full pointer-events-auto">
-                  <CardBody className="bg-gray-50 relative group/card dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto h-auto rounded-xl p-6 border">
-                    <div className="flex-1">
-                      <CardItem
-                        className="text-sm font-bold text-neutral-600 dark:text-white mb-2"
-                      >
-                        {project.title}
-                      </CardItem>
-                      <CardItem
-                        as="p"
-                        className="text-xs text-neutral-500 dark:text-neutral-300 line-clamp-3 mb-2"
-                      >
-                        {project.description}
-                      </CardItem>
-                      <CardItem className="w-full h-84 relative mb-2">
-                        <Image
-                          src={project.image.src}
-                          height="800"
-                          width="800"
-                          className="h-full w-full object-cover rounded-xl group-hover/card:shadow-xl"
-                          alt={project.image.alt}
-                        />
-                      </CardItem>
-                      <CardItem
-                        className="text-sm font-bold text-neutral-600 dark:text-white"
-                      >
-                        Tech Stack: {project.techStack}
-                      </CardItem>
-                    </div>
-                    {/* Buttons */}
-                    <div className="flex flex-wrap justify-between items-center mt-4">
-                      {project.buttons.map((button, btnIndex) => (
-                        <CardItem
-                          key={btnIndex}
-                          as={Link}
-                          href={button.href}
-                          target="__blank"
-                          className="px-3 py-1 m-1 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
-                        >
-                          {button.label}
-                        </CardItem>
-                      ))}
-                    </div>
-                  </CardBody>
-                </CardContainer>
-              </div>
-            ))}
-          </div>
-        </div>
+       <div className="w-full h-full">
+       <div className="grid grid-cols-1 gap-2 p-1 w-full">
+         {projectData.map((project, index) => (
+           <div key={index} className="h-full">
+             {/* Simplified mobile card structure */}
+             <div className="bg-gray-50 dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto h-auto rounded-xl p-6 border">
+               <div className="flex-1">
+                 <h3 className="text-sm font-bold text-neutral-600 dark:text-white mb-2">
+                   {project.title}
+                 </h3>
+                 <p className="text-xs text-neutral-500 dark:text-neutral-300 line-clamp-3 mb-2">
+                   {project.description}
+                 </p>
+                 <div className="w-full h-84 relative mb-2">
+                   <Image
+                     src={project.image.src}
+                     height={400}  // Reduced image size for mobile
+                     width={400}   // Reduced image size for mobile
+                     className="h-full w-full object-cover rounded-xl"
+                     alt={project.image.alt}
+                     loading="lazy"  // Add lazy loading
+                   />
+                 </div>
+                 <p className="text-sm font-bold text-neutral-600 dark:text-white">
+                   Tech Stack: {project.techStack}
+                 </p>
+               </div>
+               {/* Simplified buttons */}
+               <div className="flex flex-wrap justify-between items-center mt-4">
+                 {project.buttons.map((button, btnIndex) => (
+                   <Link
+                     key={btnIndex}
+                     href={button.href}
+                     target="_blank"
+                     className="px-3 py-1 m-1 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+                   >
+                     {button.label}
+                   </Link>
+                 ))}
+               </div>
+             </div>
+           </div>
+         ))}
+       </div>
+     </div>
       ) : (
         <motion.div
           initial={{ x: 100, opacity: 0 }}
