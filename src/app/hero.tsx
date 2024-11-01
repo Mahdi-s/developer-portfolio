@@ -12,7 +12,7 @@ export function WelcomePage() {
   const [isMobile, setIsMobile] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Add useEffect for mobile detection
+  // Add useEffect for mobile view detection
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
