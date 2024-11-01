@@ -16,9 +16,22 @@ export default function ProjectCards() {
     offset: ["start start", "end start"],
   });
   
-  const translateYValues = Array(projectData.length).fill(null).map((_, i) =>
-    useTransform(scrollYProgress, [0, 1], [0, -100 + i * 20])
-  );
+  // Create individual transform values outside of map
+  const translateY0 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const translateY1 = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const translateY2 = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const translateY3 = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const translateY4 = useTransform(scrollYProgress, [0, 1], [0, -20]);
+  const translateY5 = useTransform(scrollYProgress, [0, 1], [0, 0]);
+
+  const translateYValues = [
+    translateY0,
+    translateY1,
+    translateY2,
+    translateY3,
+    translateY4,
+    translateY5,
+  ];
   
 
   useEffect(() => {
