@@ -25,18 +25,21 @@ export function WelcomePage() {
 
   // Handle scroll for desktop view
   useEffect(() => {
-    if (!isMobile) {
-      const handleScroll = (e: WheelEvent) => {
-        const rightColumn = document.getElementById("right-column");
-        if (rightColumn) {
-          e.preventDefault();
-          rightColumn.scrollTop += e.deltaY;
+    const rightColumn = document.getElementById("right-column");
+    const handleScroll = (e: WheelEvent) => {
+      if (rightColumn) {
+        if (!isMobile) {
+          e.preventDefault();  // Only prevent default on desktop
         }
-      };
-
-      window.addEventListener("wheel", handleScroll, { passive: false });
-      return () => window.removeEventListener("wheel", handleScroll);
-    }
+        rightColumn.scrollTop += e.deltaY;
+      }
+    };
+  
+    window.addEventListener("wheel", handleScroll, { 
+      passive: isMobile  // Set passive true for mobile, false for desktop
+    });
+    
+    return () => window.removeEventListener("wheel", handleScroll);
   }, [isMobile]);
 
   // Set loading state to false after 2 seconds
