@@ -51,7 +51,7 @@ export function WelcomePage() {
   const words = [
     {
       text: "mahdisaeediv@gmail.com",
-      className: "text-gray-700 dark:text-gray-700 font-quicksand",
+      className: "text-gray-600 dark:text-gray-600 font-quicksand",
     },
   ];
 
@@ -289,8 +289,9 @@ export function WelcomePage() {
                         alt="Mahdi Saeedi"
                         width={480}
                         height={600}
-                        className="rounded-2xl w-[40vmin] h-[50vmin] max-w-[30rem] max-h-[40rem] object-cover"
-                      />
+                        className="rounded-2xl w-[260px] h-[400px] object-cover" // Fixed dimensions to match text height
+                        style={{ transform: 'rotate(0deg)' }} // Added explicit transform style
+                        />
                     </motion.div>
 
                     <div className="flex flex-col">
