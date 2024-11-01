@@ -50,8 +50,8 @@ export function WelcomePage() {
 
   const words = [
     {
-      text: "mahdisaeediv@gmail.com",
-      className: "text-gray-600 dark:text-gray-600 font-quicksand",
+      text: "mahdisaeedi@outlook.com",
+      className: "text-gray-700 dark:text-gray-700 font-quicksand",
     },
   ];
 
@@ -257,7 +257,7 @@ export function WelcomePage() {
             {/* Responsive grid container */}
             <div className="h-full w-full grid md:grid-cols-2 grid-cols-1 pointer-events-none gap-x-8 px-8">
               {/* Left column */}
-              <div className="p-8 flex flex-col bg-transparent md:h-screen overflow-auto relative overflow-auto pointer-events-none">
+              <div className="p-8 flex flex-col bg-transparent md:h-screen overflow-auto relative overflow-auto pointer-events-none overflow-visible">
                 {/* Welcome text and Navbar*/}
                 <div className="flex-1 flex flex-col justify-center items-center text-center">
                   {/* Navbar */}
@@ -275,7 +275,7 @@ export function WelcomePage() {
 
                   <div
                     id="welcome"
-                    className="flex flex-row items-center gap-6 pl-12"
+                    className="flex flex-row items-center gap-6 pl-12 overflow-visible"
                   >
                     <motion.div
                       className="flex-shrink-0"
@@ -294,10 +294,10 @@ export function WelcomePage() {
                         />
                     </motion.div>
 
-                    <div className="flex flex-col">
+                    <div className="flex flex-col max-w-[500px] overflow-visible">
                       <motion.h1
                         className={cn(
-                          "text-4xl text-gray-900 mb-4 text-left font-quicksand font-bold"
+                          "text-2xl md:text-3xl lg:text-4xl text-gray-900 mb-4 text-left font-quicksand font-bold"
                         )}
                         initial="hidden"
                         animate={isLoading ? "hidden" : "visible"}
@@ -309,7 +309,7 @@ export function WelcomePage() {
                       </motion.h1>
 
                       <motion.p
-                        className="text-gray-800 mb-4  max-w-2xl text-left  font-quicksand"
+                        className="text-sm md:text-base lg:text-lg text-gray-800 mb-4 text-left font-quicksand"
                         initial="hidden"
                         animate={isLoading ? "hidden" : "visible"}
                         variants={variants}
@@ -320,7 +320,7 @@ export function WelcomePage() {
                       </motion.p>
 
                       <motion.p
-                        className="text-gray-800 mb-4  max-w-2xl text-left mx-auto font-quicksand"
+                        className="text-xs md:text-sm lg:text-base text-gray-800 mb-4 text-left font-quicksand break-words overflow-visible" 
                         initial="hidden"
                         animate={isLoading ? "hidden" : "visible"}
                         variants={variants}
@@ -338,9 +338,9 @@ export function WelcomePage() {
                         initial="hidden"
                         animate={isLoading ? "hidden" : "visible"}
                         variants={variants}
-                        transition={{ duration: 0.2, delay: 1.3 }}
-                        className="pointer-events-auto mb-4"
-                      >
+                        transition={{ duration: 0.5, delay: 1.5 }}
+                        className="pointer-events-auto mb-4 text-sm md:text-base"
+                        >
                         <TypewriterEffectSmooth words={words} />
                       </motion.div>
                     </div>
