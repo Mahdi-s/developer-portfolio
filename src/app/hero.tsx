@@ -92,7 +92,6 @@ export function WelcomePage() {
       {isMobile ? (
         <>
           <div className="absolute inset-0">
-            <Boxes className="" />
             <div
               id="box-mask"
               className="absolute inset-0 w-full h-full bg-gray-300"
