@@ -185,7 +185,7 @@ export function WelcomePage() {
                   variants={variants}
                   transition={{ duration: 1, delay: 0.5 }}
                 >
-                  Welcome to my corner of the internet. I'm an AI developer
+                  Welcome to my corner of the internet. I&apos;m an AI developer
                   making lawyers more efficient using GenAI. I read machine
                   learning papers and build tools to help with my work. I like
                   icecream, solo backpacking, and saunas. If anything piques your
@@ -327,7 +327,7 @@ export function WelcomePage() {
                         transition={{ duration: 1, delay: 1.2 }}
                         style={{ wordWrap: "break-word" }}
                       >
-                        Welcome to my corner of the internet. I'm an AI developer
+                        Welcome to my corner of the internet. I&apos;m an AI developer
                         making lawyers more efficient using GenAI. I read machine
                         learning papers and build tools to help with my work. I
                         like icecream, solo backpacking, and saunas. If anything
