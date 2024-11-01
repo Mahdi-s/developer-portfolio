@@ -3,9 +3,6 @@ const nextConfig = {
     webpack: (config) => {
         return config;
     },
-    experimental: {
-        outputFileTracing: true,
-    },
     webSocketTimeout: 30000,
     server: {
         host: '0.0.0.0',
