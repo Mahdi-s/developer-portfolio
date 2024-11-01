@@ -15,15 +15,14 @@ export default function ProjectCards() {
     container: gridRef,
     offset: ["start start", "end start"],
   });
-
-  // Create all transform values unconditionally
-  const translateYValues = projectData.map((_, index) =>
-    useTransform(
+  
+  const translateYValues = Array(projectData.length).fill(null).map((_, i) => {
+    return useTransform(
       scrollYProgress,
       [0, 1],
-      [0, -100 + index * 20] // Adjust the values as needed
-    )
-  );
+      [0, -100 + i * 20]
+    );
+  });
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 768px)");
