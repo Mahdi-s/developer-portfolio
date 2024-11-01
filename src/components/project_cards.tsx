@@ -16,13 +16,10 @@ export default function ProjectCards() {
     offset: ["start start", "end start"],
   });
   
-  const translateYValues = Array(projectData.length).fill(null).map((_, i) => {
-    return useTransform(
-      scrollYProgress,
-      [0, 1],
-      [0, -100 + i * 20]
-    );
-  });
+  const translateYValues = Array(projectData.length).fill(null).map((_, i) =>
+    useTransform(scrollYProgress, [0, 1], [0, -100 + i * 20])
+  );
+  
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 768px)");
@@ -110,7 +107,7 @@ export default function ProjectCards() {
             {projectData.map((project, index) => (
               <motion.div
                 key={index}
-                style={{ y: translateYValues[index % translateYValues.length] }}
+                style={{ y: translateYValues[index] }}
                 className="h-full"
               >
                 <CardContainer className="inter-var h-full w-full pointer-events-auto">
