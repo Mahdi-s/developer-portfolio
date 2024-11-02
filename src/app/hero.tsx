@@ -39,7 +39,7 @@ export function WelcomePage() {
       }
     };
 
-    window.addEventListener("wheel", handleScroll, { passive: true });
+    window.addEventListener("wheel", handleScroll, { passive: false });
     return () => window.removeEventListener("wheel", handleScroll);
   }, [isMobile]);
 
