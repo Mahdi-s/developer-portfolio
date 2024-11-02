@@ -31,6 +31,8 @@ export function WelcomePage() {
     
     const rightColumn = document.getElementById("right-column");
     const handleScroll = (e: WheelEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
       if (rightColumn) {
         const newScrollTop = rightColumn.scrollTop + e.deltaY;
         requestAnimationFrame(() => {
@@ -376,7 +378,7 @@ export function WelcomePage() {
       style={{
         transform: "translateZ(0)",
         willChange: "transform",
-        WebkitOverflowScrolling: "touch"
+        WebkitOverflowScrolling: "touch",       
       }}
     >
       {/* Loading Screen */}
