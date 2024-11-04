@@ -293,10 +293,10 @@ export function WelcomePage() {
                     />
                 </motion.div>
 
-                <div className="flex flex-col max-w-[500px] overflow-visible">
+                <div className="flex flex-col max-w-[500px] overflow-visible space-y-2">
                   <motion.h1
                     className={cn(
-                      "text-2xl md:text-3xl lg:text-4xl text-gray-900 mb-4 text-left font-quicksand font-bold"
+                      "text-2xl md:text-3xl lg:text-4xl text-gray-900 mb-2 text-left font-quicksand font-bold"
                     )}
                     initial="hidden"
                     animate={isLoading ? "hidden" : "visible"}
@@ -308,7 +308,7 @@ export function WelcomePage() {
                   </motion.h1>
 
                   <motion.p
-                    className="text-sm md:text-base lg:text-lg text-gray-800 mb-4 text-left font-quicksand"
+                    className="text-sm md:text-base lg:text-lg text-gray-800 mb-2 text-left font-quicksand"
                     initial="hidden"
                     animate={isLoading ? "hidden" : "visible"}
                     variants={variants}
@@ -319,7 +319,7 @@ export function WelcomePage() {
                   </motion.p>
 
                   <motion.p
-                    className="text-xs md:text-sm lg:text-base text-gray-800 mb-4 text-left font-quicksand break-words overflow-visible" 
+                    className="text-xs md:text-sm lg:text-base text-gray-800 mb-2 text-left font-quicksand break-words overflow-visible" 
                     initial="hidden"
                     animate={isLoading ? "hidden" : "visible"}
                     variants={variants}
@@ -339,7 +339,7 @@ export function WelcomePage() {
                     animate={isLoading ? "hidden" : "visible"}
                     variants={variants}
                     transition={{ duration: 0.5, delay: 1.5 }}
-                    className="pointer-events-auto mb-4 text-sm md:text-base"
+                    className="pointer-events-auto text-sm md:text-base"
                     >
                     <TypewriterEffectSmooth words={words} />
                   </motion.div>
