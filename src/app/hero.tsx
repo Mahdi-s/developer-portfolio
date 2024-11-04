@@ -190,11 +190,12 @@ export function WelcomePage() {
               variants={variants}
               transition={{ duration: 1, delay: 0.5 }}
             >
-              Welcome to my corner of the internet. I&apos;m an AI developer
-              making lawyers more efficient using GenAI. I read machine
-              learning papers and build tools to help with my work. I like
-              icecream, solo backpacking, and saunas. If anything piques your
-              interest, feel free to reach out.
+                    Welcome to my corner of the internet. I&apos;m an AI developer
+                    making lawyers more efficient using GenAI. Nowadays, I read machine learning papers and dream about the future. 
+                    I love to open-source my work. I like ice cream on hot summer days. 
+                    I want to solo-backpack every country before I die, sitting at 21/195. 
+                    I love Suanas; it helps me stay sane. 
+                    If anything piques your interest, feel free to reach out.
             </motion.p>
 
             <motion.div
@@ -333,10 +334,11 @@ export function WelcomePage() {
                     style={{ wordWrap: "break-word" }}
                   >
                     Welcome to my corner of the internet. I&apos;m an AI developer
-                    making lawyers more efficient using GenAI. I read machine
-                    learning papers and build tools to help with my work. I
-                    like icecream, solo backpacking, and saunas. If anything
-                    piques your interest, feel free to reach out.
+                    making lawyers more efficient using GenAI. Nowadays, I read machine learning papers and dream about the future. 
+                    I love to open-source my work. I like ice cream on hot summer days. 
+                    I want to solo-backpack every country before I die, sitting at 21/195. 
+                    I love Suanas; it helps me stay sane. 
+                    If anything piques your interest, feel free to reach out.
                   </motion.p>
 
                   <motion.div
