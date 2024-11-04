@@ -195,7 +195,7 @@ export function WelcomePage() {
                     I love to open-source my work. I like ice cream on hot summer days. 
                     I want to solo-backpack every country before I die, sitting at 21/195. 
                     I love Suanas; it helps me stay sane. 
-                    If anything piques your interest, feel free to reach out.
+                    Feel free to reach out.
             </motion.p>
 
             <motion.div
@@ -268,6 +268,7 @@ export function WelcomePage() {
             <div className="flex-1 flex flex-col justify-center items-center text-center">
               {/* Navbar */}
               <motion.div
+                className="relative"
                 initial="hidden"
                 animate={isLoading ? "hidden" : "visible"}
                 variants={variants}
@@ -338,7 +339,7 @@ export function WelcomePage() {
                     I love to open-source my work. I like ice cream on hot summer days. 
                     I want to solo-backpack every country before I die, sitting at 21/195. 
                     I love Suanas; it helps me stay sane. 
-                    If anything piques your interest, feel free to reach out.
+                    Feel free to reach out.
                   </motion.p>
 
                   <motion.div
