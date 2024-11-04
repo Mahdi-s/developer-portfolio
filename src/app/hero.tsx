@@ -56,7 +56,7 @@ export function WelcomePage() {
 
   const words = [
     {
-      text: "mahdisaeedi@outlook.com",
+      text: "mahdisaeediv@gmail.com",
       className: "text-gray-700 dark:text-gray-700 font-quicksand",
     },
   ];
