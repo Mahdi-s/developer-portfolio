@@ -108,7 +108,7 @@ export function WelcomePage() {
       href="https://github.com/Mahdi-s/developer-portfolio"
       target="_blank"
       rel="noopener noreferrer"
-      className="absolute bottom-4 left-4 z-50 h-12 w-12 p-3 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-black"
+      className="fixed bottom-4 left-4 z-50 h-12 w-12 p-3 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-black"
       >
         <svg
           width="24"
@@ -128,7 +128,10 @@ export function WelcomePage() {
       <div className="absolute inset-0 z-30 overflow-auto">
         <div className="p-8 flex flex-col bg-transparent">
           {/* Navbar */}
-            <Navbar />
+          <div className="fixed top-0 left-0 right-0 z-50 bg-transparent p-8">
+      <Navbar />
+    </div>
+
           {/* Welcome text */}
           <div className="flex-1 flex flex-col justify-center items-center text-center mb-8">
             <motion.h1
