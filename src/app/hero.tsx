@@ -104,15 +104,11 @@ export function WelcomePage() {
         />
       </div>
 
-      <motion.a
-        href="https://github.com/Mahdi-s/developer-portfolio"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="absolute bottom-4 left-4 z-50 h-12 w-12 p-3 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-black"
-        initial="hidden"
-        animate={isLoading ? "hidden" : "visible"}
-        variants={variants}
-        transition={{ duration: 1, delay: 1.7 }}
+      <a
+      href="https://github.com/Mahdi-s/developer-portfolio"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="absolute bottom-4 left-4 z-50 h-12 w-12 p-3 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-black"
       >
         <svg
           width="24"
@@ -127,19 +123,12 @@ export function WelcomePage() {
           <polyline points="16 18 22 12 16 6"></polyline>
           <polyline points="8 6 2 12 8 18"></polyline>
         </svg>
-      </motion.a>
+      </a>
 
       <div className="absolute inset-0 z-30 overflow-auto">
         <div className="p-8 flex flex-col bg-transparent">
           {/* Navbar */}
-          <motion.div
-            initial="hidden"
-            animate={isLoading ? "hidden" : "visible"}
-            variants={variants}
-            transition={{ duration: 1, delay: 0.1 }}
-          >
             <Navbar />
-          </motion.div>
           {/* Welcome text */}
           <div className="flex-1 flex flex-col justify-center items-center text-center mb-8">
             <motion.h1
