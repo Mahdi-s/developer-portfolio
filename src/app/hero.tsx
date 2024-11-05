@@ -274,10 +274,10 @@ export function WelcomePage() {
 
               <div
                 id="welcome"
-                className="flex flex-row items-center gap-6 pl-12 overflow-visible"
-              >
+                className="flex flex-row items-start justify-start gap-8 pl-8 md:pl-12 w-full max-w-7xl mx-auto relative"
+                >
                 <motion.div
-                  className="flex-shrink-0"
+                  className="relative flex-shrink-0 h-auto"
                   initial="hidden"
                   animate={isLoading ? "hidden" : "visible"}
                   variants={variants}
@@ -293,7 +293,7 @@ export function WelcomePage() {
                     />
                 </motion.div>
 
-                <div className="flex flex-col max-w-[500px] overflow-visible space-y-2">
+                <div className="flex flex-col flex-grow max-w-[500px] overflow-visible space-y-2">
                   <motion.h1
                     className={cn(
                       "text-2xl md:text-3xl lg:text-4xl text-gray-900 mb-2 text-left font-quicksand font-bold"
@@ -308,7 +308,7 @@ export function WelcomePage() {
                   </motion.h1>
 
                   <motion.p
-                    className="text-sm md:text-base lg:text-lg text-gray-800 mb-2 text-left font-quicksand"
+                    className="text-sm md:text-base lg:text-lg text-gray-900 mb-2 text-left font-quicksand"
                     initial="hidden"
                     animate={isLoading ? "hidden" : "visible"}
                     variants={variants}
