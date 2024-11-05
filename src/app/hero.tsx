@@ -288,8 +288,7 @@ export function WelcomePage() {
                     alt="Mahdi Saeedi"
                     width={480}
                     height={600}
-                    className="rounded-2xl w-[260px] h-[400px] object-cover" // Fixed dimensions to match text height
-                    style={{ transform: 'rotate(0deg)' }} // Added explicit transform style
+                    className="rounded-2xl w-[300px] h-[430px] object-cover" 
                     />
                 </motion.div>
 
