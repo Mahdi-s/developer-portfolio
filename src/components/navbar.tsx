@@ -38,13 +38,13 @@ export function Navbar() {
       ),
       href: "https://www.youtube.com/@Podlucination/videos",
     },
-    {
-      title: "Twitter",
-      icon: (
-        <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "https://x.com/Podlucination",
-    },
+    // {
+    //   title: "Twitter",
+    //   icon: (
+    //     <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+    //   ),
+    //   href: "https://x.com/Podlucination",
+    // },
     {
       title: "GitHub",
       icon: (
