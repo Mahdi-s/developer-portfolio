@@ -387,7 +387,7 @@ export function WelcomePage() {
 
   return (
     <div 
-      className="h-screen relative w-full overflow-hidden md:overflow-hidden bg-gray-400"
+      className="h-screen relative w-full overflow-hidden bg-gray-400"
       style={{
         transform: "translateZ(0)",
         willChange: "transform",
