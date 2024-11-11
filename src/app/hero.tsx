@@ -111,7 +111,7 @@ export function WelcomePage() {
 
       <div className="absolute inset-0 z-30 overflow-auto">
 
-        <div className="sticky top-0 z-40 bg-transparent">
+        <div className="sticky top-0 z-[999] bg-transparent">
           <Navbar />
         </div>
 
