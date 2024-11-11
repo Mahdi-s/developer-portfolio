@@ -107,14 +107,10 @@ export function WelcomePage() {
       </div>
 
 
-      <div className="absolute inset-0 z-30 overflow-auto">
+      <Navbar />
 
-        <div 
-          className="fixed top-0 left-0 right-0 z-[999] w-full bg-transparent"
-          >
-          <Navbar />
-          </div>
-          
+
+      <div className="absolute inset-0 z-30 overflow-auto">
         <div className="p-8 flex flex-col bg-transparent">
 
 
