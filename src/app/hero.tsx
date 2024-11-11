@@ -7,6 +7,8 @@ import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 import { Navbar } from "@/components/navbar";
 import ProjectCards from "@/components/project_cards";
 import Image from "next/image";
+import { IoCodeOutline } from "react-icons/io5";
+
 
 export function WelcomePage() {
   const [isMobile, setIsMobile] = useState(true); // Default to mobile
@@ -116,29 +118,17 @@ export function WelcomePage() {
           href="https://github.com/Mahdi-s/developer-portfolio"
           target="_blank"
           rel="noopener noreferrer"
-          className="fixed bottom-4 left-4 z-50 h-12 w-12 p-3 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-black"
+          className="absolute bottom-4 left-4 z-50 h-12 w-12 p-3 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-black flex items-center justify-center"
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="rgb(115, 115, 115)"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <polyline points="16 18 22 12 16 6"></polyline>
-              <polyline points="8 6 2 12 8 18"></polyline>
-            </svg>
-          </a>
+              <IoCodeOutline size={20} />
+        </a>
 
 
           {/* Navbar */}
           <div className="fixed top-0 left-0 right-0 z-50 bg-transparent p-8">
                 <Navbar />
           </div>
-          
+
             <motion.h1
               className={cn(
                 "text-4xl text-gray-900 mb-4 font-quicksand font-bold"
@@ -240,25 +230,13 @@ export function WelcomePage() {
         href="https://github.com/Mahdi-s/developer-portfolio"
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute bottom-4 left-4 z-50 h-12 w-12 p-3 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-black"
+        className="absolute bottom-4 left-4 z-50 h-12 w-12 p-2 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-black flex items-center justify-center"
         initial="hidden"
         animate={isLoading ? "hidden" : "visible"}
         variants={variants}
         transition={{ duration: 1, delay: 1.7 }}
       >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="rgb(115, 115, 115)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="16 18 22 12 16 6"></polyline>
-          <polyline points="8 6 2 12 8 18"></polyline>
-        </svg>
+        <IoCodeOutline size={20} />
       </motion.a>
 
       <div
