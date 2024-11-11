@@ -98,113 +98,112 @@ export function WelcomePage() {
     }
 
     return isMobile ? (
-      <>
+<>
+  {/* Main Container */}
+  <div className="relative w-full h-full overflow-auto">
+    {/* Box Mask */}
+    <div
+      id="box-mask"
+      className="absolute inset-0 w-full h-full bg-gray-400"
+    />
 
-        <div className="fixed bottom-6 right-4 w-auto z-[999] pointer-events-auto">
-          <Navbar />
-        </div>
+    {/* Navbar */}
+    <div className="fixed bottom-6 right-4 w-auto z-[999] pointer-events-auto">
+      <Navbar />
+    </div>
 
-      <div className="absolute inset-0">
-        <div
-          id="box-mask"
-          className="absolute inset-0 w-full h-full bg-gray-300"
-        />
-      </div>
+    {/* Content */}
+    <div className="relative z-30 p-8 flex flex-col bg-transparent">
+      {/* Welcome text */}
+      <div className="flex-1 flex flex-col justify-center items-center text-center mb-8">
+        <motion.h1
+          className={cn(
+            "text-4xl text-gray-900 mb-4 font-quicksand font-bold"
+          )}
+          style={{ wordWrap: "break-word" }}
+          initial="hidden"
+          animate={isLoading ? "hidden" : "visible"}
+          variants={variants}
+          transition={{ duration: 1, delay: 0.2 }}
+        >
+          Mahdi Saeedi
+        </motion.h1>
 
+        <motion.p
+          className="text-gray-800 mb-4 px-4 max-w-2xl mx-auto font-quicksand"
+          style={{ wordWrap: "break-word" }}
+          initial="hidden"
+          animate={isLoading ? "hidden" : "visible"}
+          variants={variants}
+          transition={{ duration: 1, delay: 0.3 }}
+        >
+          Senior Software Engineer
+        </motion.p>
 
-      <div className="absolute inset-0 z-30 overflow-auto">
-        <div className="p-8 flex flex-col bg-transparent">
+        <motion.div
+          className="mb-4 px-4 max-w-2xl mx-auto"
+          initial="hidden"
+          animate={isLoading ? "hidden" : "visible"}
+          variants={smallVariants}
+          transition={{ duration: 1, delay: 0.4 }}
+        >
+          <Image
+            src="/images/headshot.png"
+            alt="Mahdi Saeedi"
+            width={192}
+            height={192}
+            className="rounded-2xl object-cover mx-auto"
+          />
+        </motion.div>
 
-
-          {/* Welcome text */}
-          <div className="flex-1 flex flex-col justify-center items-center text-center mb-8">
-
-            <motion.h1
-              className={cn(
-                "text-4xl text-gray-900 mb-4 font-quicksand font-bold"
-              )}
-              style={{ wordWrap: "break-word" }}
-              initial="hidden"
-              animate={isLoading ? "hidden" : "visible"}
-              variants={variants}
-              transition={{ duration: 1, delay: 0.2 }}
-            >
-              Mahdi Saeedi
-            </motion.h1>
-
-            <motion.p
-              className="text-gray-800 mb-4 px-4 max-w-2xl mx-auto font-quicksand"
-              style={{ wordWrap: "break-word" }}
-              initial="hidden"
-              animate={isLoading ? "hidden" : "visible"}
-              variants={variants}
-              transition={{ duration: 1, delay: 0.3 }}
-            >
-              Senior Software Engineer
-            </motion.p>
-
-            <motion.div
-              className="mb-4 px-4 max-w-2xl mx-auto"
-              initial="hidden"
-              animate={isLoading ? "hidden" : "visible"}
-              variants={smallVariants}
-              transition={{ duration: 1, delay: 0.4 }}
-            >
-              <Image
-                src="/images/headshot.png"
-                alt="Mahdi Saeedi"
-                width={192}
-                height={192}
-                className="rounded-2xl object-cover mx-auto"
-              />
-            </motion.div>
-
-            <motion.p
-              className="text-gray-800 mb-4 px-4 max-w-2xl mx-auto font-quicksand"
-              style={{ wordWrap: "break-word" }}
-              initial="hidden"
-              animate={isLoading ? "hidden" : "visible"}
-              variants={variants}
-              transition={{ duration: 1, delay: 0.5 }}
-            >
-                    Welcome to my corner of the internet. I&apos;m an AI developer
-                    making lawyers more efficient using GenAI. Nowadays, I read machine learning papers and dream about the future. 
-                    I love to open-source my work. I like ice cream on hot summer days. 
-                    I want to solo-backpack every country before I die, sitting at 21/195. 
-                    I love Suanas; it helps me stay sane. 
-                    Feel free to reach out.{" "}
-                    <a 
-                      href={cvLink}
-                      className="text-blue-600 hover:text-blue-800 underline pointer-events-auto"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      View my CV
-                    </a>
-            </motion.p>
-
-            <motion.div
-              initial="hidden"
-              animate={isLoading ? "hidden" : "visible"}
-              variants={variants}
-              transition={{ duration: 0.2, delay: 0.6 }}
-            >
-              <TypewriterEffectSmooth words={words} />
-            </motion.div>
-          </div>
-          {/* Project cards */}
-          <motion.div
-            className="w-full"
-            initial="hidden"
-            animate={isLoading ? "hidden" : "visible"}
-            variants={smallVariants}
-            transition={{ duration: 1, delay: 0.7 }}
+        <motion.p
+          className="text-gray-800 mb-4 px-4 max-w-2xl mx-auto font-quicksand"
+          style={{ wordWrap: "break-word" }}
+          initial="hidden"
+          animate={isLoading ? "hidden" : "visible"}
+          variants={variants}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          Welcome to my corner of the internet. I&apos;m an AI developer
+          making lawyers more efficient using GenAI. Nowadays, I read machine learning papers and dream about the future.
+          I love to open-source my work. I like ice cream on hot summer days.
+          I want to solo-backpack every country before I die, sitting at 21/195.
+          I love Saunas; it helps me stay sane.
+          Feel free to reach out.{" "}
+          <a
+            href={cvLink}
+            className="text-blue-600 hover:text-blue-800 underline pointer-events-auto"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <ProjectCards />
-          </motion.div>
-        </div>
+            View my CV
+          </a>
+        </motion.p>
+
+        <motion.div
+          initial="hidden"
+          animate={isLoading ? "hidden" : "visible"}
+          variants={variants}
+          transition={{ duration: 0.2, delay: 0.6 }}
+        >
+          <TypewriterEffectSmooth words={words} />
+        </motion.div>
       </div>
-    </>
+
+      {/* Project cards */}
+      <motion.div
+        className="w-full"
+        initial="hidden"
+        animate={isLoading ? "hidden" : "visible"}
+        variants={smallVariants}
+        transition={{ duration: 1, delay: 0.7 }}
+      >
+        <ProjectCards />
+      </motion.div>
+    </div>
+  </div>
+</>
+
     ) : (
       <>
       {/* Background elements in a separate container */}
