@@ -111,15 +111,11 @@ export function WelcomePage() {
         <div className="p-8 flex flex-col bg-transparent">
 
 
-        <motion.div 
-          className="fixed top-0 left-0 right-0 z-[60] w-full bg-transparent"
-          initial="hidden"
-          animate={isLoading ? "hidden" : "visible"}
-          variants={variants}
-          transition={{ duration: 1, delay: 0 }}
+        <div 
+          className="fixed top-0 left-0 right-0 z-[999] w-full bg-transparent"
         >
           <Navbar />
-        </motion.div>
+        </div>
 
 
           {/* Welcome text */}
