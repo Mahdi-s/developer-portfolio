@@ -100,7 +100,7 @@ export function WelcomePage() {
     return isMobile ? (
       <>
 
-        <div className="fixed bottom-4 right-4 w-auto z-[999] pointer-events-auto">
+        <div className="fixed bottom-6 right-4 w-auto z-[999] pointer-events-auto">
           <Navbar />
         </div>
 
