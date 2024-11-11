@@ -108,7 +108,10 @@ export function WelcomePage() {
 
       <div className="absolute inset-0 z-30 overflow-auto">
         <div className="p-8 flex flex-col bg-transparent">
-          
+
+          {/* Welcome text */}
+          <div className="flex-1 flex flex-col justify-center items-center text-center mb-8">
+
           <a
           href="https://github.com/Mahdi-s/developer-portfolio"
           target="_blank"
@@ -135,8 +138,7 @@ export function WelcomePage() {
           <div className="fixed top-0 left-0 right-0 z-50 bg-transparent p-8">
                 <Navbar />
           </div>
-          {/* Welcome text */}
-          <div className="flex-1 flex flex-col justify-center items-center text-center mb-8">
+          
             <motion.h1
               className={cn(
                 "text-4xl text-gray-900 mb-4 font-quicksand font-bold"
