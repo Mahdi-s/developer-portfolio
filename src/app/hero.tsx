@@ -97,9 +97,7 @@ export function WelcomePage() {
       );
     }
 
-    // Rest of your existing conditional rendering logic
     return isMobile ? (
-      // Your existing mobile JSX
       <>
       <div className="absolute inset-0">
         <div
@@ -108,12 +106,15 @@ export function WelcomePage() {
         />
       </div>
 
+
       <div className="absolute inset-0 z-30 overflow-auto">
         <div className="p-8 flex flex-col bg-transparent">
 
-            <div className="flex items-center">
+
+        <div className="fixed top-0 left-0 right-0 z-50">
               <Navbar />
-            </div>
+        </div>
+
 
           {/* Welcome text */}
           <div className="flex-1 flex flex-col justify-center items-center text-center mb-8">
