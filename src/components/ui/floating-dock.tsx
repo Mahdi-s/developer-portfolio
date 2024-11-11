@@ -48,25 +48,13 @@ const FloatingDockMobile = ({
   const [open, setOpen] = useState(false);
   return (
     <div className={cn("fixed bottom-4 right-4 z-[9999] md:hidden", className)}>
-      <AnimatePresence>
         {open && (
-          <motion.div
-            layoutId="nav"
+          <div
             className="absolute bottom-full right-0 mb-2 flex flex-col-reverse gap-2"
           >
             {items.map((item, idx) => (
-              <motion.div
+              <div
                 key={item.title}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{
-                  opacity: 0,
-                  y: 10,
-                  transition: {
-                    delay: idx * 0.05,
-                  },
-                }}
-                transition={{ delay: (items.length - 1 - idx) * 0.05 }}
               >
                 <Link
                   href={item.href}
@@ -76,11 +64,10 @@ const FloatingDockMobile = ({
                 >
                   <div className="h-5 w-5">{item.icon}</div>
                 </Link>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
         className="h-12 w-12 rounded-full bg-gray-50 dark:bg-neutral-800 flex items-center justify-center shadow-lg"
