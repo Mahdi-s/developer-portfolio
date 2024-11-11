@@ -48,7 +48,7 @@ const FloatingDockMobile = ({
   const [open, setOpen] = useState(false);
   return (
     <div className={cn(
-      "fixed bottom-4 right-4 md:hidden", // Remove z-[9999]
+      "fixed bottom-4 right-4", // Remove z-[9999]
       "z-[100]", // Add consistent z-index
       "bg-transparent", // Add transparent background 
       className
