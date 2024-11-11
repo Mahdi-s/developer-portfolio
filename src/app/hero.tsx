@@ -100,10 +100,10 @@ export function WelcomePage() {
     return isMobile ? (
       <>
 
-        <div className="fixed bottom-2 right-1 w-auto z-[9999] pointer-events-auto">
+        <div className="fixed bottom-4 right-4 w-auto z-[999] pointer-events-auto">
           <Navbar />
         </div>
-        
+
       <div className="absolute inset-0">
         <div
           id="box-mask"
