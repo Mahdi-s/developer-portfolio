@@ -47,7 +47,12 @@ const FloatingDockMobile = ({
 }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className={cn("fixed bottom-4 right-4 z-[9999] md:hidden", className)}>
+    <div className={cn(
+      "fixed bottom-4 right-4 md:hidden", // Remove z-[9999]
+      "z-[100]", // Add consistent z-index
+      "bg-transparent", // Add transparent background 
+      className
+    )}>
         {open && (
           <div
             className="absolute bottom-full right-0 mb-2 flex flex-col-reverse gap-2"
