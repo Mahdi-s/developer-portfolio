@@ -84,7 +84,7 @@ export const projectData = [
     {
       title: "Gene Expression Analysis of Prostate Cancer vs Benign Prostate Hyperplasia",
       description:
-        "RNA sequencing reveals diagnostic and treatment targets by analyzing gene expression in prostate conditions.",
+        "Analyzed gene expression data to identify key factors in prostate cancer progression.",
       image: {
         src: "/images/gene_study.png",
         alt: "Gene Expression Study Thumbnail",
@@ -125,30 +125,30 @@ export const projectData = [
         },
       ],
     },
-    {
-      title: "Company SEC Filing Analyzer (Angur Analytics)",
-      description:
-        "Python app predicts NYSE stock prices using LSTM model based on trading data and news.",
-      image: {
-        src: "/images/angur.gif",
-        alt: "Angur Analytics Thumbnail",
-      },
-      techStack: "Python, Anvil",
-      buttons: [
-        {
-          label: "App",
-          href: "https://anguranalytics.webflow.io/",
-        },
-        {
-          label: "Demo",
-          href: "https://angur-analytics-tool.anvil.app/",
-        },
-        {
-          label: "Code",
-          href: "https://github.com/Mahdi-s/angur",
-        },
-      ],
-    },
+    // {
+    //   title: "Company SEC Filing Analyzer (Angur Analytics)",
+    //   description:
+    //     "Python app predicts NYSE stock prices using LSTM model based on trading data and news.",
+    //   image: {
+    //     src: "/images/angur.gif",
+    //     alt: "Angur Analytics Thumbnail",
+    //   },
+    //   techStack: "Python, Anvil",
+    //   buttons: [
+    //     {
+    //       label: "App",
+    //       href: "https://anguranalytics.webflow.io/",
+    //     },
+    //     {
+    //       label: "Demo",
+    //       href: "https://angur-analytics-tool.anvil.app/",
+    //     },
+    //     {
+    //       label: "Code",
+    //       href: "https://github.com/Mahdi-s/angur",
+    //     },
+    //   ],
+    // },
     {
       title: "Mini Pascal to MIPS Assembly Translator",
       description:
