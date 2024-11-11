@@ -13,6 +13,8 @@ export function WelcomePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isClient, setIsClient] = useState(false);
 
+  const cvLink = "https://drive.google.com/file/d/1jFk-zz57WI1jg-ut9PMiFbzLcweICLs8/view?usp=sharing"
+
   // Early mobile detection
   useEffect(() => {
     setIsClient(true);
@@ -129,8 +131,8 @@ export function WelcomePage() {
         <div className="p-8 flex flex-col bg-transparent">
           {/* Navbar */}
           <div className="fixed top-0 left-0 right-0 z-50 bg-transparent p-8">
-      <Navbar />
-    </div>
+            <Navbar />
+          </div>
 
           {/* Welcome text */}
           <div className="flex-1 flex flex-col justify-center items-center text-center mb-8">
@@ -187,7 +189,15 @@ export function WelcomePage() {
                     I love to open-source my work. I like ice cream on hot summer days. 
                     I want to solo-backpack every country before I die, sitting at 21/195. 
                     I love Suanas; it helps me stay sane. 
-                    Feel free to reach out.
+                    Feel free to reach out.{" "}
+                    <a 
+                      href={cvLink}
+                      className="text-blue-600 hover:text-blue-800 underline pointer-events-auto"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View My CV
+                    </a>
             </motion.p>
 
             <motion.div
@@ -330,7 +340,15 @@ export function WelcomePage() {
                     I love to open-source my work. I like ice cream on hot summer days. 
                     I want to solo-backpack every country before I die, sitting at 21/195. 
                     I love Suanas; it helps me stay sane. 
-                    Feel free to reach out.
+                    Feel free to reach out.{" "}
+                    <a 
+                      href={cvLink}
+                      className="text-blue-600 hover:text-blue-800 underline pointer-events-auto"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View My CV
+                    </a>
                   </motion.p>
 
                   <motion.div
