@@ -47,7 +47,7 @@ const FloatingDockMobile = ({
 }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className={cn("fixed bottom-4 right-4 z-[999] bg-transparent block md:hidden pointer-events-auto", className)}>
+    <div className={cn("fixed bottom-4 right-4 z-[9999] bg-transparent block md:hidden pointer-events-auto", className)}>
       <AnimatePresence>
         {open && (
           <motion.div
@@ -85,7 +85,7 @@ const FloatingDockMobile = ({
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-800 flex items-center justify-center"
+        className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-800 flex items-center justify-center relative z-[9999]"
       >
         <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
       </button>
