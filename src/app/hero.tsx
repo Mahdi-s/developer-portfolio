@@ -107,7 +107,7 @@ export function WelcomePage() {
       </div>
 
 
-      <div className="absolute bottom-2 right-1 w-auto z-[999] pointer-events-auto">
+      <div className="absolute bottom-2 right-1 w-auto z-[9999] pointer-events-auto">
           <Navbar />
       </div>
 
