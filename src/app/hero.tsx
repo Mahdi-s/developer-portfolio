@@ -127,13 +127,14 @@ export function WelcomePage() {
         </svg>
       </a>
 
+
+      {/* Navbar */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-transparent p-8">
+            <Navbar />
+      </div>
+
       <div className="absolute inset-0 z-30 overflow-auto">
         <div className="p-8 flex flex-col bg-transparent">
-          {/* Navbar */}
-          <div className="fixed top-0 left-0 right-0 z-50 bg-transparent p-8">
-            <Navbar />
-          </div>
-
           {/* Welcome text */}
           <div className="flex-1 flex flex-col justify-center items-center text-center mb-8">
             <motion.h1
