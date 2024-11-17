@@ -6,7 +6,7 @@ export const projectData = [
       description:
         "An AI-generated podcast covering the latest interesting papers in Artificial Intelligence research.",
       image: {
-        src: "/images/podlucination.png",
+        src: "/images/podlucination.gif",
         alt: "Podlucination Thumbnail",
       },
       techStack: "NotebookLM, Python",
@@ -42,7 +42,7 @@ export const projectData = [
       description:
         "Federated learning with U-Net for DFU segmentation achieves 0.9 dice score, preserving privacy effectively.",
       image: {
-        src: "/images/fed_learning.png",
+        src: "/images/fed_learning.jpg",
         alt: "Federated Learning Thumbnail",
       },
       techStack: "Python, PyTorch, Flower",
@@ -194,7 +194,7 @@ export const projectData = [
       description:
         "Bot plays tic-tac-toe using decision trees, prioritizing blocking human player’s winning moves.",
       image: {
-        src: "/images/tic-tac-toe.png",
+        src: "/images/tictactoe.jpeg",
         alt: "Tic Tac Toe Game Thumbnail",
       },
       techStack: "Assembly",

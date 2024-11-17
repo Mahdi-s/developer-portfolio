@@ -61,7 +61,7 @@ export function WelcomePage() {
   const words = [
     {
       text: "mahdisaeediv@gmail.com",
-      className: "text-gray-700 dark:text-gray-700 font-quicksand",
+      className: "text-gray-700 dark:text-gray-700 font-mono",
     },
   ];
 
@@ -100,25 +100,42 @@ export function WelcomePage() {
     return isMobile ? (
 <>
   {/* Main Container */}
-  <div className="relative w-full h-full overflow-auto">
+  <div className="relative w-full h-full overflow-hidden">
     {/* Box Mask */}
     <div
       id="box-mask"
       className="absolute inset-0 w-full h-full bg-gray-400"
     />
 
-    {/* Navbar */}
-    {/* <div className="fixed bottom-8 right-4 w-auto z-[9999] pointer-events-auto">
-      <Navbar />
-    </div> */}
+
+
 
     {/* Content */}
-    <div className="relative z-30 p-8 flex flex-col bg-transparent">
+    <div className="relative z-30 p-8 flex flex-col bg-transparent h-full overflow-auto">
+
+        {/* Navbar */}
+        {/* <motion.div 
+        className="w-full overflow-visible fixed top-0 right-0 z-[999] pointer-events-auto p-4"
+        style={{ 
+          wordWrap: "break-word",
+          position: 'fixed',
+          top: 'env(safe-area-inset-top, 0px)',  // Handle iOS notch
+          right: 0,
+          WebkitOverflowScrolling: 'touch'  // Better iOS scroll handling
+        }}
+        initial="hidden"
+        animate={isLoading ? "hidden" : "visible"}
+        variants={variants}
+        transition={{ duration: 1, delay: 0.2 }}>
+        <Navbar />
+      </motion.div> */}
+
+
       {/* Welcome text */}
       <div className="flex-1 flex flex-col justify-center items-center text-center mb-8">
         <motion.h1
           className={cn(
-            "text-4xl text-gray-900 mb-4 font-quicksand font-bold"
+            "text-4xl text-gray-900 mb-4 font-mono font-bold"
           )}
           style={{ wordWrap: "break-word" }}
           initial="hidden"
@@ -130,7 +147,7 @@ export function WelcomePage() {
         </motion.h1>
 
         <motion.p
-          className="text-gray-800 mb-4 px-4 max-w-2xl mx-auto font-quicksand"
+          className="text-gray-800 mb-4 px-4 max-w-2xl mx-auto font-mono"
           style={{ wordWrap: "break-word" }}
           initial="hidden"
           animate={isLoading ? "hidden" : "visible"}
@@ -152,12 +169,12 @@ export function WelcomePage() {
             alt="Mahdi Saeedi"
             width={192}
             height={192}
-            className="rounded-2xl object-cover mx-auto"
+            className="rounded-[40px] object-cover mx-auto"
           />
         </motion.div>
 
         <motion.p
-          className="text-gray-800 mb-4 px-4 max-w-2xl mx-auto font-quicksand"
+          className="text-gray-800 mb-4 px-4 max-w-2xl mx-auto font-mono"
           style={{ wordWrap: "break-word" }}
           initial="hidden"
           animate={isLoading ? "hidden" : "visible"}
@@ -201,6 +218,8 @@ export function WelcomePage() {
         <ProjectCards />
       </motion.div>
     </div>
+
+
   </div>
 </>
 
@@ -219,13 +238,13 @@ export function WelcomePage() {
         href="https://github.com/Mahdi-s/developer-portfolio"
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute bottom-4 left-4 z-50 h-12 w-12 p-2 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-black flex items-center justify-center"
+        className="absolute bottom-4 left-4 z-50 h-10 w-10 p-2 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-black flex items-center justify-center"
         initial="hidden"
         animate={isLoading ? "hidden" : "visible"}
         variants={variants}
         transition={{ duration: 1, delay: 1.7 }}
       >
-        <IoCodeOutline size={20} />
+        <IoCodeOutline className="text-[#4f6b8b]" size={20} />
       </motion.a>
 
       <div
@@ -233,10 +252,10 @@ export function WelcomePage() {
         className="absolute inset-0 z-30 pointer-events-none md:overflow-hidden overflow-auto"
       >
         {/* Responsive grid container */}
-        <div className="h-full w-full grid md:grid-cols-2 grid-cols-1 pointer-events-none gap-x-8 px-8">
-          {/* Left column */}
-          <div className="p-8 flex flex-col bg-transparent md:h-screen overflow-auto relative overflow-auto pointer-events-none overflow-visible">
-            {/* Welcome text and Navbar*/}
+        <div className="h-full w-full grid md:grid-cols-[60%_40%] grid-cols-1 pointer-events-none gap-x-4 px-4 lg:px-8">
+        {/* Left column */}
+        <div className="p-4 lg:p-8 flex flex-col bg-transparent md:h-screen relative pointer-events-none">
+        {/* Welcome text and Navbar*/}
             <div className="flex-1 flex flex-col justify-center items-center text-center">
               {/* Navbar */}
               <motion.div
@@ -268,14 +287,14 @@ export function WelcomePage() {
                     alt="Mahdi Saeedi"
                     width={480}
                     height={600}
-                    className="rounded-2xl w-[300px] h-[430px] object-cover" 
+                    className="rounded-[40px] w-[300px] h-[430px] object-cover" 
                     />
                 </motion.div>
 
                 <div className="flex flex-col flex-grow max-w-[500px] overflow-visible space-y-2">
                   <motion.h1
                     className={cn(
-                      "text-2xl md:text-3xl lg:text-4xl text-gray-900 mb-2 text-left font-quicksand font-bold"
+                      "text-2xl md:text-3xl lg:text-4xl text-gray-900 mb-2 text-left font-mono font-bold"
                     )}
                     initial="hidden"
                     animate={isLoading ? "hidden" : "visible"}
@@ -287,7 +306,7 @@ export function WelcomePage() {
                   </motion.h1>
 
                   <motion.p
-                    className="text-sm md:text-base lg:text-lg text-gray-900 mb-2 text-left font-quicksand"
+                    className="text-sm md:text-base lg:text-lg text-gray-900 mb-2 text-left font-mono"
                     initial="hidden"
                     animate={isLoading ? "hidden" : "visible"}
                     variants={variants}
@@ -298,7 +317,7 @@ export function WelcomePage() {
                   </motion.p>
 
                   <motion.p
-                    className="text-xs md:text-sm lg:text-base text-gray-800 mb-2 text-left font-quicksand break-words overflow-visible" 
+                    className="text-[8px] md:text-xs lg:text-sm text-gray-800 mb-2 text-left font-mono break-words overflow-visible" 
                     initial="hidden"
                     animate={isLoading ? "hidden" : "visible"}
                     variants={variants}

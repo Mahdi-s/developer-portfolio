@@ -11,3 +11,20 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
+// /** @type {import('next').NextConfig} */
+// const nextConfig = {
+//     webpack: (config) => {
+//         return config;
+//     },
+//     webSocketTimeout: 30000,
+//     experimental: {
+//         outputFileTracing: true,
+//     },
+//     output: 'standalone',
+//     async rewrites() {
+//         return [];
+//     },
+// };
+
+// export default nextConfig;

@@ -86,7 +86,10 @@ export const CardBody = ({
   return (
     <div
       className={cn(
-        "h-96 w-96 [transform-style:preserve-3d]  [&>*]:[transform-style:preserve-3d]",
+        "h-96 w-96 [transform-style:preserve-3d] [&>*]:[transform-style:preserve-3d] relative group",
+        "before:absolute before:w-full before:h-full before:top-0 before:left-0 before:rounded-[40px] before:opacity-0 before:transition-opacity before:duration-300",
+        "before:bg-[radial-gradient(circle_at_center,_#ffffff_0%,_#c7cbd4_100%)] dark:before:bg-[radial-gradient(circle_at_center,_#ffffff_0%,_#000000_100%)]",
+        "hover:before:opacity-100",
         className
       )}
     >
