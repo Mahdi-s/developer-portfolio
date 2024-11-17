@@ -12,7 +12,7 @@ export function Navbar() {
     {
       title: "Google Scholar",
       icon: (
-        <FaGoogleScholar className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <FaGoogleScholar className="h-full w-full text-[#4f6b8b] dark:text-neutral-300" />
       ),
       href: "https://scholar.google.com/citations?user=yM8ClooAAAAJ&hl=en",
     },
@@ -20,21 +20,21 @@ export function Navbar() {
     {
       title: "Blog",
       icon: (
-        <FaMediumM className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <FaMediumM className="h-full w-full text-[#4f6b8b] dark:text-neutral-300" />
       ),
       href: "https://mahdisaeedi.medium.com/",
     },
     {
       title: "LinkedIn",
       icon: (
-        <FaLinkedin className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <FaLinkedin className="h-full w-full text-[#4f6b8b] dark:text-neutral-300" />
       ),
       href: "https://www.linkedin.com/in/mahdisaeedi/",
     },
     {
       title: "Podcast",
       icon: (
-        <FaRobot className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <FaRobot className="h-full w-full text-[#4f6b8b] dark:text-neutral-300" />
       ),
       href: "https://www.youtube.com/@Podlucination/videos",
     },
@@ -48,13 +48,13 @@ export function Navbar() {
     {
       title: "GitHub",
       icon: (
-        <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconBrandGithub className="h-full w-full text-[#4f6b8b] dark:text-neutral-300" />
       ),
       href: "https://github.com/Mahdi-s/",
     },
   ];
   return (
-    <div className="flex items-center justify-center h-[4rem] w-full relative z-30">
+    <div className="flex items-center justify-center h-[4rem] w-full relative">
       <FloatingDock
         items={links}
       />

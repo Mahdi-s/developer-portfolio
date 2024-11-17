@@ -61,12 +61,12 @@ export default function ProjectCards() {
          {projectData.map((project, index) => (
            <div key={index} className="h-full">
              {/* Simplified mobile card structure */}
-             <div className="bg-gray-50 dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto h-auto rounded-xl p-6 border">
+             <div className="bg-[#c7cbd4] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto h-auto rounded-[40px] p-6 border">
                <div className="flex-1">
-                 <h3 className="text-sm font-bold text-neutral-600 dark:text-white mb-2">
+                 <h3 className="text-sm font-mono font-bold text-neutral-600 dark:text-white mb-2">
                    {project.title}
                  </h3>
-                 <p className="text-xs text-neutral-500 dark:text-neutral-300 line-clamp-3 mb-2">
+                 <p className="text-xs font-mono text-neutral-500 dark:text-neutral-300 line-clamp-3 mb-2">
                    {project.description}
                  </p>
                  <div className="w-full h-84 relative mb-2">
@@ -74,12 +74,12 @@ export default function ProjectCards() {
                      src={project.image.src}
                      height={400}  // Reduced image size for mobile
                      width={400}   // Reduced image size for mobile
-                     className="h-full w-full object-cover rounded-xl"
+                     className="h-full w-full object-cover rounded-[40px]"
                      alt={project.image.alt}
                      loading="lazy"  // Add lazy loading
                    />
                  </div>
-                 <p className="text-sm font-bold text-neutral-600 dark:text-white">
+                 <p className="text-sm font-mono font-bold text-neutral-600 dark:text-white">
                    Tech Stack: {project.techStack}
                  </p>
                </div>
@@ -90,7 +90,7 @@ export default function ProjectCards() {
                      key={btnIndex}
                      href={button.href}
                      target="_blank"
-                     className="px-3 py-1 m-1 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+                     className="px-3 py-1 m-1 rounded-[40px] bg-[#4f6b8b] dark:bg-white dark:text-black text-white text-xs font-bold font-mono"
                    >
                      {button.label}
                    </Link>
@@ -116,36 +116,36 @@ export default function ProjectCards() {
                 className="h-full"
               >
                 <CardContainer className="inter-var h-full w-full pointer-events-auto">
-                  <CardBody className="bg-gray-50 relative group/card dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
-                  <div className="flex-1">
+                <CardBody className="bg-[#c7cbd4] relative group/card dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-[40px] p-6 border hover:shadow-2xl hover:shadow-neutral-400/50 dark:hover:shadow-neutral-900/50 transition-shadow duration-300">
+                <div className="flex-1">
                       <CardItem
-                        translateZ="50"
-                        className="text-sm font-bold text-neutral-600 dark:text-white mb-2"
+                        translateZ="40"
+                        className="text-sm font-mono font-bold text-neutral-600 dark:text-white mb-2"
                       >
                         {project.title}
                       </CardItem>
                       <CardItem
                         as="p"
-                        translateZ="60"
-                        className="text-xs text-neutral-500 dark:text-neutral-300 line-clamp-3 mb-2"
+                        translateZ="40"
+                        className="text-xs font-mono text-neutral-500 dark:text-neutral-300 line-clamp-3 mb-2"
                       >
                         {project.description}
                       </CardItem>
                       <CardItem
-                        translateZ="100"
+                        translateZ="50"
                         className="w-full h-84 relative mb-2"
                       >
                         <Image
                           src={project.image.src}
                           height="800"
                           width="800"
-                          className="h-full w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                          className="h-full w-full object-cover rounded-[40px] group-hover/card:shadow-xl"
                           alt={project.image.alt}
                         />
                       </CardItem>
                       <CardItem
-                        translateZ="50"
-                        className="text-sm font-bold text-neutral-600 dark:text-white"
+                        translateZ="40"
+                        className="text-sm font-bold font-mono text-neutral-600 dark:text-white"
                       >
                         Tech Stack: {project.techStack}
                       </CardItem>
@@ -155,11 +155,11 @@ export default function ProjectCards() {
                       {project.buttons.map((button, btnIndex) => (
                         <CardItem
                           key={btnIndex}
-                          translateZ={20}
+                          translateZ={40}
                           as={Link}
                           href={button.href}
                           target="__blank"
-                          className="px-3 py-1 m-1 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+                          className="px-3 py-1 m-1 rounded-[40px] bg-[#4f6b8b] dark:bg-white dark:text-black text-white text-xs font-bold-mono"
                         >
                           {button.label}
                         </CardItem>
