@@ -288,6 +288,9 @@ export function WelcomePage() {
                     width={480}
                     height={600}
                     className="rounded-[40px] w-[300px] h-[430px] object-cover" 
+                    priority    
+                    loading="eager"
+                    quality={75}   
                     />
                 </motion.div>
 
