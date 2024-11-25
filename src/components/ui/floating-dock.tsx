@@ -49,10 +49,14 @@ const FloatingDockMobile = ({
 }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div 
-      style={{ position: 'fixed', bottom: 'env(safe-area-inset-bottom, 16px)' }}
+    <div
+      style={{
+        position: 'fixed',
+        bottom: '16px', // Adjusted to match bottom-4 (1rem)
+        right: '16px',  // 16px corresponds to right-4 (1rem)
+      }}
       className={cn(
-        "right-4 bg-transparent block md:hidden pointer-events-auto",
+        "bg-transparent block md:hidden pointer-events-auto z-50", // Changed z-index to match z-50
         className
       )}
     >

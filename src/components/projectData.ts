@@ -1,6 +1,58 @@
 // projectData.ts
 
 export const projectData = [
+  {
+    title: "Data Lens",
+    description:
+      "Agentic Application that generates and executes sql queries (based on your prompt) on tabular data.",
+    image: {
+      src: "/images/datalens.gif",
+      alt: "datalens Thumbnail",
+    },
+    techStack: "Python, Ollama",
+    buttons: [
+      {
+        label: "Code",
+        href: "https://github.com/Mahdi-s/DataLens",
+      },
+    ],
+  },
+  {
+    title: "LLM Guts Visualizer",
+    description:
+      "A tool to run queries on the DistilGPT2 model and visualize the internal workings of the model.",
+    image: {
+      src: "/images/llmguts.gif",
+      alt: "LLM Guts Visualizer Thumbnail",
+    },
+    techStack: "Python, PyTorch",
+    buttons: [
+      {
+        label: "Code",
+        href: "https://github.com/Mahdi-s/llm.guts",
+      },
+    ],
+  },
+  {
+    title: "Federated Machine Learning on Segmenting Sensitive Medical Data",
+    description:
+      "Federated learning with U-Net for DFU segmentation achieves 0.9 dice score, preserving privacy effectively.",
+    image: {
+      src: "/images/fed_learning.jpg",
+      alt: "Federated Learning Thumbnail",
+    },
+    techStack: "Python, PyTorch, Flower",
+    buttons: [
+      {
+        label: "Publication",
+        href: "https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10507818",
+      },
+      {
+        label: "Code",
+        href: "https://github.com/Mahdi-s/federated-experiments",
+      },
+    ],
+  },
     {
       title: "Podlucination",
       description:
@@ -18,42 +70,6 @@ export const projectData = [
         {
           label: "Code",
           href: "https://github.com/Mahdi-s/podlucination",
-        },
-      ],
-    },
-    {
-      title: "LLM Guts Visualizer",
-      description:
-        "A tool to run queries on the DistilGPT2 model and visualize the internal workings of the model.",
-      image: {
-        src: "/images/llmguts.gif",
-        alt: "LLM Guts Visualizer Thumbnail",
-      },
-      techStack: "Python, PyTorch",
-      buttons: [
-        {
-          label: "Code",
-          href: "https://github.com/Mahdi-s/llm.guts",
-        },
-      ],
-    },
-    {
-      title: "Federated Machine Learning on Segmenting Sensitive Medical Data",
-      description:
-        "Federated learning with U-Net for DFU segmentation achieves 0.9 dice score, preserving privacy effectively.",
-      image: {
-        src: "/images/fed_learning.jpg",
-        alt: "Federated Learning Thumbnail",
-      },
-      techStack: "Python, PyTorch, Flower",
-      buttons: [
-        {
-          label: "Publication",
-          href: "https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10507818",
-        },
-        {
-          label: "Code",
-          href: "https://github.com/Mahdi-s/federated-experiments",
         },
       ],
     },
