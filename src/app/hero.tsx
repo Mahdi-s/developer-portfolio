@@ -138,7 +138,7 @@ export function WelcomePage() {
                 transition={{ duration: 1, delay: 0.4 }}
               >
                 <Image
-                  src="/images/headshot.png"
+                  src="/images/headshot.jpeg"
                   alt="Mahdi Saeedi"
                   width={192}
                   height={192}
@@ -255,7 +255,7 @@ export function WelcomePage() {
                     transition={{ duration: 1, delay: 0.7 }}
                   >
                     <Image
-                      src="/images/headshot.png"
+                      src="/images/headshot.jpeg"
                       alt="Mahdi Saeedi"
                       width={480}
                       height={600}
