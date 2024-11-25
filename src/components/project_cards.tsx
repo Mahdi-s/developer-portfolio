@@ -9,13 +9,11 @@ export default function ProjectCards({ isMobile }: { isMobile: boolean }) {
   const gridRef = useRef(null);
 
   // Only use scroll and transforms if not mobile
-  let translateYValues: MotionValue<number>[] = [];
 
-  if (!isMobile) {
-    const { scrollYProgress } = useScroll({
-      container: gridRef,
-      offset: ["start start", "end start"],
-    });
+  const { scrollYProgress } = useScroll({
+    container: gridRef,
+    offset: ["start start", "end start"],
+  });
 
     // Create individual transform values outside of map
     const translateY0 = useTransform(scrollYProgress, [0, 1], [0, -100]);
@@ -25,15 +23,16 @@ export default function ProjectCards({ isMobile }: { isMobile: boolean }) {
     const translateY4 = useTransform(scrollYProgress, [0, 1], [0, -20]);
     const translateY5 = useTransform(scrollYProgress, [0, 1], [0, 0]);
 
-    translateYValues = [
-      translateY0,
-      translateY1,
-      translateY2,
-      translateY3,
-      translateY4,
-      translateY5,
-    ];
-  }
+  // Store values in array
+  const translateYValues = [
+    translateY0,
+    translateY1,
+    translateY2,
+    translateY3,
+    translateY4,
+    translateY5,
+  ];
+  
 
   return (
     <div ref={gridRef} className="w-full h-full overflow-y-auto scrollbar-hide">
