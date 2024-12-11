@@ -210,7 +210,7 @@ export const projectData = [
       description:
         "Bot plays tic-tac-toe using decision trees, prioritizing blocking human player’s winning moves.",
       image: {
-        src: "/images/tictactoe.jpeg",
+        src: "/images/tictactoe.gif",
         alt: "Tic Tac Toe Game Thumbnail",
       },
       techStack: "Assembly",
