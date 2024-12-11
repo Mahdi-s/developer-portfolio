@@ -16,7 +16,7 @@ export function WelcomePage() {
   const [isClient, setIsClient] = useState(false);
 
   const cvLink =
-    "https://drive.google.com/file/d/1jFk-zz57WI1jg-ut9PMiFbzLcweICLs8/view?usp=sharing";
+    "https://drive.google.com/file/d/1Jbrh2_6FqejxcaMh4_ri9Q-gf2JQMaYD/view?usp=sharing";
 
   // Early mobile detection
   useEffect(() => {
