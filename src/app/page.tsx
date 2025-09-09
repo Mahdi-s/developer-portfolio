@@ -2,7 +2,7 @@ import { WelcomePage } from "./hero";
 
 export default function Home() {
   return (
-    <main >
+    <main>
       <WelcomePage />
     </main>
   );
