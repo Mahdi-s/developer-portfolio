@@ -1,4 +1,4 @@
-# My Developer Portfolio
+# My Developer Portfolio - msaeedi.dev
 
 - 3D card interactions
 - Smooth animations using Framer Motion
