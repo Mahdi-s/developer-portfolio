@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { GlobalNavbar } from "../components/GlobalNavbar";
+import { Providers } from "./providers";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,8 +26,11 @@ export default function RootLayout({
         </head>
 
         <body className={inter.className}>
-          {children}
-          <GoogleAnalytics gaId="G-BXMKDXTS1F" /> 
+          <Providers>
+            <GlobalNavbar />
+            {children}
+            <GoogleAnalytics gaId="G-BXMKDXTS1F" /> 
+          </Providers>
         </body>
     </html>
   );

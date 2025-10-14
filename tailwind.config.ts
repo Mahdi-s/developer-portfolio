@@ -12,6 +12,11 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend:{
+      colors: {
+        "lab-background": "#333333",
+        "lab-highlight": "#ffc62d",
+        "lab-accent": "#991e01"
+      },
       spacing: {
         'space-x-pointer-events-none': '2rem', // Adjust as needed
       },
