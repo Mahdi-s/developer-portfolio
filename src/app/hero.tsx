@@ -16,7 +16,7 @@ export function WelcomePage() {
   const [isClient, setIsClient] = useState(false);
 
   const cvLink =
-    "https://drive.google.com/file/d/1Jbrh2_6FqejxcaMh4_ri9Q-gf2JQMaYD/view?usp=sharing";
+    "https://drive.google.com/file/d/1bwIIRwu6k2akJ0mqt4KFLddwhPnj5iuS/view?usp=sharing";
 
   // Early mobile detection
   useEffect(() => {
@@ -127,7 +127,7 @@ export function WelcomePage() {
                 variants={variants}
                 transition={{ duration: 1, delay: 0.3 }}
               >
-                Senior Software Engineer
+               PhD Student @ Signals Lab - USC ISI
               </motion.p>
 
               <motion.div
@@ -154,8 +154,10 @@ export function WelcomePage() {
                 variants={variants}
                 transition={{ duration: 1, delay: 0.5 }}
               >
-                Welcome to my corner of the internet. I&apos;m an AI developer
-                making lawyers more efficient using GenAI. Nowadays, I read
+                Welcome to my corner of the internet. I&apos;m a PhD student at 
+                USC Information Sciences Institute working under Prof. Luca Luceri. 
+                My current focus is on LLM based Agentic Simulations and Computional Social Science. In my previous life, 
+                I was a senior software engineer making lawyers more efficient using GenAI. Nowadays, I read
                 machine learning papers and dream about the future. I love to
                 open-source my work. I like ice cream on hot summer days. I want
                 to solo-backpack every country before I die, sitting at 21/195.
@@ -288,7 +290,7 @@ export function WelcomePage() {
                       transition={{ duration: 1, delay: 0.4 }}
                       style={{ wordWrap: "break-word" }}
                     >
-                      Senior Software Engineer
+                    PhD Student @ Signals Lab - USC ISI
                     </motion.p>
 
                     <motion.p
@@ -299,13 +301,14 @@ export function WelcomePage() {
                       transition={{ duration: 1, delay: 1.2 }}
                       style={{ wordWrap: "break-word" }}
                     >
-                      Welcome to my corner of the internet. I&apos;m an AI
-                      developer making lawyers more efficient using GenAI.
-                      Nowadays, I read machine learning papers and dream about
-                      the future. I love to open-source my work. I like ice
-                      cream on hot summer days. I want to solo-backpack every
-                      country before I die, sitting at 21/195. I love Saunas; it
-                      helps me stay sane. Feel free to reach out.{" "}
+                      Welcome to my corner of the internet. I&apos;m a PhD student at 
+                      USC Information Sciences Institute working under Prof. Luca Luceri. My current focus is on LLM based
+                      Agentic Simulations and Computional Social Science. In my previous life, I was a 
+                      senior software engineer making lawyers more efficient using GenAI. Nowadays, I read
+                      machine learning papers and dream about the future. I love to
+                      open-source my work. I like ice cream on hot summer days. I want
+                      to solo-backpack every country before I die, sitting at 21/195.
+                      I love Saunas; it helps me stay sane. Feel free to reach out.{" "}
                       <a
                         href={cvLink}
                         className="text-blue-600 hover:text-blue-800 underline pointer-events-auto"
