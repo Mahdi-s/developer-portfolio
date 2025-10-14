@@ -2,6 +2,38 @@
 
 export const projectData = [
   {
+    title: "Embedding and Clustering via subsampling and LLMs & NL2SQL",
+    description:
+      "Embedding and Heirarchical Clustering of text data via subsampling and LLMs & Natural Language to SQL Tool",
+    image: {
+      src: "/images/embed-dashboard.gif",
+      alt: "embed-dashboard Thumbnail",
+    },
+    techStack: "Python, Ollama",
+    buttons: [
+      {
+        label: "Code",
+        href: "https://github.com/Mahdi-s/Twitter_Embedding_Clustering_NL2SQL",
+      },
+    ],
+  },
+  {
+    title: "LLMxIO Dashboard",
+    description:
+      "3D visualization of LLM Agentic Information Operation Simulations",
+    image: {
+      src: "/images/llmxio.png",
+      alt: "llmxio Thumbnail",
+    },
+    techStack: "TypeScript, React, Three.js, D3.js",
+    buttons: [
+      {
+        label: "Demo",
+        href: "https://llmxio-dashboard.vercel.app/",
+      },
+    ],
+  },
+  {
     title: "Data Lens",
     description:
       "Agentic Application that generates and executes sql queries (based on your prompt) on tabular data.",
