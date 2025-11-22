@@ -225,10 +225,10 @@ export function WelcomePage() {
           id="parent-container"
           className="absolute inset-0 z-30 pointer-events-none md:overflow-hidden overflow-auto"
         >
-          {/* Responsive grid container */}
-          <div className="h-full w-full grid md:grid-cols-[60%_40%] grid-cols-1 pointer-events-none gap-x-4 px-4 lg:px-8">
+          {/* Responsive grid container with max-width */}
+          <div className="h-full w-full max-w-[1800px] mx-auto grid lg:grid-cols-[55%_45%] md:grid-cols-[50%_50%] grid-cols-1 pointer-events-none gap-x-4 px-4 lg:px-8">
             {/* Left column */}
-            <div className="p-4 lg:p-8 flex flex-col bg-transparent md:h-screen relative pointer-events-none">
+            <div className="p-4 lg:p-8 xl:p-12 flex flex-col bg-transparent md:h-screen relative pointer-events-none justify-center">
               {/* Welcome text and Navbar*/}
               <div className="flex-1 flex flex-col justify-center items-center text-center">
                 {/* Navbar */}
@@ -342,7 +342,7 @@ export function WelcomePage() {
               variants={smallVariants}
               transition={{ duration: 1, delay: 1.5 }}
             >
-              <div className="p-8">
+              <div className="p-8 flex flex-col items-center">
                 <ProjectCards isMobile={isMobile} /> {/* Pass isMobile here */}
               </div>
             </motion.div>

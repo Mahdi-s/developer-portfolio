@@ -15,13 +15,13 @@ export default function ProjectCards({ isMobile }: { isMobile: boolean }) {
     offset: ["start start", "end start"],
   });
 
-    // Create individual transform values outside of map
-    const translateY0 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-    const translateY1 = useTransform(scrollYProgress, [0, 1], [0, -80]);
-    const translateY2 = useTransform(scrollYProgress, [0, 1], [0, -60]);
-    const translateY3 = useTransform(scrollYProgress, [0, 1], [0, -40]);
-    const translateY4 = useTransform(scrollYProgress, [0, 1], [0, -20]);
-    const translateY5 = useTransform(scrollYProgress, [0, 1], [0, 0]);
+  // Create individual transform values outside of map
+  const translateY0 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const translateY1 = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const translateY2 = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const translateY3 = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const translateY4 = useTransform(scrollYProgress, [0, 1], [0, -20]);
+  const translateY5 = useTransform(scrollYProgress, [0, 1], [0, 0]);
 
   // Store values in array
   const translateYValues = [
@@ -32,7 +32,7 @@ export default function ProjectCards({ isMobile }: { isMobile: boolean }) {
     translateY4,
     translateY5,
   ];
-  
+
 
   return (
     <div ref={gridRef} className="w-full h-full overflow-y-auto scrollbar-hide">
@@ -103,7 +103,7 @@ export default function ProjectCards({ isMobile }: { isMobile: boolean }) {
                 className="w-full"
               >
                 <CardContainer className="inter-var h-full w-full pointer-events-auto">
-                  <CardBody className="bg-[#c7cbd4] relative group/card dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-[40px] p-6 border hover:shadow-2xl hover:shadow-neutral-400/50 dark:hover:shadow-neutral-900/50 transition-shadow duration-300">
+                  <CardBody className="bg-[#c7cbd4] relative group/card dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-[40px] p-6 border hover:shadow-2xl hover:shadow-neutral-400/50 dark:hover:shadow-neutral-900/50 transition-shadow duration-300 mx-auto">
                     <div className="flex-1">
                       <CardItem
                         translateZ="40"
