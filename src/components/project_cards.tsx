@@ -58,11 +58,11 @@ export default function ProjectCards({ isMobile }: { isMobile: boolean }) {
                     </p>
                     <div className="w-full h-84 relative mb-2">
                       <Image
-                        src={project.image.src}
+                        src={project.image}
                         height={400} // Reduced image size for mobile
                         width={400} // Reduced image size for mobile
                         className="h-full w-full object-cover rounded-[40px]"
-                        alt={project.image.alt}
+                        alt={project.title}
                         loading="lazy" // Add lazy loading
                       />
                     </div>
@@ -72,14 +72,14 @@ export default function ProjectCards({ isMobile }: { isMobile: boolean }) {
                   </div>
                   {/* Simplified buttons */}
                   <div className="flex flex-wrap justify-between items-center mt-4">
-                    {project.buttons.map((button, btnIndex) => (
+                    {project.links.map((link, btnIndex) => (
                       <Link
                         key={btnIndex}
-                        href={button.href}
+                        href={link.url}
                         target="_blank"
-                        className="px-3 py-1 m-1 rounded-[40px] bg-[#4f6b8b] dark:bg-white dark:text-black text-white text-xs font-bold font-mono"
+                        className="px-3 py-1 m-1 rounded-[40px] bg-[#4f6b8b] dark:bg-white dark:text-black text-white text-xs font-bold font-mono flex items-center justify-center"
                       >
-                        {button.label}
+                        {link.icon}
                       </Link>
                     ))}
                   </div>
@@ -123,11 +123,11 @@ export default function ProjectCards({ isMobile }: { isMobile: boolean }) {
                         className="w-full h-84 relative mb-2"
                       >
                         <Image
-                          src={project.image.src}
+                          src={project.image}
                           height="800"
                           width="800"
                           className="h-full w-full object-cover rounded-[40px] group-hover/card:shadow-xl"
-                          alt={project.image.alt}
+                          alt={project.title}
                         />
                       </CardItem>
                       <CardItem
@@ -139,16 +139,16 @@ export default function ProjectCards({ isMobile }: { isMobile: boolean }) {
                     </div>
                     {/* Buttons */}
                     <div className="flex flex-wrap justify-between items-center mt-4">
-                      {project.buttons.map((button, btnIndex) => (
+                      {project.links.map((link, btnIndex) => (
                         <CardItem
                           key={btnIndex}
                           translateZ={40}
                           as={Link}
-                          href={button.href}
+                          href={link.url}
                           target="__blank"
-                          className="px-3 py-1 m-1 rounded-[40px] bg-[#4f6b8b] dark:bg-white dark:text-black text-white text-xs font-bold-mono"
+                          className="px-3 py-1 m-1 rounded-[40px] bg-[#4f6b8b] dark:bg-white dark:text-black text-white text-xs font-bold-mono flex items-center justify-center"
                         >
-                          {button.label}
+                          {link.icon}
                         </CardItem>
                       ))}
                     </div>
@@ -158,7 +158,8 @@ export default function ProjectCards({ isMobile }: { isMobile: boolean }) {
             ))}
           </motion.div>
         </motion.div>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 }
