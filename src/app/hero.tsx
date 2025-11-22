@@ -53,7 +53,7 @@ export function WelcomePage() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -66,12 +66,21 @@ export function WelcomePage() {
   ];
 
   // Optimized animation variants
-  const variants = {
+  const leftSlideVariants = {
     hidden: { x: -100, opacity: 0 },
     visible: {
       x: 0,
       opacity: 1,
-      transition: { type: "spring", damping: 20 },
+      transition: { type: "spring", damping: 20, delay: 0.5 },
+    },
+  };
+
+  const rightSlideVariants = {
+    hidden: { x: 100, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { type: "spring", damping: 20, delay: 0.5 },
     },
   };
 
@@ -79,7 +88,7 @@ export function WelcomePage() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { duration: 0.3 },
+      transition: { duration: 0.3, delay: 0.5 },
     },
   };
 
@@ -112,8 +121,7 @@ export function WelcomePage() {
                 style={{ wordWrap: "break-word" }}
                 initial="hidden"
                 animate={isLoading ? "hidden" : "visible"}
-                variants={variants}
-                transition={{ duration: 1, delay: 0.2 }}
+                variants={leftSlideVariants}
               >
                 Mahdi Saeedi
               </motion.h1>
@@ -123,8 +131,7 @@ export function WelcomePage() {
                 style={{ wordWrap: "break-word" }}
                 initial="hidden"
                 animate={isLoading ? "hidden" : "visible"}
-                variants={variants}
-                transition={{ duration: 1, delay: 0.3 }}
+                variants={leftSlideVariants}
               >
                 PhD Student @ Signals Lab - USC ISI
               </motion.p>
@@ -134,7 +141,6 @@ export function WelcomePage() {
                 initial="hidden"
                 animate={isLoading ? "hidden" : "visible"}
                 variants={smallVariants}
-                transition={{ duration: 1, delay: 0.4 }}
               >
                 <Image
                   src="/images/headshot.jpeg"
@@ -150,8 +156,7 @@ export function WelcomePage() {
                 style={{ wordWrap: "break-word" }}
                 initial="hidden"
                 animate={isLoading ? "hidden" : "visible"}
-                variants={variants}
-                transition={{ duration: 1, delay: 0.5 }}
+                variants={leftSlideVariants}
               >
                 Welcome to my corner of the internet. I&apos;m a PhD student at
                 USC Information Sciences Institute working under Prof. Luca Luceri.
@@ -159,7 +164,7 @@ export function WelcomePage() {
                 I was a senior software engineer making lawyers more efficient using GenAI. Nowadays, I read
                 machine learning papers and dream about the future. I love to
                 open-source my work. I like ice cream on hot summer days. I want
-                to solo-backpack every country before I die, sitting at 21/195.
+                to solo-backpack every country before I die, sitting at 24/195.
                 I love Saunas; it helps me stay sane. Feel free to reach out.{" "}
                 <a
                   href={cvLink}
@@ -176,7 +181,6 @@ export function WelcomePage() {
                 initial="hidden"
                 animate={isLoading ? "hidden" : "visible"}
                 variants={smallVariants}
-                transition={{ duration: 0.5, delay: 0.6 }}
                 className="pointer-events-auto mb-4 px-4"
               >
                 <TypewriterEffectSmooth words={words} />
@@ -189,7 +193,6 @@ export function WelcomePage() {
               initial="hidden"
               animate={isLoading ? "hidden" : "visible"}
               variants={smallVariants}
-              transition={{ duration: 0.5, delay: 0.7 }}
             >
               <ProjectCards isMobile={isMobile} />
             </motion.div>
@@ -199,7 +202,7 @@ export function WelcomePage() {
     ) : (
       <>
         {/* Background elements removed - replaced by global PlasmaBackground */}
-        
+
         <motion.a
           href="https://github.com/Mahdi-s/developer-portfolio"
           target="_blank"
@@ -207,8 +210,7 @@ export function WelcomePage() {
           className="absolute bottom-4 left-4 z-50 h-10 w-10 p-2 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-black flex items-center justify-center"
           initial="hidden"
           animate={isLoading ? "hidden" : "visible"}
-          variants={variants}
-          transition={{ duration: 1, delay: 1.7 }}
+          variants={leftSlideVariants}
         >
           <IoCodeOutline className="text-[#4f6b8b]" size={20} />
         </motion.a>
@@ -228,8 +230,7 @@ export function WelcomePage() {
                   className="relative"
                   initial="hidden"
                   animate={isLoading ? "hidden" : "visible"}
-                  variants={variants}
-                  transition={{ duration: 1, delay: 0.1 }}
+                  variants={leftSlideVariants}
                 >
                   <div className="w-full mb-6 overflow-visible relative z-50 pointer-events-auto">
                     <Navbar />
@@ -239,58 +240,54 @@ export function WelcomePage() {
 
                 <div
                   id="welcome"
-                  className="flex flex-row items-start justify-start gap-8 pl-8 md:pl-12 w-full max-w-7xl mx-auto relative"
+                  className="flex flex-row items-stretch justify-start gap-6 pl-6 md:pl-10 w-full max-w-7xl mx-auto relative"
                 >
                   <motion.div
                     className="relative flex-shrink-0 h-auto"
                     initial="hidden"
                     animate={isLoading ? "hidden" : "visible"}
-                    variants={variants}
-                    transition={{ duration: 1, delay: 0.7 }}
+                    variants={leftSlideVariants}
                   >
                     <Image
                       src="/images/headshot.jpeg"
                       alt="Mahdi Saeedi"
-                      width={480}
-                      height={600}
-                      className="rounded-[40px] w-[300px] h-[430px] object-cover"
+                      width={432}
+                      height={540}
+                      className="rounded-[40px] w-[270px] h-[387px] object-cover"
                       priority
                       loading="eager"
                       quality={75}
                     />
                   </motion.div>
 
-                  <div className="flex flex-col flex-grow max-w-[500px] overflow-visible space-y-2">
+                  <div className="flex flex-col flex-grow max-w-[450px] overflow-visible space-y-2">
                     <motion.h1
                       className={cn(
-                        "text-2xl md:text-3xl lg:text-4xl text-white mb-2 text-left font-mono font-bold"
+                        "text-xl md:text-2xl lg:text-3xl text-white mb-2 text-left font-mono font-bold"
                       )}
                       initial="hidden"
                       animate={isLoading ? "hidden" : "visible"}
-                      variants={variants}
-                      transition={{ duration: 1, delay: 0.1 }}
+                      variants={leftSlideVariants}
                       style={{ wordWrap: "break-word" }}
                     >
                       Mahdi Saeedi
                     </motion.h1>
 
                     <motion.p
-                      className="text-sm md:text-base lg:text-lg text-white mb-2 text-left font-mono"
+                      className="text-xs md:text-sm lg:text-base text-white mb-2 text-left font-mono"
                       initial="hidden"
                       animate={isLoading ? "hidden" : "visible"}
-                      variants={variants}
-                      transition={{ duration: 1, delay: 0.4 }}
+                      variants={leftSlideVariants}
                       style={{ wordWrap: "break-word" }}
                     >
                       PhD Student @ Signals Lab - USC ISI
                     </motion.p>
 
                     <motion.p
-                      className="text-[8px] md:text-xs lg:text-sm text-white mb-2 text-left font-mono break-words overflow-visible"
+                      className="text-[8px] md:text-[10px] lg:text-xs text-white mb-2 text-left font-mono break-words overflow-visible"
                       initial="hidden"
                       animate={isLoading ? "hidden" : "visible"}
-                      variants={variants}
-                      transition={{ duration: 1, delay: 1.2 }}
+                      variants={leftSlideVariants}
                       style={{ wordWrap: "break-word" }}
                     >
                       Welcome to my corner of the internet. I&apos;m a PhD student at
@@ -299,7 +296,7 @@ export function WelcomePage() {
                       senior software engineer making lawyers more efficient using GenAI. Nowadays, I read
                       machine learning papers and dream about the future. I love to
                       open-source my work. I like ice cream on hot summer days. I want
-                      to solo-backpack every country before I die, sitting at 21/195.
+                      to solo-backpack every country before I die, sitting at 24/195.
                       I love Saunas; it helps me stay sane. Feel free to reach out.{" "}
                       <a
                         href={cvLink}
@@ -314,9 +311,8 @@ export function WelcomePage() {
                     <motion.div
                       initial="hidden"
                       animate={isLoading ? "hidden" : "visible"}
-                      variants={variants}
-                      transition={{ duration: 0.5, delay: 1.5 }}
-                      className="pointer-events-auto text-sm md:text-base"
+                      variants={leftSlideVariants}
+                      className="pointer-events-auto text-xs md:text-sm mt-auto"
                     >
                       <TypewriterEffectSmooth words={words} />
                     </motion.div>
@@ -331,8 +327,7 @@ export function WelcomePage() {
               className="md:h-full overflow-y-auto scrollbar-hide"
               initial="hidden"
               animate={isLoading ? "hidden" : "visible"}
-              variants={smallVariants}
-              transition={{ duration: 1, delay: 1.5 }}
+              variants={rightSlideVariants}
             >
               <div className="p-8 flex flex-col items-center">
                 <ProjectCards isMobile={isMobile} /> {/* Pass isMobile here */}
@@ -393,8 +388,7 @@ export function WelcomePage() {
             className="fixed bottom-4 left-4 z-50 h-10 w-10 p-2 bg-[#c7cbd4] rounded-full hover:bg-gray-100 transition-colors duration-200 text-black flex items-center justify-center"
             initial="hidden"
             animate={isLoading ? "hidden" : "visible"}
-            variants={variants}
-            transition={{ duration: 1, delay: 1.7 }}
+            variants={leftSlideVariants}
           >
             <IoCodeOutline className="text-[#4f6b8b]" size={20} />
           </motion.a>

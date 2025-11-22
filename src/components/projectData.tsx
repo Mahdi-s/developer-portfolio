@@ -18,13 +18,17 @@ export const projectData = [
   {
     title: "LLMxIO Dashboard",
     description:
-      "3D visualization of LLM Agentic Information Operation Simulations",
+      "Generative AI agents can spontaneously coordinate sophisticated influence campaigns on social media without human direction. We simulated information operations with varying levels of agent coordination—from simple goal alignment to collective decision-making—and found that agents naturally form dense networks, synchronize messaging, and amplify narratives just like real-world campaigns. I built an interactive 3D dashboard to visualize how these coordinated behaviors emerge and evolve across the simulation.",
     image: "/images/llmxio.png",
     techStack: ["TypeScript", "React", "Three.js", "D3.js"],
     links: [
       {
         icon: <TbWorld className="h-4 w-4" />,
         url: "https://llmxio-dashboard.vercel.app/",
+      },
+      {
+        icon: <FaFileAlt className="h-4 w-4" />,
+        url: "https://arxiv.org/pdf/2510.25003",
       },
     ],
   },

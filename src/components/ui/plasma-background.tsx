@@ -12,7 +12,7 @@ const fragmentShader = `
 
 // --- Settings ---
 #define MOUSE_REPULSION_STRENGTH 0.5  // Strength of the distortion/push
-#define BACKGROUND_SPARSITY 0.65      // 0.0 = full color, 1.0 = no color (only black)
+#define BACKGROUND_SPARSITY 0.8      // Increased sparsity for more black background
 
 uniform float iTime;
 uniform vec2 iResolution;
@@ -20,7 +20,27 @@ uniform vec2 iMouse;
 
 float calculatePlasmaWave(float phase){return cos(phase*WAVE_FREQUENCY)*PLASMA_AMPLITUDE+PLASMA_AMPLITUDE;}
 vec3 convertHsvToRgb(vec3 hsv){vec3 rgb=clamp(abs(mod(hsv.x*6.0+vec3(0.0,4.0,2.0),6.0)-3.0)-1.0,0.0,1.0);rgb=rgb*rgb*(3.0-2.0*rgb);return hsv.z*mix(vec3(1.0),rgb,hsv.y);}
-vec3 getPaletteColor(int s){return s%4==0?vec3(0.0):s%4==2?vec3(1.0):s==9?vec3(1.0,0.5,0.0):s==15?vec3(0.0,1.0,0.8):convertHsvToRgb(vec3((float(s/2)*0.125+0.5),1.0,1.0));}
+// New 16-color palette: dark, saturated colors that complement project boxes (#c7cbd4) and white text
+// Colors range from very dark blues/purples to rich teals, cyans, magentas, and violets
+vec3 getPaletteColor(int s) {
+    if (s == 0) return vec3(0.05, 0.05, 0.15);      // Very dark blue (replaces black)
+    if (s == 1) return vec3(0.15, 0.1, 0.3);         // Deep indigo
+    if (s == 2) return vec3(0.4, 0.15, 0.5);         // Rich purple
+    if (s == 3) return vec3(0.6, 0.2, 0.5);          // Deep magenta
+    if (s == 4) return vec3(0.3, 0.1, 0.4);          // Dark violet
+    if (s == 5) return vec3(0.2, 0.3, 0.7);          // Deep blue
+    if (s == 6) return vec3(0.1, 0.5, 0.6);           // Rich teal
+    if (s == 7) return vec3(0.0, 0.6, 0.8);          // Cyan
+    if (s == 8) return vec3(0.25, 0.15, 0.45);        // Dark blue-purple
+    if (s == 9) return vec3(0.45, 0.2, 0.55);         // Deep purple
+    if (s == 10) return vec3(0.65, 0.25, 0.6);        // Rich magenta
+    if (s == 11) return vec3(0.0, 0.4, 0.5);           // Deep teal
+    if (s == 12) return vec3(0.2, 0.25, 0.65);         // Indigo-blue
+    if (s == 13) return vec3(0.5, 0.2, 0.5);          // Purple-magenta
+    if (s == 14) return vec3(0.35, 0.4, 0.75);         // Bright blue-purple
+    if (s == 15) return vec3(0.1, 0.55, 0.7);          // Bright teal-cyan
+    return vec3(0.1, 0.1, 0.2);                      // Fallback dark blue
+}
 vec3 sampleColorPalette(float t){t=fract(t)*16.0;int s=int(t);return mix(getPaletteColor(s),getPaletteColor((s+1)%16),smoothstep(0.0,1.0,fract(t)));}
 
 void main() {
@@ -68,18 +88,39 @@ void main() {
     vec2 interferencePattern = (vec2(plasmaPhaseAngles.w, plasmaPhaseAngles.y) + vec2(plasmaWaveValues.x, plasmaWaveValues.w)) * PALETTE_NORMALIZER * 0.5;
     float palettePosition = mod(dot(vec4(calculatePlasmaWave(interferencePattern.x * COLOR_QUANTIZATION), calculatePlasmaWave(interferencePattern.y * COLOR_QUANTIZATION), plasmaWaveValues.yz), vec4(0.25)), 65536.0);
     float normalizedPaletteIndex = palettePosition * PALETTE_NORMALIZER / 255.0;
+
+    // Restore breathing effect for color movement
+    float breathingEffect = 0.02 + 0.372 * pow(sin(time * 0.03) * 0.5 + 0.5, 2.0);
+    float animatedPaletteIndex = normalizedPaletteIndex + breathingEffect * sin(normalizedPaletteIndex * 6.283) * 0.25;
     
-    vec3 baseColor = sampleColorPalette(normalizedPaletteIndex);
+    vec3 baseColor = sampleColorPalette(animatedPaletteIndex);
     
     // --- Rarity Filter ---
-    float brightness = dot(baseColor, vec3(0.33));
-    float rarityMask = smoothstep(BACKGROUND_SPARSITY, BACKGROUND_SPARSITY + 0.1, brightness);
+    // With dark colors, simple dot product brightness might be too low, causing everything to be masked out.
+    // We need to adjust the brightness calculation or the threshold.
+    // Let's use max channel brightness instead of average to preserve vibrant colors.
+    float brightness = max(baseColor.r, max(baseColor.g, baseColor.b));
+    
+    // Adjust rarity mask to be more permissive with dark colors
+    float rarityMask = smoothstep(BACKGROUND_SPARSITY - 0.1, BACKGROUND_SPARSITY + 0.1, brightness);
     vec3 finalColor = baseColor * rarityMask; 
     
-    // Add subtle noise
-    finalColor += (fract(sin(dot(fragCoord * 0.1, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) * 0.003;
+    // --- Glossy Enhancement ---
+    // Increase saturation for richer, more vibrant colors
+    float luminance = dot(finalColor, vec3(0.299, 0.587, 0.114));
+    vec3 saturatedColor = mix(vec3(luminance), finalColor, 1.15);
     
-    gl_FragColor = vec4(finalColor, 1.0);
+    // Add brightness boost to highlights for glossy sheen
+    float highlightBoost = smoothstep(0.3, 0.7, brightness) * 0.15;
+    finalColor = saturatedColor + highlightBoost;
+    
+    // Apply subtle color intensity curve for glossy reflective quality
+    finalColor = pow(finalColor, vec3(0.95));
+    
+    // Add subtle noise (reduced for cleaner appearance)
+    finalColor += (fract(sin(dot(fragCoord * 0.1, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) * 0.002;
+    
+    gl_FragColor = vec4(clamp(finalColor, 0.0, 1.0), 1.0);
 }
 `;
 
@@ -92,7 +133,7 @@ void main() {
 const PlasmaMesh = () => {
   const meshRef = useRef<THREE.Mesh>(null);
   const { size, viewport, gl } = useThree();
-  
+
   // Mouse position state
   const mouseRef = useRef({ x: 0, y: 0 });
 
@@ -102,22 +143,22 @@ const PlasmaMesh = () => {
       iResolution: { value: new THREE.Vector2(size.width, size.height) },
       iMouse: { value: new THREE.Vector2(0, 0) },
     }),
-    [size]
+    []
   );
 
   // Update uniforms on frame
   useFrame((state) => {
     if (meshRef.current) {
       const material = meshRef.current.material as THREE.ShaderMaterial;
-      const pixelRatio = gl.getPixelRatio();
-      
+      const pixelRatio = state.gl.getPixelRatio();
+
       material.uniforms.iTime.value = state.clock.getElapsedTime();
       material.uniforms.iResolution.value.set(
-        size.width * pixelRatio, 
-        size.height * pixelRatio
+        state.size.width * pixelRatio,
+        state.size.height * pixelRatio
       );
       material.uniforms.iMouse.value.set(
-        mouseRef.current.x * pixelRatio, 
+        mouseRef.current.x * pixelRatio,
         mouseRef.current.y * pixelRatio
       );
     }
