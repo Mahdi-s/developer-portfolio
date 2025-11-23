@@ -127,7 +127,7 @@ export function WelcomePage() {
               </motion.h1>
 
               <motion.p
-                className="text-gray-800 mb-4 px-4 max-w-2xl mx-auto font-mono"
+                className="text-white mb-4 px-4 max-w-2xl mx-auto font-mono"
                 style={{ wordWrap: "break-word" }}
                 initial="hidden"
                 animate={isLoading ? "hidden" : "visible"}
@@ -152,7 +152,7 @@ export function WelcomePage() {
               </motion.div>
 
               <motion.p
-                className="text-gray-800 mb-4 px-4 max-w-2xl mx-auto font-mono"
+                className="text-white mb-4 px-4 max-w-2xl mx-auto font-mono"
                 style={{ wordWrap: "break-word" }}
                 initial="hidden"
                 animate={isLoading ? "hidden" : "visible"}
