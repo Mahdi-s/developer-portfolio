@@ -67,7 +67,7 @@ export default function ProjectCards({ isMobile }: { isMobile: boolean }) {
                       />
                     </div>
                     <p className="text-sm font-mono font-bold text-neutral-600 dark:text-white">
-                      Tech Stack: {project.techStack}
+                      Tech Stack: {project.techStack.join(", ")}
                     </p>
                   </div>
                   {/* Simplified buttons */}
@@ -134,7 +134,7 @@ export default function ProjectCards({ isMobile }: { isMobile: boolean }) {
                         translateZ="40"
                         className="text-sm font-bold font-mono text-neutral-600 dark:text-white"
                       >
-                        Tech Stack: {project.techStack}
+                        Tech Stack: {project.techStack.join(", ")}
                       </CardItem>
                     </div>
                     {/* Buttons */}
