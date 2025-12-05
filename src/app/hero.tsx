@@ -194,7 +194,7 @@ export function WelcomePage() {
               animate={isLoading ? "hidden" : "visible"}
               variants={smallVariants}
             >
-              <ProjectCards isMobile={isMobile} />
+              <ProjectCards />
             </motion.div>
           </div>
         </div>
@@ -330,7 +330,7 @@ export function WelcomePage() {
               variants={rightSlideVariants}
             >
               <div className="p-8 flex flex-col items-center">
-                <ProjectCards isMobile={isMobile} /> {/* Pass isMobile here */}
+                <ProjectCards />
               </div>
             </motion.div>
           </div>
