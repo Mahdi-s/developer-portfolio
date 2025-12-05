@@ -196,16 +196,25 @@ const PlasmaMesh = () => {
 export const PlasmaBackground = () => {
   return (
     <div 
-      className="fixed inset-0 z-[-1] w-screen pointer-events-none"
+      className="fixed inset-0 z-[-1] w-full pointer-events-none"
       style={{ 
-        height: '100dvh',
-        minHeight: '-webkit-fill-available'
+        // Use lvh (Largest Viewport Height) to ignore address bar resizing
+        height: '100lvh',
+        // Fallback for browsers not supporting lvh
+        minHeight: '100vh',
+        // Seamless background color match (Shader darkest color)
+        backgroundColor: '#0d0d26',
+        // Prevent touch actions on the background layer
+        touchAction: 'none'
       }}
     >
       <Canvas
         dpr={[1, 2]}
         camera={{ position: [0, 0, 1] }}
+        // Force canvas to inherit the lvh height
         style={{ width: "100%", height: "100%" }}
+        // Optimization: minimize resize events
+        resize={{ scroll: false }}
         gl={{ alpha: false, powerPreference: "high-performance" }}
       >
         <PlasmaMesh />

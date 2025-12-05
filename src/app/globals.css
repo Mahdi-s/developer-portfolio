@@ -17,6 +17,14 @@
   }
 }
 
+html, body {
+  overscroll-behavior: none; /* Stops iOS rubber-banding */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #0d0d26; /* Matches shader void color */
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
