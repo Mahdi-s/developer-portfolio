@@ -195,7 +195,13 @@ const PlasmaMesh = () => {
 
 export const PlasmaBackground = () => {
   return (
-    <div className="fixed inset-0 z-[-1] w-full h-full pointer-events-none">
+    <div 
+      className="fixed inset-0 z-[-1] w-screen pointer-events-none"
+      style={{ 
+        height: '100dvh',
+        minHeight: '-webkit-fill-available'
+      }}
+    >
       <Canvas
         dpr={[1, 2]}
         camera={{ position: [0, 0, 1] }}
