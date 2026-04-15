@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { safeUrl } from "@/utils/safe-url";
 
 const transition = {
   type: "spring",
@@ -89,7 +90,12 @@ export const ProductItem = ({
   src: string;
 }) => {
   return (
-    <Link href={href} className="flex space-x-2">
+    <Link
+      href={safeUrl(href)}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex space-x-2"
+    >
       <Image
         src={src}
         width={140}
@@ -110,9 +116,11 @@ export const ProductItem = ({
 };
 
 export const HoveredLink = ({ children, ...rest }: any) => {
+  const safeHref = typeof rest.href === "string" ? safeUrl(rest.href) : rest.href;
   return (
     <Link
       {...rest}
+      href={safeHref}
       className="text-neutral-700 dark:text-neutral-200 hover:text-black flex items-center"
     >
       {children}

@@ -4,6 +4,7 @@ import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Image from "next/image";
 import Link from "next/link";
 import { projectData } from "./projectData";
+import { safeUrl } from "@/utils/safe-url";
 
 export default function ProjectCards() {
   const gridRef = useRef(null);
@@ -78,18 +79,19 @@ export default function ProjectCards() {
                       translateZ="40"
                       className="text-sm font-bold font-mono text-neutral-600 dark:text-white"
                     >
-                      Tech Stack: {project.techStack.join(", ")}
+                      Tech Stack: {(project.techStack ?? []).join(", ")}
                     </CardItem>
                   </div>
                   {/* Buttons */}
                   <div className="flex flex-wrap justify-between items-center mt-4">
-                    {project.links.map((link, btnIndex) => (
+                    {(project.links ?? []).map((link, btnIndex) => (
                       <CardItem
                         key={btnIndex}
                         translateZ={40}
                         as={Link}
-                        href={link.url}
-                        target="__blank"
+                        href={safeUrl(link.url)}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="px-3 py-1 m-1 rounded-[40px] bg-[#3f5f83] dark:bg-white dark:text-black text-white text-xs font-bold-mono border border-white/20 shadow-[0_6px_14px_rgba(8,12,28,0.28)] dark:shadow-[0_6px_14px_rgba(0,0,0,0.35)] flex items-center justify-center"
                       >
                         {link.icon}

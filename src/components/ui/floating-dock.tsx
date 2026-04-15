@@ -16,6 +16,7 @@ import {
 } from "framer-motion";
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { safeUrl } from "@/utils/safe-url";
 
 export const FloatingDock = ({
   items,
@@ -84,7 +85,9 @@ const FloatingDockMobile = ({
                 transition={{ delay: (items.length - 1 - idx) * 0.05 }}
               >
                 <Link
-                  href={item.href}
+                  href={safeUrl(item.href)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   key={item.title}
                   className="h-10 w-10 rounded-full bg-[#d2d7df] dark:bg-neutral-900 border border-white/35 dark:border-white/20 shadow-[0_10px_24px_rgba(8,12,28,0.35),0_2px_6px_rgba(8,12,28,0.2)] dark:shadow-[0_10px_24px_rgba(0,0,0,0.45),0_2px_6px_rgba(0,0,0,0.3)] flex items-center justify-center"
                 >
@@ -187,7 +190,7 @@ function IconContainer({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link href={href} target="_blank" rel="noopener noreferrer">
+    <Link href={safeUrl(href)} target="_blank" rel="noopener noreferrer">
       <motion.div
         ref={ref}
         style={{ width, height }}
