@@ -47,7 +47,7 @@ export default function ProjectCards() {
               className="w-full"
             >
               <CardContainer className="inter-var h-full w-full pointer-events-auto">
-                <CardBody className="bg-[#c7cbd4] relative group/card dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-[40px] p-6 border hover:shadow-2xl hover:shadow-neutral-400/50 dark:hover:shadow-neutral-900/50 transition-shadow duration-300 mx-auto">
+                <CardBody className="bg-[#c7cbd4]/95 relative group/card dark:bg-black dark:border-white/[0.2] border-white/20 dark:border-white/[0.2] w-auto sm:w-[30rem] h-auto rounded-[40px] p-6 border shadow-[0_14px_36px_rgba(8,12,28,0.3),0_3px_10px_rgba(8,12,28,0.18)] hover:shadow-2xl hover:shadow-neutral-400/50 dark:shadow-[0_14px_36px_rgba(0,0,0,0.55),0_3px_10px_rgba(0,0,0,0.35)] dark:hover:shadow-neutral-900/60 transition-shadow duration-300 mx-auto">
                   <div className="flex-1">
                     <CardItem
                       translateZ="40"
@@ -90,7 +90,7 @@ export default function ProjectCards() {
                         as={Link}
                         href={link.url}
                         target="__blank"
-                        className="px-3 py-1 m-1 rounded-[40px] bg-[#4f6b8b] dark:bg-white dark:text-black text-white text-xs font-bold-mono flex items-center justify-center"
+                        className="px-3 py-1 m-1 rounded-[40px] bg-[#3f5f83] dark:bg-white dark:text-black text-white text-xs font-bold-mono border border-white/20 shadow-[0_6px_14px_rgba(8,12,28,0.28)] dark:shadow-[0_6px_14px_rgba(0,0,0,0.35)] flex items-center justify-center"
                       >
                         {link.icon}
                       </CardItem>

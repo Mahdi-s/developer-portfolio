@@ -134,8 +134,12 @@ const PlasmaMesh = () => {
   const meshRef = useRef<THREE.Mesh>(null);
   const { size, viewport, gl } = useThree();
 
-  // Mouse position state
+  // Current (interpolated) mouse position sent to shader
   const mouseRef = useRef({ x: 0, y: 0 });
+  // Queue of waypoints the mouse position travels through sequentially
+  const waypointQueue = useRef<{ x: number; y: number }[]>([]);
+  // Whether the user is interacting via touch (enables waypoint queue movement)
+  const isTouchDevice = useRef(false);
 
   const uniforms = useMemo(
     () => ({
@@ -146,11 +150,36 @@ const PlasmaMesh = () => {
     []
   );
 
+  // Constant speed in pixels per frame (~60fps). Lower = slower & smoother.
+  const TOUCH_MOVE_SPEED = 1.2;
+  // How close (in px) before we consider a waypoint "reached" and move to the next
+  const ARRIVAL_THRESHOLD = 2;
+
   // Update uniforms on frame
   useFrame((state) => {
     if (meshRef.current) {
       const material = meshRef.current.material as THREE.ShaderMaterial;
       const pixelRatio = state.gl.getPixelRatio();
+
+      // On touch devices, move at constant speed toward the next waypoint in the queue
+      if (isTouchDevice.current && waypointQueue.current.length > 0) {
+        const target = waypointQueue.current[0];
+        const dx = target.x - mouseRef.current.x;
+        const dy = target.y - mouseRef.current.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist <= ARRIVAL_THRESHOLD) {
+          // Snap to waypoint and dequeue — move on to the next one
+          mouseRef.current.x = target.x;
+          mouseRef.current.y = target.y;
+          waypointQueue.current.shift();
+        } else {
+          // Move toward the waypoint at a constant speed
+          const step = Math.min(TOUCH_MOVE_SPEED, dist);
+          mouseRef.current.x += (dx / dist) * step;
+          mouseRef.current.y += (dy / dist) * step;
+        }
+      }
 
       material.uniforms.iTime.value = state.clock.getElapsedTime();
       material.uniforms.iResolution.value.set(
@@ -167,17 +196,33 @@ const PlasmaMesh = () => {
   // Global mouse listener to track mouse even when over other elements
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      // Flip Y to match shader expectations if needed, but usually pixel coords are top-left in DOM 
-      // and bottom-left in GL. 
-      // Shader uses: iMouse.xy / iResolution.xy
-      // GL coords: (0,0) bottom-left. DOM: (0,0) top-left.
-      // Let's convert to GL coords: x, height - y
+      // If touch has been detected, ignore mouse events to prevent
+      // the emulator (or touch device) from snapping position directly
+      if (isTouchDevice.current) return;
+      // Desktop: set position directly (continuous tracking, no queue needed)
+      // Flip Y to match shader expectations (GL coords: (0,0) bottom-left)
       mouseRef.current = { x: e.clientX, y: window.innerHeight - e.clientY };
     };
 
+    const handleTouch = (e: TouchEvent) => {
+      isTouchDevice.current = true;
+      const touch = e.touches[0];
+      if (touch) {
+        // Enqueue the new tap position — the useFrame loop will travel through each in order
+        waypointQueue.current.push({
+          x: touch.clientX,
+          y: window.innerHeight - touch.clientY,
+        });
+      }
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchstart", handleTouch, { passive: true });
+    window.addEventListener("touchmove", handleTouch, { passive: true });
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchstart", handleTouch);
+      window.removeEventListener("touchmove", handleTouch);
     };
   }, []);
 

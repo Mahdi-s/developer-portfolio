@@ -86,7 +86,7 @@ const FloatingDockMobile = ({
                 <Link
                   href={item.href}
                   key={item.title}
-                  className="h-10 w-10 rounded-full bg-[#c7cbd4] dark:bg-neutral-900 flex items-center justify-center"
+                  className="h-10 w-10 rounded-full bg-[#d2d7df] dark:bg-neutral-900 border border-white/35 dark:border-white/20 shadow-[0_10px_24px_rgba(8,12,28,0.35),0_2px_6px_rgba(8,12,28,0.2)] dark:shadow-[0_10px_24px_rgba(0,0,0,0.45),0_2px_6px_rgba(0,0,0,0.3)] flex items-center justify-center"
                 >
                   <div className="h-4 w-4">{item.icon}</div>
                 </Link>
@@ -97,9 +97,9 @@ const FloatingDockMobile = ({
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="h-10 w-10 rounded-full bg-[#c7cbd4] dark:bg-neutral-800 flex items-center justify-center relative pointer-events-auto"
+        className="h-10 w-10 rounded-full bg-[#d2d7df] dark:bg-neutral-800 border border-white/35 dark:border-white/20 shadow-[0_10px_24px_rgba(8,12,28,0.35),0_2px_6px_rgba(8,12,28,0.2)] dark:shadow-[0_10px_24px_rgba(0,0,0,0.45),0_2px_6px_rgba(0,0,0,0.3)] flex items-center justify-center relative pointer-events-auto"
       >
-        <IconLayoutNavbarCollapse className="h-5 w-5 text-[#4f6b8b] dark:text-neutral-400" />
+        <IconLayoutNavbarCollapse className="h-5 w-5 text-[#2f4d72] dark:text-neutral-300" />
       </button>
     </div>
   );

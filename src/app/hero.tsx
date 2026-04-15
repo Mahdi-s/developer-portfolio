@@ -385,12 +385,12 @@ export function WelcomePage() {
             href="https://github.com/Mahdi-s/developer-portfolio"
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-4 left-4 z-50 h-10 w-10 p-2 bg-[#c7cbd4] rounded-full hover:bg-gray-100 transition-colors duration-200 text-black flex items-center justify-center"
+            className="fixed bottom-4 left-4 z-50 h-10 w-10 p-2 bg-[#d2d7df] border border-white/35 rounded-full shadow-[0_10px_24px_rgba(8,12,28,0.35),0_2px_6px_rgba(8,12,28,0.2)] hover:bg-[#d9dde4] transition-colors duration-200 text-black flex items-center justify-center"
             initial="hidden"
             animate={isLoading ? "hidden" : "visible"}
             variants={leftSlideVariants}
           >
-            <IoCodeOutline className="text-[#4f6b8b]" size={20} />
+            <IoCodeOutline className="text-[#2f4d72]" size={20} />
           </motion.a>
 
         </>
