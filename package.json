@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/third-parties": "^14.2.35",
+    "@next/third-parties": "^16.2.6",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
     "@tabler/icons-react": "^3.20.0",
@@ -18,7 +18,7 @@
     "css-loader": "^6.10.0",
     "framer-motion": "^11.11.10",
     "gsap": "^3.12.5",
-    "next": "^14.2.35",
+    "next": "^16.2.6",
     "postcss-loader": "^8.1.1",
     "react": "^18",
     "react-dom": "^18",
