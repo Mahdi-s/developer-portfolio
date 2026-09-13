@@ -246,7 +246,7 @@ const clamp = (v: number, min: number, max: number) =>
  * loop so the tilt still works. Only one driver runs at a time.
  */
 function createMotionEngine(
-  cardRef: React.RefObject<HTMLDivElement>,
+  cardRef: React.RefObject<HTMLDivElement | null>,
   settingsRef: React.MutableRefObject<ParallaxSettings>
 ) {
   const state: MotionState = {

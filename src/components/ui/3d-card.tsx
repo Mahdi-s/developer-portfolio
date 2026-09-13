@@ -110,7 +110,7 @@ export const CardItem = ({
   rotateZ = 0,
   ...rest
 }: {
-  as?: React.ElementType;
+  as?: React.ElementType<any>;
   children: React.ReactNode;
   className?: string;
   translateX?: number | string;
@@ -137,14 +137,17 @@ export const CardItem = ({
     }
   };
 
+  // React 19's JSX types infer `never` props for a polymorphic ElementType, so render through an untyped alias.
+  const Element: any = Tag;
+
   return (
-    <Tag
+    <Element
       ref={ref}
       className={cn("w-fit transition duration-200 ease-linear", className)}
       {...rest}
     >
       {children}
-    </Tag>
+    </Element>
   );
 };
 
