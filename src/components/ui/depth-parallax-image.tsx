@@ -46,6 +46,11 @@ const MAX_FRAME_DT = 1 / 20;
 /** Seconds per axis of the touch auto-orbit. Incommensurate periods keep the Lissajous path drifting. */
 const ORBIT_PERIOD_X = 9;
 const ORBIT_PERIOD_Y = 13;
+/** A touch counts as a tap (not a scroll or long press) within this travel in px and duration in ms. */
+const TAP_SLOP_PX = 10;
+const TAP_MAX_MS = 500;
+/** Milliseconds a tapped view is held before easing back, the touch stand-in for the pointer leaving. */
+const TAP_HOLD_MS = 4000;
 /** Extra image-UV headroom at full reach so the filter footprint never touches the clamped border. */
 const EDGE_MARGIN = 0.0015;
 /** Milliseconds. Canvas cross-fade over the static image once WebGL has rendered its first frame. */
@@ -238,6 +243,16 @@ type MotionEngine = ReturnType<typeof createMotionEngine>;
 
 const clamp = (v: number, min: number, max: number) =>
   Math.min(max, Math.max(min, v));
+
+/** Points the motion target at a client position inside `element`: x -1 left to 1 right, y -1 bottom to 1 top. */
+function aimAt(motion: MotionState, element: HTMLElement, clientX: number, clientY: number) {
+  const rect = element.getBoundingClientRect();
+  if (rect.width <= 0 || rect.height <= 0) return false;
+  motion.tx = clamp(((clientX - rect.left) / rect.width) * 2 - 1, -1, 1);
+  motion.ty = clamp(1 - ((clientY - rect.top) / rect.height) * 2, -1, 1);
+  motion.te = 1;
+  return true;
+}
 
 /**
  * Pointer smoothing and CSS tilt, independent of React renders and of WebGL.
@@ -651,7 +666,7 @@ export type DepthParallaxImageProps = {
   perspective?: number;
   /** Exponential damping rate in 1/s. Higher follows the pointer more tightly. */
   smoothing?: number;
-  /** Auto-orbit amplitude on touch / no-hover devices, in pointer units (0 to 1). */
+  /** Idle auto-orbit amplitude on touch / no-hover devices, in pointer units (0 to 1). Taps pause it. */
   orbitAmplitude?: number;
 };
 
@@ -696,8 +711,23 @@ export const DepthParallaxImage = ({
   const hoverInteractive = motionAllowed && noHover === false;
   const hoverInteractiveRef = useRef(hoverInteractive);
   hoverInteractiveRef.current = hoverInteractive;
+  const motionAllowedRef = useRef(motionAllowed);
+  motionAllowedRef.current = motionAllowed;
+
+  // Touch taps aim the view like a hovering mouse would. A tap holds its view for TAP_HOLD_MS (the
+  // orbit pauses meanwhile), then eases back as if the pointer had left.
+  const tapStartRef = useRef<{ id: number; x: number; y: number; time: number } | null>(null);
+  const tapHoldTimerRef = useRef(0);
+  const orbitEnabledRef = useRef(false);
+  const inViewRef = useRef(true);
+
+  const clearTapHold = useCallback(() => {
+    window.clearTimeout(tapHoldTimerRef.current);
+    tapHoldTimerRef.current = 0;
+  }, []);
 
   useEffect(() => () => engine.dispose(), [engine]);
+  useEffect(() => clearTapHold, [clearTapHold]);
 
   useEffect(() => {
     settingsRef.current = {
@@ -712,8 +742,10 @@ export const DepthParallaxImage = ({
   }, [engine, reducedMotion, strength, focus, maxTiltDeg, smoothing, orbitAmplitude]);
 
   useEffect(() => {
-    if (reducedMotion) engine.reset();
-  }, [engine, reducedMotion]);
+    if (!reducedMotion) return;
+    clearTapHold();
+    engine.reset();
+  }, [engine, reducedMotion, clearTapHold]);
 
   // Load all three textures before creating a WebGL context at all. Any failure keeps the static image.
   useEffect(() => {
@@ -801,27 +833,32 @@ export const DepthParallaxImage = ({
     return () => window.clearTimeout(id);
   }, [status]);
 
-  // Touch / no-hover: slow auto-orbit while on screen, paused (frozen) while off screen. Held back
-  // until the canvas has finished fading in (or WebGL failed), so it starts from rest on a fully
-  // opaque canvas.
+  // Touch / no-hover: slow auto-orbit while on screen, paused (frozen) while off screen or while a tap
+  // holds the view. Held back until the canvas has finished fading in (or WebGL failed), so it starts
+  // from rest on a fully opaque canvas.
   const orbitEnabled =
     motionAllowed && noHover === true && (revealed || status === "failed");
+  orbitEnabledRef.current = orbitEnabled;
   useEffect(() => {
     const element = wrapperRef.current;
     if (!orbitEnabled || !element) return;
     const motion = engine.state;
     const setOrbiting = (on: boolean) => {
-      if (motion.orbiting === on) return;
+      // A held tap owns the view; its release resumes the orbit if the photo is still on screen.
+      if (tapHoldTimerRef.current || motion.orbiting === on) return;
       motion.orbiting = on;
       engine.kick();
     };
     let observer: IntersectionObserver | null = null;
     if (typeof IntersectionObserver === "undefined") {
+      inViewRef.current = true;
       setOrbiting(true);
     } else {
       observer = new IntersectionObserver((entries) => {
         const entry = entries[entries.length - 1];
-        if (entry) setOrbiting(entry.isIntersecting);
+        if (!entry) return;
+        inViewRef.current = entry.isIntersecting;
+        setOrbiting(entry.isIntersecting);
       });
       observer.observe(element);
     }
@@ -837,17 +874,14 @@ export const DepthParallaxImage = ({
 
   const handlePointer = useCallback(
     (event: React.PointerEvent<HTMLDivElement>) => {
-      // Touch never drives the effect, so it can never interfere with scrolling.
+      // Touch never hovers (taps are handled below), so it can never interfere with scrolling.
       if (event.pointerType === "touch" || !hoverInteractiveRef.current) return;
-      const rect = event.currentTarget.getBoundingClientRect();
-      if (rect.width <= 0 || rect.height <= 0) return;
-      const motion = engine.state;
-      motion.tx = clamp(((event.clientX - rect.left) / rect.width) * 2 - 1, -1, 1);
-      motion.ty = clamp(1 - ((event.clientY - rect.top) / rect.height) * 2, -1, 1);
-      motion.te = 1;
+      // A hovering pointer takes over from a held tap on hybrid touch + mouse devices.
+      clearTapHold();
+      if (!aimAt(engine.state, event.currentTarget, event.clientX, event.clientY)) return;
       engine.kick();
     },
-    [engine]
+    [engine, clearTapHold]
   );
 
   const handlePointerLeave = useCallback(
@@ -862,6 +896,55 @@ export const DepthParallaxImage = ({
     [engine]
   );
 
+  const releaseTap = useCallback(() => {
+    tapHoldTimerRef.current = 0;
+    if (!motionAllowedRef.current) return;
+    const motion = engine.state;
+    motion.tx = 0;
+    motion.ty = 0;
+    motion.te = 0;
+    motion.orbiting = orbitEnabledRef.current && inViewRef.current;
+    engine.kick();
+  }, [engine]);
+
+  const handlePointerDown = useCallback((event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "mouse" || !motionAllowedRef.current) return;
+    tapStartRef.current = {
+      id: event.pointerId,
+      x: event.clientX,
+      y: event.clientY,
+      time: performance.now(),
+    };
+  }, []);
+
+  const handlePointerUp = useCallback(
+    (event: React.PointerEvent<HTMLDivElement>) => {
+      const start = tapStartRef.current;
+      if (event.pointerType === "mouse" || !start || start.id !== event.pointerId) return;
+      tapStartRef.current = null;
+      if (!motionAllowedRef.current) return;
+      // A touch that travelled or lingered is a scroll attempt or a long press, not a tap.
+      const travel = Math.hypot(event.clientX - start.x, event.clientY - start.y);
+      if (travel > TAP_SLOP_PX || performance.now() - start.time > TAP_MAX_MS) return;
+      const motion = engine.state;
+      if (!aimAt(motion, event.currentTarget, event.clientX, event.clientY)) return;
+      motion.orbiting = false;
+      clearTapHold();
+      tapHoldTimerRef.current = window.setTimeout(releaseTap, TAP_HOLD_MS);
+      engine.kick();
+    },
+    [engine, clearTapHold, releaseTap]
+  );
+
+  const handlePointerCancel = useCallback(
+    (event: React.PointerEvent<HTMLDivElement>) => {
+      // The browser cancels a touch once it turns into a scroll, so it never counts as a tap.
+      tapStartRef.current = null;
+      handlePointerLeave(event);
+    },
+    [handlePointerLeave]
+  );
+
   const showCanvas = motionAllowed && textures !== null && status !== "failed";
 
   return (
@@ -869,11 +952,18 @@ export const DepthParallaxImage = ({
       ref={wrapperRef}
       // pointer-events-auto: the hero renders this under pointer-events-none ancestors.
       className={cn("relative pointer-events-auto", className)}
-      style={{ perspective: `${perspective}px` }}
+      style={{
+        perspective: `${perspective}px`,
+        // Taps drive the effect, so skip double-tap zoom and the grey tap flash; panning still scrolls.
+        touchAction: "manipulation",
+        WebkitTapHighlightColor: "transparent",
+      }}
       onPointerEnter={handlePointer}
       onPointerMove={handlePointer}
       onPointerLeave={handlePointerLeave}
-      onPointerCancel={handlePointerLeave}
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerCancel}
     >
       <div
         ref={cardRef}
