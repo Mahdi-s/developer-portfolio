@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 import { Navbar } from "@/components/navbar";
 import ProjectCards from "@/components/project_cards";
-import Image from "next/image";
+import { DepthParallaxImage } from "@/components/ui/depth-parallax-image";
 import { IoCodeOutline } from "react-icons/io5";
 
 export function WelcomePage() {
@@ -142,12 +142,19 @@ export function WelcomePage() {
                 animate={isLoading ? "hidden" : "visible"}
                 variants={smallVariants}
               >
-                <Image
-                  src="/images/headshot.jpeg"
+                <DepthParallaxImage
+                  src="/images/headshot-parallax.jpg"
+                  plateSrc="/images/headshot-plate.jpg"
+                  layersSrc="/images/headshot-layers.png"
+                  fallbackSrc="/images/headshot.jpeg"
+                  // Face depth in headshot-layers.png, so the face stays anchored.
+                  focus={0.86}
                   alt="Mahdi Saeedi"
                   width={192}
-                  height={192}
-                  className="rounded-[40px] object-cover mx-auto"
+                  height={256}
+                  // Tailwind preflight's img { height: auto } rendered the old 192-wide image at
+                  // its natural 3:4 ratio, so the box is 192x256.
+                  className="w-[192px] h-[256px] rounded-[40px] mx-auto"
                 />
               </motion.div>
 
@@ -248,12 +255,17 @@ export function WelcomePage() {
                     animate={isLoading ? "hidden" : "visible"}
                     variants={leftSlideVariants}
                   >
-                    <Image
-                      src="/images/headshot.jpeg"
+                    <DepthParallaxImage
+                      src="/images/headshot-parallax.jpg"
+                      plateSrc="/images/headshot-plate.jpg"
+                      layersSrc="/images/headshot-layers.png"
+                      fallbackSrc="/images/headshot.jpeg"
+                      // Face depth in headshot-layers.png, so the face stays anchored.
+                      focus={0.86}
                       alt="Mahdi Saeedi"
                       width={432}
                       height={540}
-                      className="rounded-[40px] w-[270px] h-[387px] object-cover"
+                      className="rounded-[40px] w-[270px] h-[387px]"
                       priority
                       loading="eager"
                       quality={75}

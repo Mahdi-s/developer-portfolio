@@ -5,6 +5,10 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// `next dev` runs React Refresh through eval, which the CSP blocks, leaving the page stuck before hydration.
+// Production builds never use eval, so their policy is unchanged.
+const devScriptSrc = process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : "";
+
 export const metadata: Metadata = {
   title: "Mahdi Saeedi's Portfolio",
   description: "Collection of projects and blog posts by Mahdi Saeedi",
@@ -22,7 +26,7 @@ export default function RootLayout({
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta
             httpEquiv="Content-Security-Policy"
-            content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+            content={`default-src 'self'; script-src 'self' 'unsafe-inline'${devScriptSrc} https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests`}
           />
           <meta name="referrer" content="strict-origin-when-cross-origin" />
           <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
